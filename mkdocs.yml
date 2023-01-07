@@ -7,13 +7,14 @@ extra_javascript:
 
 theme:
   name: material
+  custom_dir: overrides
   font:
     text: Roboto
     code: Roboto Mono
   features:
     - navigation.expand
     - search.highlight
-    - navigation.footer
+
 plugins:
   - search:
       lang: en
