@@ -8,15 +8,30 @@ extra_javascript:
 theme:
   name: material
   custom_dir: overrides
-  font:
-    text: Roboto
-    code: Roboto Mono
   features:
-    - navigation.expand
-    - search.highlight
-
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.instant
+    - navigation.sections
+    - navigation.footer
+  include_sidebar: true
 plugins:
   - search:
       lang: en
   - tags
+
+nav:
+  - Welcome:
+      - Docs: "index.md"
+  - AWS:
+      - Welcome: "aws/aws.md"
+      - Cloudfront: "aws/cloudfront.md"
+      - Route53: "aws/route53.md"
+      - S3: "aws/s3.md"
+  - Kubernetes:
+      - Kubernetes: "kubernetes/kubernetes.md"
+      - Deployment: "kubernetes/deployment.md"
+  - Spring Cloud Architecture:
+      - Spring Cloud: "spring-cloud-architecture/spring-cloud.md"
+
 
