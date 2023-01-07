@@ -1,4 +1,21 @@
-site_name: My Docs
+site_name: Chancue Technologies Docs
+repo_url: https://github.com/KQT3/chaincuet-wiki
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/extra.js
+
 theme:
   name: material
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.expand
+    - search.highlight
+    - navigation.footer
+plugins:
+  - search:
+      lang: en
+  - tags
 
