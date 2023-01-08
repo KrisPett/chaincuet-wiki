@@ -5,6 +5,8 @@ extra_css:
 extra_javascript:
   - javascripts/extra.js
 
+use_directory_urls: false
+
 theme:
   name: material
   custom_dir: overrides
