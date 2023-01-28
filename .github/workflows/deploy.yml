@@ -25,7 +25,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy site to S3 bucket
-        run: aws s3 sync ./site s3://${{ secrets.AWS_S3_BUCKET }}
+        run: aws s3 sync ./site s3://${{ secrets.AWS_S3_BUCKET }} --delete
 
       - name: Invalidate CloudFront distribution
         run: aws cloudfront create-invalidation --distribution-id=${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths '/*'
