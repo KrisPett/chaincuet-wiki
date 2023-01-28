@@ -9,6 +9,7 @@ use_directory_urls: true
 
 theme:
   name: material
+  favicon: assets/static/favicon.ico
   custom_dir: overrides
   features:
     - navigation.tabs
