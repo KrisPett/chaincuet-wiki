@@ -9,15 +9,22 @@ use_directory_urls: true
 
 theme:
   name: material
+  logo: assets/static/favicon.ico
   favicon: assets/static/favicon.ico
+  palette:
+    scheme: default
+    primary: 'blue grey'
+    accent: indigo
   custom_dir: overrides
   features:
     - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.instant
-    - navigation.sections
-    - navigation.footer
+    - header.autohide
+
   include_sidebar: true
+extra:
+    social:
+    - icon: fontawesome/solid/house
+      link: https://chaincuet.com
 plugins:
   - search:
       lang: en
