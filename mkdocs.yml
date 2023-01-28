@@ -13,22 +13,20 @@ theme:
   favicon: assets/static/favicon.ico
   palette:
     scheme: default
-    primary: 'blue grey'
-    accent: indigo
+    primary: blue grey
+    accent: deep purple
   custom_dir: overrides
   features:
     - navigation.tabs
     - header.autohide
-
   include_sidebar: true
 extra:
     social:
     - icon: fontawesome/solid/house
-      link: https://chaincuet.com
+      link: https://chaincuet.com/
 plugins:
   - search:
-      lang: en
-  - tags
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
 
 nav:
   - Welcome: index.md
