@@ -1,7 +1,3 @@
-## spring-cloud-architecture
-
-### Spring Cloud Architecture
-
 ### Spring Cloud Architecture
 
 ![springcloud](https://images.chaincuet.com/wiki/springcloud.png)
