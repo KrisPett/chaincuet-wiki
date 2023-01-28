@@ -23,8 +23,7 @@ plugins:
   - tags
 
 nav:
-  - Welcome:
-      - Docs: index.md
+  - Welcome: index.md
   - AWS:
       - Welcome: aws/index.md
       - Cloudfront: aws/cloudfront.md
