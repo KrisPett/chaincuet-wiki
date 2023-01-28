@@ -25,13 +25,14 @@ plugins:
 nav:
   - Welcome: index.md
   - AWS:
-      - Welcome: aws/index.md
-      - Cloudfront: aws/cloudfront.md
+      - AWS Overview: aws/index.md
+      - S3 & Cloudfront: aws/s3-cloudfront.md
       - Route53: aws/route53.md
-      - S3: aws/s3.md
-  - Kubernetes:
-      - Kubernetes: kubernetes/index.md
-      - Deployment: kubernetes/deployment.md
+      - Aws Lambda: aws/aws-lambda.md
+  - Docker & Kubernetes:
+      - Overview: docker-kubernetes/index.md
+      - Docker: docker-kubernetes/docker.md
+      - Kubernetes: docker-kubernetes/deployment-k8s.md
   - Spring Cloud Architecture:
       - Spring Cloud Overview: spring-cloud-architecture/index.md
       - Domains: spring-cloud-architecture/domains.md
