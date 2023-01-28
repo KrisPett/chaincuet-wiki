@@ -1,10 +1,10 @@
 site_name: Chaincue Technologies Docs
 repo_url: https://github.com/KQT3/chaincuet-wiki
+use_directory_urls: true
 extra_css:
   - stylesheets/extra.css
-extra_javascript:
-  - javascripts/extra.js
-use_directory_urls: true
+#extra_javascript:
+#  - javascripts/extra.js
 extra:
     social:
     - icon: fontawesome/solid/house
