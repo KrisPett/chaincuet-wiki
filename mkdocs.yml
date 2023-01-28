@@ -6,7 +6,7 @@ use_directory_urls: true
 #extra_javascript:
 #  - javascripts/extra.js
 extra:
-    social:
+  social:
     - icon: fontawesome/solid/house
       link: https://chaincuet.com/
 plugins:
@@ -28,7 +28,8 @@ theme:
   include_sidebar: true
 
 nav:
-  - Welcome: index.md
+  - Welcome:
+      - "": index.md
   - AWS:
       - AWS Overview: aws/index.md
       - S3 & Cloudfront: aws/s3-cloudfront.md
