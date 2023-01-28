@@ -34,6 +34,10 @@ nav:
       - Kubernetes: kubernetes/index.md
       - Deployment: kubernetes/deployment.md
   - Spring Cloud Architecture:
-      - Spring Cloud: spring-cloud-architecture/index.md
+      - Spring Cloud Overview: spring-cloud-architecture/index.md
+      - Domains: spring-cloud-architecture/domains.md
+      - Services: spring-cloud-architecture/services.md
+      - Tracing: spring-cloud-architecture/tracing.md
+
 
 

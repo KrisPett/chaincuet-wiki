@@ -5,7 +5,3 @@
 ### Kubernetes Architecture
 
 ![kubernetes](https://images.chaincuet.com/wiki/kubernetes.png)
-
-```
-spring-cloud-architecture
-```
