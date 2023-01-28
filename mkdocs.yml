@@ -5,6 +5,13 @@ extra_css:
 extra_javascript:
   - javascripts/extra.js
 use_directory_urls: true
+extra:
+    social:
+    - icon: fontawesome/solid/house
+      link: https://chaincuet.com/
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
 
 theme:
   name: material
@@ -19,13 +26,6 @@ theme:
     - navigation.tabs
     - header.autohide
   include_sidebar: true
-extra:
-    social:
-    - icon: fontawesome/solid/house
-      link: https://chaincuet.com/
-plugins:
-  - search:
-      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
 
 nav:
   - Welcome: index.md
