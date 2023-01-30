@@ -46,10 +46,6 @@ t3.medium = 2 cpu 4GiB Memory = $0.0416 per hour = (0.43kr * 24) * 30 = 309.6 * 
 
 # Aws setup
 aws configure
-export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
-export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
-export NAME=example.com
-export KOPS_STATE_STORE=s3://example-com-state-store
 
 # Install kops
 curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
@@ -57,11 +53,18 @@ chmod +x kops
 sudo mv kops /usr/local/bin/kops
 kops version
 
+export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
+export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
+export NAME=example.com
+export KOPS_STATE_STORE=s3://example-com-state-store
+
 kops create cluster \
---name=${NAME} \
---cloud=aws \
---zones=us-east-1a \
---discovery-store=s3://example-com-oidc-store/${NAME}/discovery
+  --name=${NAME} \
+  --cloud=aws \
+  --zones=us-east-1a \
+  --discovery-store=s3://example-com-oidc-store/${NAME}/discovery \
+  --dns-zone=example.se
+
 kops get clusters
 kops edit cluster --name ${NAME}
 kops update cluster --name ${NAME} --yes --admin
