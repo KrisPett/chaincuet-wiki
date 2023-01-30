@@ -27,10 +27,10 @@ aws iam add-user-to-group --user-name kops --group-name kops
 aws iam create-access-key --user-name kops
 
 # create s3
-aws s3api create-bucket --bucket chainqt3-com --region us-east-1
-aws s3api put-bucket-versioning --bucket chainqt3-com --versioning-configuration Status=Enabled
-aws s3api create-bucket --bucket chainqt3-com-oidc-store --region us-east-1 --acl public-read
-aws s3api put-bucket-encryption --bucket chainqt3-com --server-side-encryption-configuration '{"Rules":[{"ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"}}]}'
+aws s3api create-bucket --bucket cluster-com-state-store --region us-east-1
+aws s3api put-bucket-versioning --bucket cluster-com-state-store --versioning-configuration Status=Enabled
+aws s3api create-bucket --bucket cluster-com-oidc-store --region us-east-1 --acl public-read
+aws s3api put-bucket-encryption --bucket cluster-com-state-store --server-side-encryption-configuration '{"Rules":[{"ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"}}]}'
 
 aws ec2 describe-availability-zones --region us-east-1
 ```
