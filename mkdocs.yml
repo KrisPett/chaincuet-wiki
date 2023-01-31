@@ -46,13 +46,13 @@ nav:
       - Domains: spring-cloud-architecture/domains.md
       - Services: spring-cloud-architecture/services.md
       - Tracing: spring-cloud-architecture/tracing.md
-  - Linux:
-      - Linux Overview: linux/index.md
-      - Alias: linux/alias.md
   - Frontend:
       - Frontend Overview: frontend/index.md
       - Style: frontend/style.md
       - Javascript & Typescript: frontend/javascript-typescript.md
+  - Linux:
+      - Linux Overview: linux/index.md
+      - Alias: linux/alias.md
   - Utils: 
       - Utils Overview: utils/index.md
       - Emoji: utils/emoji.md
