@@ -1,1 +1,1 @@
-#### Collection of Linux Stuff
+# Collection of Linux Stuff

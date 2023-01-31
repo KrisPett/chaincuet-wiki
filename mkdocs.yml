@@ -35,6 +35,7 @@ nav:
       - S3 & Cloudfront: aws/s3-cloudfront.md
       - Route53: aws/route53.md
       - Aws Lambda: aws/aws-lambda.md
+      - Vault: aws/vault.md
   - Docker & Kubernetes:
       - Overview: docker-kubernetes/index.md
       - Docker: docker-kubernetes/docker.md
@@ -48,4 +49,10 @@ nav:
   - Linux:
       - Linux Overview: linux/index.md
       - Alias: linux/alias.md
-
+  - Frontend:
+      - Frontend Overview: frontend/index.md
+      - Style: frontend/style.md
+      - Javascript & Typescript: frontend/javascript-typescript.md
+  - Utils: 
+      - Utils Overview: utils/index.md
+      - Emoji: utils/emoji.md
