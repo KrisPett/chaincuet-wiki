@@ -1,5 +1,1 @@
-#### Useful linux commands
-
-```
-
-```
+#### Collection of Linux Stuff

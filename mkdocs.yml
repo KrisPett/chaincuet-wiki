@@ -47,5 +47,5 @@ nav:
       - Tracing: spring-cloud-architecture/tracing.md
   - Linux:
       - Linux Overview: linux/index.md
-      - Domains: linux/alias.md
+      - Alias: linux/alias.md
 
