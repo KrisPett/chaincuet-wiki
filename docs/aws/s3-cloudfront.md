@@ -107,3 +107,21 @@ AmazonS3FullAccess
 }
 ```
 
+#### Change CORS policy for s3
+```
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET"
+        ],
+        "AllowedOrigins": [
+            "http://localhost:3000"
+        ],
+        "ExposeHeaders": [],
+        "MaxAgeSeconds": 3000
+    }
+]
+```

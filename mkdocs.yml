@@ -45,3 +45,7 @@ nav:
       - Domains: spring-cloud-architecture/domains.md
       - Services: spring-cloud-architecture/services.md
       - Tracing: spring-cloud-architecture/tracing.md
+  - Linux:
+      - Linux Overview: linux/index.md
+      - Domains: linux/alias.md
+

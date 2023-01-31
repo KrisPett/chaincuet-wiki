@@ -53,6 +53,10 @@ chmod +x kops
 sudo mv kops /usr/local/bin/kops
 kops version
 
+# Create Cluster
+# Test valid domain
+dig ns example.com
+
 export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
 export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 export NAME=example.com
@@ -79,8 +83,12 @@ kubectl version --client
 kubectl get nodes
 kops validate cluster --wait 10m
 kubectl -n kube-system get po
+```
 
+### Delete Cluster
+```
 # Delete cluster (cost money)
+kops get clusters
 kops delete cluster --name ${NAME}
 kops delete cluster --name ${NAME} --yes
 ```
