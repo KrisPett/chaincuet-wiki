@@ -6,4 +6,6 @@ git remote add origin git@github.com:KQT3/<..>.git
 git add .
 git commit -m "Initial commit"
 git push -u origin main
+
+git rm -rf .idea/
 ```
