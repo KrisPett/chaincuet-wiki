@@ -125,3 +125,26 @@ AmazonS3FullAccess
     }
 ]
 ```
+
+#### Download S3 file using Javascript fetch
+
+```jsx
+const fetchDownloadMaterial = (filename: string) => {
+  const extractFilename = filename.split('/').pop();
+  if (!extractFilename) throw new Error("Filename is undefined");
+  return fetch(`${filename}`, {method: "GET"})
+    .then(res => res.blob())
+    .then(blob => {
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement("a")
+      a.href = url
+      a.download = extractFilename
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+    })
+    .catch(err => {
+      console.error("err: ", err);
+    })
+};
+```
