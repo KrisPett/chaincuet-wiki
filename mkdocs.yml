@@ -36,6 +36,7 @@ nav:
       - Route53: aws/route53.md
       - Aws Lambda: aws/aws-lambda.md
       - Vault: aws/vault.md
+      - Terraform: aws/terraform.md
   - Docker & Kubernetes:
       - Overview: docker-kubernetes/index.md
       - Docker: docker-kubernetes/docker.md
