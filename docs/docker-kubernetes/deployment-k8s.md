@@ -63,7 +63,7 @@ kops create cluster \
   --cloud=aws \
   --zones=us-east-1a \
   --discovery-store=s3://example-com-oidc-store/${NAME}/discovery \
-  --dns-zone=example.se
+  --dns-zone=example.com
 
 kops get clusters
 kops edit cluster --name ${NAME}
