@@ -10,6 +10,7 @@ git push -u origin main
 
 #### Git Commit and Push
 ```
+git add . && git commit -m "Initial commit" && git push -u origin master
 git add . && git commit -m "Initial commit" && git push -u origin main
 ```
 
