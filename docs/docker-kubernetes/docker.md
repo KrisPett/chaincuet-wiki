@@ -23,7 +23,7 @@ docker run --rm -it -p 3000:3000 -v C:drive:/app node sh
 kill $(lsof -t -i:3000)
 ```
 
-# Cleanup Docker
+#### Cleanup Docker
 
 ```
 docker kill $(docker ps -q)
