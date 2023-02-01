@@ -1,53 +1,46 @@
-#### S3 Static Website Hosting - Cloudfront - Route53
+### Collection of Terraforms
+
+#### Setup
 ```
-provider "aws" {
-  region = "us-west-2"
-}
+export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id) && \
+export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
+```
 
-resource "aws_s3_bucket" "static_website" {
-  bucket = "static-website-bucket"
-  acl    = "public-read"
+#### Initialized
+```
+terraform init
+```
 
-  website {
-    index_document = "index.html"
-  }
-}
+#### Format .tf File
+```
+terraform fmt
+```
 
-resource "aws_cloudfront_distribution" "static_website" {
-  origin {
-    domain_name = aws_s3_bucket.static_website.bucket_domain_name
-    origin_id   = "S3-${aws_s3_bucket.static_website.bucket}"
-  }
+#### Validate
+```
+terraform validate
+```
 
-  default_cache_behavior {
-    allowed_methods  = ["GET", "HEAD"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "S3-${aws_s3_bucket.static_website.bucket}"
+#### Create Resources
+```
+terraform apply
+```
 
-    forwarded_values {
-      query_string = false
-    }
+#### Remove Resources
+```
+terraform destroy
+```
 
-    viewer_protocol_policy = "redirect-to-https"
-  }
-
-  enabled = true
-
-  aliases = [
-    "www.example.com",
-  ]
-}
-
-resource "aws_route53_record" "static_website" {
-  zone_id = "ZXXXXXXXXXXXXX"
-  name    = "example.com"
-  type    = "A"
-
-  alias {
-    name                   = aws_cloudfront_distribution.static_website.domain_name
-    zone_id               = aws_cloudfront_distribution.static_website.hosted_zone_id
-    evaluate_target_health = true
-  }
-}
+#### Import from AWS
+```
+terraform import aws_s3_bucket.example <bucket_name>
+aws_s3_bucket=the resource type
+.example=name from the .tf file
 
 ```
+
+#### Note
+
+<p>
+The Terraform state file (terraform.tfstate) contains information about the infrastructure managed by Terraform, including the resources it created, their current state, and metadata. This information is sensitive because it can be used to access and manipulate the underlying infrastructure, which may contain sensitive data or control critical systems. As such, it is important to secure the Terraform state file by keeping it confidential and protecting it from unauthorized access or modification. This can be achieved by using version control systems, backing up the state file, and using Terraform's remote state functionality to store it securely in a centralized location.
+</p>
