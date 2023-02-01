@@ -37,6 +37,7 @@ nav:
       - Aws Lambda: aws/aws-lambda.md
       - Vault: aws/vault.md
       - Terraform: aws/terraform.md
+      - VPN: aws/vpn.md
   - Docker & Kubernetes:
       - Overview: docker-kubernetes/index.md
       - Docker: docker-kubernetes/docker.md
