@@ -36,7 +36,6 @@ terraform destroy
 terraform import aws_s3_bucket.example <bucket_name>
 aws_s3_bucket=the resource type
 .example=name from the .tf file
-
 ```
 
 #### Note
