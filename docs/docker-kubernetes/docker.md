@@ -22,3 +22,16 @@ docker run --rm -it -p 3000:3000 -v C:drive:/app node sh
 ```
 kill $(lsof -t -i:3000)
 ```
+
+# Cleanup Docker
+
+```
+docker kill $(docker ps -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
+
+```
+#### remove all <none> tag images 
+```
+docker image prune --filter="dangling=true"
+```
