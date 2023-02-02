@@ -1,5 +1,31 @@
 https://kubernetes.github.io/ingress-nginx/deploy/#network-load-balancer-nlb
 
+## Information
+
+### Kops resources
+
+[]: #
+
+Kops creates several resources in an Amazon Web Services (AWS) account when spinning up a Kubernetes cluster. These resources include:
+
+- EC2 instances: Kops creates EC2 instances for the nodes in the cluster, which run the Kubernetes components and host the containers.
+
+- VPC: Kops creates a Virtual Private Cloud (VPC) to contain the resources for the cluster.
+
+- Security Groups: Kops creates security groups to control network access to the instances in the cluster.
+
+- Auto Scaling groups: Kops creates Auto Scaling groups to manage the number of nodes in the cluster, ensuring that the cluster has the desired number of nodes even in the case of node failures.
+
+- Load Balancers: Kops creates load balancers to distribute incoming traffic to the nodes in the cluster, ensuring that the cluster is highly available.
+
+- DNS records: Kops creates DNS records in Amazon Route 53 to associate domain names with the load balancers in the cluster.
+
+- IAM roles: Kops creates IAM roles to control access to AWS resources from the instances in the cluster.
+
+In addition to these resources, Kops also creates S3 buckets to store cluster configuration and state information, as well as other resources as required by the cluster. The exact set of resources created by Kops depends on the specific configuration of the cluster.
+
+## Kops
+
 ### change fields use ALB/NLB
 
 ```
@@ -86,6 +112,7 @@ kubectl -n kube-system get po
 ```
 
 ### Delete Cluster
+
 ```
 # Delete cluster (cost money)
 kops get clusters
@@ -94,6 +121,7 @@ kops delete cluster --name ${NAME} --yes
 ```
 
 ### Useful kops commands
+
 ```
 kops get cluster chainqt3.com -o yaml
 ```

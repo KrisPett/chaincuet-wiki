@@ -41,8 +41,8 @@ nav:
   - Docker & Kubernetes:
       - Overview: docker-kubernetes/index.md
       - Docker: docker-kubernetes/docker.md
-      - Kubernetes: docker-kubernetes/kubernetes.md
-      - Deploy K8s: docker-kubernetes/deployment-k8s.md
+      - Kubernetes Commands: docker-kubernetes/kubernetes-commands.md
+      - Kubernetes Production: docker-kubernetes/kubernetes-production.md
   - Spring Cloud Architecture:
       - Spring Cloud Overview: spring-cloud-architecture/index.md
       - Domains: spring-cloud-architecture/domains.md
