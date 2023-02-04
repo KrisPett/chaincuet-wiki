@@ -43,3 +43,10 @@ aws_s3_bucket=the resource type
 <p>
 The Terraform state file (terraform.tfstate) contains information about the infrastructure managed by Terraform, including the resources it created, their current state, and metadata. This information is sensitive because it can be used to access and manipulate the underlying infrastructure, which may contain sensitive data or control critical systems. As such, it is important to secure the Terraform state file by keeping it confidential and protecting it from unauthorized access or modification. This can be achieved by using version control systems, backing up the state file, and using Terraform's remote state functionality to store it securely in a centralized location.
 </p>
+
+#### Static Website Hosting
+
+```
+S3 -> Cloudfront -> Certificate Manager ->  IAM -> Route53
+```
+
