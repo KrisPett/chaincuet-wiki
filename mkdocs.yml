@@ -50,7 +50,7 @@ nav:
       - Tracing: spring-cloud-architecture/tracing.md
   - Frontend:
       - Frontend Overview: frontend/index.md
-      - Style: frontend/style.md
+      - CSS Styling: frontend/css-styling.md
       - Javascript & Typescript: frontend/javascript-typescript.md
   - Linux:
       - Linux Overview: linux/index.md
