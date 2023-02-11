@@ -17,6 +17,14 @@
 
 ## Tailwind style
 
+#### Style Libraries
+
+``` 
+daisyui
+https://heroicons.com/
+https://tailwindcomponents.com/gradient-generator/
+```
+
 #### Prettier
 
 ``` 
@@ -27,12 +35,6 @@ npx prettier --write index.tsx
 npx prettier --write .
 ```
 
-#### Style Libraries
-
-``` 
-daisyui
-https://heroicons.com/
-```
 
 #### Tailwind Config Example
 
