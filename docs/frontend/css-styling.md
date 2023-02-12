@@ -23,6 +23,7 @@
 daisyui
 https://heroicons.com/
 https://tailwindcomponents.com/gradient-generator/
+https://tailwind-elements.com/quick-start/
 ```
 
 #### Prettier
