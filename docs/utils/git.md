@@ -27,3 +27,10 @@ sudo apt update
 sudo apt install git
 git --version
 ```
+
+#### Setup Stuff
+
+```
+git config --global push.autoSetupRemote true
+git config --global push.default upstream
+```
