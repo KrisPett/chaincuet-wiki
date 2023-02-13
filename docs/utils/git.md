@@ -18,3 +18,12 @@ git add . && git commit -m "Initial commit" && git push -u origin main
 ```
 git rm -rf .idea/
 ```
+
+#### Install latest version of git
+
+```
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt update
+sudo apt install git
+git --version
+```
