@@ -1,5 +1,3 @@
-#### ECS
-
 ##### Host a Node sever using Elastic Container Service
 
 1. Create Elastic Container Registry to store docker image (private repo)

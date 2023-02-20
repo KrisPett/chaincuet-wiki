@@ -35,7 +35,7 @@ nav:
       - S3 & Cloudfront: aws/s3-cloudfront.md
       - Route53: aws/route53.md
       - Aws Lambda: aws/aws-lambda.md
-      - ECS: aws/ecs.md
+      - ECS/ECR: aws/ecs.md
       - Terraform: aws/terraform.md
       - VPN: aws/vpn.md
       - Vault: aws/vault.md
