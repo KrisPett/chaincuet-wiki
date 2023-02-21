@@ -1,4 +1,5 @@
 #### Notes 
+
 ```
 To configure OpenVPN on AWS to encrypt and redirect to an Application Load Balancer (ALB), you will need to complete the following steps:
 
@@ -19,5 +20,4 @@ push "dhcp-option DNS 10.0.0.2"
     Update the security group for the EC2 instance: Finally, update the security group for the EC2 instance to allow incoming VPN traffic on the desired port (for example, TCP port 1194). You should also update the security group for the ALB to allow incoming traffic from the OpenVPN instance.
 
 These are the basic steps for configuring OpenVPN on AWS to encrypt and redirect traffic to an ALB. There may be additional steps required to meet the specific requirements of your setup, but this should give you a good starting point.
-
 ```

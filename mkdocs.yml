@@ -38,6 +38,7 @@ nav:
       - ECS/ECR: aws/ecs.md
       - Terraform: aws/terraform.md
       - VPN: aws/vpn.md
+      - Nginx: aws/nginx.md
       - Vault: aws/vault.md
       - Keycloak: aws/keycloak.md
   - Docker & Kubernetes:
