@@ -3,7 +3,8 @@
 ##### Setup ssl/tls
 
 ```
-ln -s /path/to/auth.example.com /path/to/symlink
+ln -s /path/to/auth.example.com.conf /path/to/symlink
+# Run it from sites-enabled (../sites-available/auth.example.com.conf .)
 
 sudo apt install certbot
 sudo apt-get install python3-certbot-nginx
