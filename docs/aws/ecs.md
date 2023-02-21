@@ -31,7 +31,9 @@ https://github.com/aws-actions/amazon-ecr-login
                 "ecr:PutImage",
                 "ecr:InitiateLayerUpload",
                 "ecr:UploadLayerPart",
-                "ecr:CompleteLayerUpload"
+                "ecr:CompleteLayerUpload",
+                "ecr:BatchDeleteImage",
+                "ecr:DescribeImages"
             ],
             "Resource": "arn:aws:ecr:us-east-1::repository/.com"
         },
