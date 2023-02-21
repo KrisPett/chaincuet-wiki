@@ -1,6 +1,7 @@
 ## UseStates
 
 #### Updates textfield based on Id
+
 ```JSX
 const [options, setOptions] = useState<string[]>(props.question.options);
 
@@ -14,6 +15,7 @@ const [options, setOptions] = useState<string[]>(props.question.options);
 ```
 
 #### Updates textfield based on string only
+
 ```JSX
 const [options, setOptions] = useState<string[]>("");
 
@@ -26,8 +28,8 @@ const onChangeQueryOption = (newValue: string, option: string) => {
 };
 ```
 
-
 #### Updates textfield based on interface object
+
 ```JSX
 interface OptionValues {
   id: number
@@ -52,15 +54,19 @@ interface OptionValues {
 ```
 
 #### Push to useState
+
 ```JSX
 setItems(prevState => [...prevState, newArr])
 ```
 
 #### Remove an item from useState
+
 ```JSX
 setItems(prevState => prevState.filter(item => item.id !== itemToRemove.id))
 ```
+
 #### Push and remove array based on checkbox toggle
+
 ```JSX
   const handleCheckboxClick = (assignment: Assignment) => {
     const newArr = new Assignment(assignment.id, assignment.assignmentName, assignment.courseName, assignment.assignmentName, assignment.assignmentType)
@@ -70,6 +76,44 @@ setItems(prevState => prevState.filter(item => item.id !== itemToRemove.id))
     }
     return setDuplicateAssignments(prevState => [...prevState, newArr])
   }
+```
+
+#### How to use the MUI Autocomplete
+
+```JSX
+  const handleTagSelection = (event: any, values: [], reason: string, detail: AutocompleteChangeDetails<> | undefined) => {
+    if (reason === "selectOption" && detail) {
+      const addDTORequestBody = new DTORequestBody(detail.option.id, props.selected.id);
+      fetchAddMutation.mutate(DTORequestBody);
+      set(values);
+    }
+    if (reason === "removeOption" && detail) {
+      const removeDTORequestBody = new DTORequestBody(detail.option.id, props.selected.id);
+      fetchRemoveMutation.mutate(removeDTORequestBody);
+      set(values);
+    }
+  };
+       <Autocomplete
+              multiple
+              id=""
+              sx={{
+                '.MuiAutocomplete-popupIndicator': {
+                  color: 'gray',
+                  background: 'none'
+                },
+                '.MuiAutocomplete-clearIndicator': {
+                  color: 'gray',
+                  background: 'none'
+                },
+              }}
+              options={all}
+              getOptionLabel={(option) => option.name}
+              disableClearable
+              filterSelectedOptions
+              onChange={(event, values, reason, details) => handleSelection(event, values, reason, details)}
+              value={selected}
+              renderInput={params => (<TextField{...params}/>)}
+            />
 ```
 
 ## NextJS
