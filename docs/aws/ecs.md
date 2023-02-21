@@ -12,24 +12,35 @@ https://github.com/aws-actions/amazon-ecr-login
 ##### IAM Roles needed for Github Workflow
 
 ```
+# https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services
+# Configure provider on aws using Github OIDC to link the role to the workflow
+# URL: https://token.actions.githubusercontent.com, Audience: sts.amazonaws.com
+# Create Role (Web identity) and attach the policy
+
+# Policy for identity provider
 {
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "ECRAccess",
+            "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
-                "ecr:GetAuthorizationToken",
-                "ecr:BatchCheckLayerAvailability",
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage",
+                "ecr:BatchCheckLayerAvailability",
                 "ecr:PutImage"
             ],
-            "Resource": "arn:aws:ecr:us-east-1:123456789012:repository/my-ecr-repo"
+            "Resource": "arn..."
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "ecr:GetAuthorizationToken",
+            "Resource": "*"
         }
     ]
 }
-
 ```
 
 5.  Trigger the Task Definition and refresh the ECS to new build
+6.  
