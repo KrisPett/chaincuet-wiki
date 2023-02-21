@@ -28,9 +28,12 @@ https://github.com/aws-actions/amazon-ecr-login
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage",
                 "ecr:BatchCheckLayerAvailability",
-                "ecr:PutImage"
+                "ecr:PutImage",
+                "ecr:InitiateLayerUpload",
+                "ecr:UploadLayerPart",
+                "ecr:CompleteLayerUpload"
             ],
-            "Resource": "arn..."
+            "Resource": "arn:aws:ecr:us-east-1::repository/.com"
         },
         {
             "Sid": "VisualEditor1",
