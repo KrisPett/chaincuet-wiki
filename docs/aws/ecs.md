@@ -23,7 +23,7 @@ https://github.com/aws-actions/amazon-ecr-login
         {
             "Effect": "Allow",
             "Principal": {
-                "Federated": "arn:aws:iam::123456789:oidc-provider/token.actions.githubusercontent.com"
+                "Federated": "arn:aws:iam:::oidc-provider/token.actions.githubusercontent.com"
             },
             "Action": "sts:AssumeRoleWithWebIdentity",
             "Condition": {
@@ -70,6 +70,42 @@ https://github.com/aws-actions/amazon-ecr-login
             "Effect": "Allow",
             "Action": "ecr:GetAuthorizationToken",
             "Resource": "*"
+        }
+    ]
+}
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "RegisterTaskDefinition",
+            "Effect": "Allow",
+            "Action": [
+                "ecs:RegisterTaskDefinition",
+                "ecs:DescribeTaskDefinition"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "PassRolesInTaskDefinition",
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "arn:aws:iam::accountId:role/ecsTaskExecutionRole"
+            ]
+        },
+        {
+            "Sid": "DeployService",
+            "Effect": "Allow",
+            "Action": [
+                "ecs:UpdateService",
+                "ecs:DescribeServices"
+            ],
+            "Resource": [
+                "arn for service"
+            ]
         }
     ]
 }
