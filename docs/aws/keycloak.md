@@ -93,3 +93,76 @@ if (loading) return <></>
     </Layout>
 </SessionProvider>
 ```
+
+#### Theming Keycloak
+
+##### docker-compose.yml example
+```
+# docker stop keycloak_name && docker rm keycloak_name && docker stop postgres_name && docker rm postgres_name && docker volume rm postgres_data
+# docker-compose up -d
+
+version: '3.5'
+services:
+  postgres:
+    container_name: postgres_name
+    image: postgres:10.4
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: POSTGRES_PASSWORD
+    ports:
+      - "5433:5432"
+    networks:
+      - keycloak_net
+
+  keycloak:
+    container_name: keycloak_name
+    image: quay.io/keycloak/keycloak:19.0.3-legacy
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: POSTGRES_PASSWORD
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      PROXY_ADDRESS_FORWARDING: "true"
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    # volumes:
+    #    - /keycloak-theme:/opt/jboss/keycloak/themes/keycloak/
+    depends_on:
+      - postgres
+    networks:
+      - keycloak_net
+
+volumes:
+  postgres_data:
+    name: postgres_data
+
+networks:
+  keycloak_net:
+    name: keycloak_net
+    driver: bridge
+```
+
+```
+docker stop keycloak_name && docker rm keycloak_name && \
+docker stop postgres_name && docker rm postgres_name && \
+docker volume rm postgres_data \
+docker-compose up -d
+```
+
+```
+http://0.0.0.0:8080/auth/
+http://localhost:8080/auth/
+```
+
+##### List databases 
+```
+docker exec -it postgres_name psql -U postgres -c "\l"
+```
