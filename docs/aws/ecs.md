@@ -114,3 +114,6 @@ https://github.com/aws-actions/amazon-ecr-login
 5.  Trigger the Task Definition and refresh the ECS to new build
 6.  Task Definition is a template for the container to run on ECS (similar to docker-compose)
 7. Create a Service and specify security group
+8. Create ALB using ECS and specify the security group and the service
+9. Create A record in Route53 to point to ALB
+10. Create a redirect rule in ALB to redirect to https (listener tab)

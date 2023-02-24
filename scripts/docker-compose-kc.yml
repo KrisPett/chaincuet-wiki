@@ -1,0 +1,49 @@
+# docker stop keycloak_name && docker rm keycloak_name && docker stop postgres_name && docker rm postgres_name && docker volume rm postgres_data
+# docker-compose up -d
+# docker-compose down
+
+version: '3.5'
+services:
+  postgres:
+    container_name: postgres_name
+    image: postgres:10.4
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: POSTGRES_PASSWORD
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - keycloak_net
+
+  keycloak:
+    container_name: keycloak_name
+    image: quay.io/keycloak/keycloak:19.0.3-legacy
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: POSTGRES_PASSWORD
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      PROXY_ADDRESS_FORWARDING: "true"
+    depends_on:
+      - postgres
+    networks:
+      - keycloak_net
+
+volumes:
+  postgres_data:
+    name: postgres_data
+
+networks:
+  keycloak_net:
+    name: keycloak_net
+    driver: bridge
