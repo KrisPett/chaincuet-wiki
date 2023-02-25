@@ -57,6 +57,8 @@ npm install @sendgrid/mail
 zip the new folder and import in aws lambda
 ```
 
+### Api-Gateway
+
 #### Using Api-Gateway to trigger lambda
 
 ```jsx
@@ -72,3 +74,15 @@ fetch("https://vd56h5ip1a.execute-api.us-east-1.amazonaws.com/sendgrip-stage/sen
     .catch(e => console.log(e))
 }
 ```
+#### Rest Api
+
+```
+Does not support JWT
+```
+
+#### HTTP Api
+
+```
+Can be use it JWT (keycloak)
+```
+
