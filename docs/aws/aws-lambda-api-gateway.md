@@ -83,6 +83,15 @@ Does not support JWT
 #### HTTP Api
 
 ```
-Can be use it JWT (keycloak)
+Can be used with JWT (keycloak)
+Configure CORS in api-gateway
+Access-Control-Allow-Origin = *
+Access-Control-Allow-Headers = authorization content-type
+Access-Control-Allow-Methods = GET,POST,OPTIONS
+
+Authorization
+Issuer = https://keycloak.example.com/auth/realms/<realm>
+Audience = <client-id> or account
+Identity source = $request.header.Authorization
 ```
 
