@@ -139,3 +139,9 @@ const router = useRouter()
 const slug = (router.query.ids as string[]) || []
 const name = (router.query.name as string)
 ```
+
+#### Environment Variables
+```
+Environment variables are prefixed with NEXT_PUBLIC_ and can be accessed from the client side but environment variables without the prefix are only accessible on the server side.
+Server side is pages/api and client side is pages
+```
