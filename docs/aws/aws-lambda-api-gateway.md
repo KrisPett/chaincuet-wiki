@@ -95,6 +95,47 @@ Audience = <client-id> or account
 Identity source = $request.header.Authorization
 ```
 
+#### Using Api-Gateway to trigger lambda we need a special syntax (this code fails in test aws-lambda but works in production)
+
+```
+import { Configuration, OpenAIApi } from "openai";
+
+const configuration = new Configuration({
+  apiKey: process.env.NEXT_PUBLIC_OPEN_AI
+});
+
+const openai = new OpenAIApi(configuration);
+
+export const handler = async (event, context, callback) => {
+  if (!configuration.apiKey) {
+    return callback(new Error("No API key found"));
+  }
+  const requestBody = JSON.parse(event.body);
+  const text = requestBody.text;
+
+  const prompt = `${text}`;
+
+  try {
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: prompt,
+      temperature: 0,
+      max_tokens: 100
+    });
+    const responseData = response.data;
+
+    return callback(null, {
+      statusCode: 200,
+      body: JSON.stringify(responseData)
+    });
+  }
+  catch (err) {
+    return callback(err);
+  }
+
+};
+```
+
 ### CloudWatch
 
 ``` 
