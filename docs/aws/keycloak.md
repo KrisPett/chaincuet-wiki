@@ -1,5 +1,8 @@
 #### Setup Keycloak using nextjs / next-auth
 
+ - Keycloak stop suppport of adapters https://www.keycloak.org/2022/02/adapter-deprecation
+ - Best Alternative is https://github.com/panva/node-openid-client, if not using next-auth
+
 ##### Create [...nextauth].tsx
 
 ```
