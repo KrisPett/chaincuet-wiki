@@ -1,5 +1,5 @@
 
-#### Setup
+### Setup Lambda
 
 ```
 Create Lambda function
@@ -95,3 +95,8 @@ Audience = <client-id> or account
 Identity source = $request.header.Authorization
 ```
 
+### CloudWatch
+
+``` 
+Edit retention to expire logs after 1 day
+```
