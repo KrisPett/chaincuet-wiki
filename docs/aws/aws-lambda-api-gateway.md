@@ -57,6 +57,12 @@ npm install @sendgrid/mail
 zip the new folder and import in aws lambda
 ```
 
+#### Timeout
+
+```
+Set timeout to 30 seconds or Internal server error will be thrown
+```
+
 ### Api-Gateway
 
 #### Using Api-Gateway to trigger lambda
