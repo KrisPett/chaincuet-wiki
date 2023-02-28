@@ -116,6 +116,38 @@ setItems(prevState => prevState.filter(item => item.id !== itemToRemove.id))
             />
 ```
 
+#### Render PDF
+
+```JSX
+import React, {useState} from 'react';
+import {Document, Page, pdfjs} from 'react-pdf';
+import {CircularProgress, Grid} from "@mui/material";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+
+function MyComponent() {
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const onDocumentLoadSuccess = ({numPages}: { numPages: number }) => {
+    setPageNumber(numPages);
+  };
+
+  return (
+    <Grid container justifyContent={"center"} style={{border: "solid"}}>
+      <Document file={'https://s3.eu-central-1...'}
+                onLoadSuccess={onDocumentLoadSuccess}  loading={<CircularProgress color="success" />}>
+        {Array.from(new Array(pageNumber ?? 0), (_, index) => (
+          <Page key={`page_${index + 1}`} pageNumber={index + 1} loading={<CircularProgress color="success" />}/>
+        ))}
+      </Document>
+    </Grid>
+  );
+}
+
+export default MyComponent;
+
+```
+
 ## NextJS
 
 #### Normal Route
