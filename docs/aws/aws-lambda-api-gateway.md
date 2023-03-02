@@ -103,7 +103,7 @@ Identity source = $request.header.Authorization
 
 #### Using Api-Gateway to trigger lambda we need a special syntax (this code fails in test aws-lambda but works in production)
 
-```
+```jsx
 import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
@@ -117,14 +117,12 @@ export const handler = async (event, context, callback) => {
     return callback(new Error("No API key found"));
   }
   const requestBody = JSON.parse(event.body);
-  const text = requestBody.text;
-
-  const prompt = `${text}`;
+  const {text, model} = requestBody;
 
   try {
     const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: prompt,
+      model: model,
+      prompt: text,
       temperature: 0,
       max_tokens: 100
     });

@@ -3,6 +3,7 @@
 # docker-compose up
 # docker exec -it chaincuet_wiki sh
 
+# docker stop chaincuet_wiki && docker rm chaincuet_wiki && docker rmi chaincuet_wiki && docker build -t chaincuet_wiki . && docker-compose up
 version: '3.7'
 
 services:
@@ -12,9 +13,9 @@ services:
     ports:
       - "8000:80"
     networks:
-      - chaincue-tech-net
+      - keycloak_net
 
 networks:
-  chaincue-tech-net:
-    name: chaincue-tech-net
+  keycloak_net:
+    name: keycloak_net
     driver: bridge
