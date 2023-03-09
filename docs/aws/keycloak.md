@@ -311,6 +311,8 @@ http://localhost:8080/auth/realms/lambda/protocol/openid-connect/logout?id_token
 **Create a user**
 
 ```
+# Create a user in Master realm 'createuseradmin'
+# Create a realm-role 'create-user' and assign <realm>manage-users role and assign it to the user
 # Get admin-cli token from keycloak
 curl --location 'http://localhost:8080/auth/realms/master/protocol/openid-connect/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
