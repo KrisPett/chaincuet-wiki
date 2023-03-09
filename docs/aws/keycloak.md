@@ -308,9 +308,36 @@ curl --location 'http://localhost:8080/auth/admin/realms/lambda/users' \
 http://localhost:8080/auth/realms/lambda/protocol/openid-connect/logout?id_token_hint=idToken&post_logout_redirect_uri=http://localhost:3000`;
 ```
 
-**Register User**
+**Create a user**
 
 ```
-curl --location 'http://localhost:8080/auth/realms/lambda/clients-registrations/openid-connect' \
---header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJOMnF3eEFDTC0wVDFPYVJxR3JzTzlsdDFMeVpFejhHWlZMSm5GMkszMDdRIn0.eyJleHAiOjE2NzgxOTQwMDcsImlhdCI6MTY3ODE5MzcwNywiYXV0aF90aW1lIjoxNjc4MTkyMzQ1LCJqdGkiOiJmMDUyNjJmYi1jNjAyLTQxM2UtOWIzNi02MjViZjBiOTRlODYiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXV0aC9yZWFsbXMvbGFtYmRhIiwiYXVkIjpbInJlYWxtLW1hbmFnZW1lbnQiLCJicm9rZXIiLCJhY2NvdW50Il0sInN1YiI6IjhjNmUzNjM1LTVkODUtNGIwNS1hMTFmLTI4YWE0MzEwNmVjOCIsInR5cCI6IkJlYXJlciIsImF6cCI6InN0dWRlbnQtcG9ydGFsLWNsaWVudCIsIm5vbmNlIjoiNGZmOWU2MjItM2JjYi00MTc4LWE4YjktNjY3YTkzMmI1ODA1Iiwic2Vzc2lvbl9zdGF0ZSI6ImFkNzgyNWRmLTQ2MDYtNGZjNi05NjFhLTE4MTE5YjYxYmI4OCIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1sYW1iZGEiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiYWRtaW4tYWNjZXNzIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsicmVhbG0tbWFuYWdlbWVudCI6eyJyb2xlcyI6WyJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsInZpZXctZXZlbnRzIl19LCJicm9rZXIiOnsicm9sZXMiOlsicmVhZC10b2tlbiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctYXBwbGljYXRpb25zIiwidmlldy1jb25zZW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJtYW5hZ2UtY29uc2VudCIsImRlbGV0ZS1hY2NvdW50Iiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgZW1haWwgYWRkcmVzcyBwaG9uZSBtaWNyb3Byb2ZpbGUtand0IG9mZmxpbmVfYWNjZXNzIHByb2ZpbGUiLCJzaWQiOiJhZDc4MjVkZi00NjA2LTRmYzYtOTYxYS0xODExOWI2MWJiODgiLCJ1cG4iOiJ1c2VyQGVtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhZGRyZXNzIjp7fSwibmFtZSI6InVzZXJAZW1haWwuY29tIHVzZXJAZW1haWwuY29tIiwiZ3JvdXBzIjpbImRlZmF1bHQtcm9sZXMtbGFtYmRhIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImFkbWluLWFjY2VzcyJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ1c2VyQGVtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJ1c2VyQGVtYWlsLmNvbSIsImZhbWlseV9uYW1lIjoidXNlckBlbWFpbC5jb20iLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIn0.jPMpi-xjyJDSOFFcuonkXrhWEsrThtMdw4NAPFjhCMOp_rTEHUpyAVbvR9mer8FCb5-gb-OX39c016_xxnheXjmBMdSXpZ0G4Ad26gMyp3k_fmQu8-d3oJdasu0MtSkytGq4NVSEsSi1Zv5pRSUv_rnAHtoo_9xJYiMqMo0_cwy6QnPpqhc18G5yWyH3m5YbvToIcgvXYnNa5xpyz9v0L9ilVNmB25sx5iPWTRth2j53bUqZMiCSpT1Bui_QRk0xoXXI2v-yBt9q9RfAv4TYcO-VHlOmhf_RoUyq5PF9uQKPqNxXPJy882nqiJaAAdTAXCiQe9Sf5n7duZZZJbgnqQ'
+# Get admin-cli token from keycloak
+curl --location 'http://localhost:8080/auth/realms/master/protocol/openid-connect/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'username=admin' \
+--data-urlencode 'password=admin' \
+--data-urlencode 'grant_type=password' \
+--data-urlencode 'client_id=admin-cli'
+
+# Create user using admin-cli token
+curl --location 'http://localhost:8080/auth/admin/realms/lambda/users' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwZmpNdkdTbUtZcGtIRWVBTnBzeXFsdnU2Q2V2bzNId3JYTEo1R2RsMWM4In0.eyJleHAiOjE2NzgzNzA5MzIsImlhdCI6MTY3ODM3MDg3MiwianRpIjoiMjIyMWI4MmEtNzNlNC00MzJjLTk5MzUtYjhjMzE3ZDI1MDVjIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL21hc3RlciIsInN1YiI6IjRjYzhlNTFkLTlmNjEtNGJlZC1iODA0LTk0ZWFiYTY2MGI1MiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFkbWluLWNsaSIsInNlc3Npb25fc3RhdGUiOiI1YmYwMmZhMy00ODVhLTQ5YzItOWU2My1jM2ZlZWNjNTU0MGUiLCJhY3IiOiIxIiwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwic2lkIjoiNWJmMDJmYTMtNDg1YS00OWMyLTllNjMtYzNmZWVjYzU1NDBlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIiwiZ2l2ZW5fbmFtZSI6IiIsImZhbWlseV9uYW1lIjoiIn0.M8K8_5PEc5oYosIrP_JKmF-5u8aLKq_rdGqkgiRdfD-OOCoWVxBy_avgSF4um8ohQ6PbK52IFKFueIPrD-bfQ5e7rLEQ3tUINSAIx1zZv7pxs50DCC_90GXWbPobuoZKziyG33mgY6eGNv2pzdYmkN3VLmft0pmpLA2occILwi1mhte8yLk2OQrczlmSRgq5y4AydS8bWBC2aEqJx9-_DA-Lolit4uc4wMS_0CoDpZL6BlRLOJz4ABqnmIh3DjyL2B42MTCsnKH-__cVZqndeZ5WlmjF9c0in3pfwgdE4R0d6sxh11zOI6flV7NyDMY66cczWOOHX4B7M-XaCK13QQ' \
+--data-raw '{
+    "enabled": true,
+    "username": "test@gmail.com",
+    "email": "test@gmail.com",
+    "firstName": "test@gmail.com",
+    "lastName": "test@gmail.com",
+    "groups": [
+        "user"
+    ],
+    "credentials": [
+        {
+            "type": "password",
+            "value": "123",
+            "temporary": false
+        }
+    ]
+}'
 ```
