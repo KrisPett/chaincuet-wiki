@@ -258,14 +258,14 @@ docker exec -it postgres_name psql -U postgres -c "\l"
 
 *http://localhost:8080/auth/realms/lambda/.well-known/openid-configuration*
 
-**Get Userinfo**
+**Get userinfo** (POST | GET)
 
 ```
 curl --location 'http://localhost:8080/auth/realms/lambda/protocol/openid-connect/userinfo' \
 --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJOMnF3eEFDTC0wVDFPYVJxR3JzTzlsdDFMeVpFejhHWlZMSm5GMkszMDdRIn0.eyJleHAiOjE2NzgxOTQwMDcsImlhdCI6MTY3ODE5MzcwNywiYXV0aF90aW1lIjoxNjc4MTkyMzQ1LCJqdGkiOiJmMDUyNjJmYi1jNjAyLTQxM2UtOWIzNi02MjViZjBiOTRlODYiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXV0aC9yZWFsbXMvbGFtYmRhIiwiYXVkIjpbInJlYWxtLW1hbmFnZW1lbnQiLCJicm9rZXIiLCJhY2NvdW50Il0sInN1YiI6IjhjNmUzNjM1LTVkODUtNGIwNS1hMTFmLTI4YWE0MzEwNmVjOCIsInR5cCI6IkJlYXJlciIsImF6cCI6InN0dWRlbnQtcG9ydGFsLWNsaWVudCIsIm5vbmNlIjoiNGZmOWU2MjItM2JjYi00MTc4LWE4YjktNjY3YTkzMmI1ODA1Iiwic2Vzc2lvbl9zdGF0ZSI6ImFkNzgyNWRmLTQ2MDYtNGZjNi05NjFhLTE4MTE5YjYxYmI4OCIsImFjciI6IjAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiZGVmYXVsdC1yb2xlcy1sYW1iZGEiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiYWRtaW4tYWNjZXNzIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsicmVhbG0tbWFuYWdlbWVudCI6eyJyb2xlcyI6WyJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsInZpZXctZXZlbnRzIl19LCJicm9rZXIiOnsicm9sZXMiOlsicmVhZC10b2tlbiJdfSwiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsInZpZXctYXBwbGljYXRpb25zIiwidmlldy1jb25zZW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJtYW5hZ2UtY29uc2VudCIsImRlbGV0ZS1hY2NvdW50Iiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgZW1haWwgYWRkcmVzcyBwaG9uZSBtaWNyb3Byb2ZpbGUtand0IG9mZmxpbmVfYWNjZXNzIHByb2ZpbGUiLCJzaWQiOiJhZDc4MjVkZi00NjA2LTRmYzYtOTYxYS0xODExOWI2MWJiODgiLCJ1cG4iOiJ1c2VyQGVtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhZGRyZXNzIjp7fSwibmFtZSI6InVzZXJAZW1haWwuY29tIHVzZXJAZW1haWwuY29tIiwiZ3JvdXBzIjpbImRlZmF1bHQtcm9sZXMtbGFtYmRhIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImFkbWluLWFjY2VzcyJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ1c2VyQGVtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJ1c2VyQGVtYWlsLmNvbSIsImZhbWlseV9uYW1lIjoidXNlckBlbWFpbC5jb20iLCJlbWFpbCI6InVzZXJAZW1haWwuY29tIn0.jPMpi-xjyJDSOFFcuonkXrhWEsrThtMdw4NAPFjhCMOp_rTEHUpyAVbvR9mer8FCb5-gb-OX39c016_xxnheXjmBMdSXpZ0G4Ad26gMyp3k_fmQu8-d3oJdasu0MtSkytGq4NVSEsSi1Zv5pRSUv_rnAHtoo_9xJYiMqMo0_cwy6QnPpqhc18G5yWyH3m5YbvToIcgvXYnNa5xpyz9v0L9ilVNmB25sx5iPWTRth2j53bUqZMiCSpT1Bui_QRk0xoXXI2v-yBt9q9RfAv4TYcO-VHlOmhf_RoUyq5PF9uQKPqNxXPJy882nqiJaAAdTAXCiQe9Sf5n7duZZZJbgnqQ'
 ```
 
-**Get Token**
+**Get Token** (POST)
 
 ```
 curl --location 'http://localhost:8080/auth/realms/lambda/protocol/openid-connect/token' \
@@ -276,7 +276,7 @@ curl --location 'http://localhost:8080/auth/realms/lambda/protocol/openid-connec
 --data-urlencode 'client_id=student-portal-client'
 ```
 
-**Refresh Token**
+**Refresh Token** (POST)
 
 ``` 
 curl --location 'http://localhost:8080/auth/realms/lambda/protocol/openid-connect/token' \
@@ -287,24 +287,10 @@ curl --location 'http://localhost:8080/auth/realms/lambda/protocol/openid-connec
 --data-urlencode 'client_secret=<secretId>'
 ```
 
-**Create a user (dont work - user needs permissions)**
-
-```
-curl --location 'http://localhost:8080/auth/admin/realms/lambda/users' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJOMnF3eEFDTC0wVDFPYVJxR3JzTzlsdDFMeVpFejhHWlZMSm5GMkszMDdRIn0.eyJleHAiOjE2NzgyMDg4NjksImlhdCI6MTY3ODIwODU2OSwianRpIjoiOWFkMmNkMDQtNWI4Ny00NjQyLThmYTktMzZiMGVlYTJiYjU5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL2xhbWJkYSIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYnJva2VyIiwiYWNjb3VudCJdLCJzdWIiOiI4YzZlMzYzNS01ZDg1LTRiMDUtYTExZi0yOGFhNDMxMDZlYzgiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzdHVkZW50LXBvcnRhbC1jbGllbnQiLCJzZXNzaW9uX3N0YXRlIjoiM2ZjYmY4YmQtN2IyYS00NThhLWE5MTItNmQ1OGQ5YWJlMWU0IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWxhbWJkYSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJhZG1pbi1hY2Nlc3MiXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctaWRlbnRpdHktcHJvdmlkZXJzIiwidmlldy1ldmVudHMiXX0sImJyb2tlciI6eyJyb2xlcyI6WyJyZWFkLXRva2VuIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50Iiwidmlldy1hcHBsaWNhdGlvbnMiLCJ2aWV3LWNvbnNlbnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsIm1hbmFnZS1jb25zZW50IiwiZGVsZXRlLWFjY291bnQiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIGFkZHJlc3MgcGhvbmUgbWljcm9wcm9maWxlLWp3dCBvZmZsaW5lX2FjY2VzcyBwcm9maWxlIiwic2lkIjoiM2ZjYmY4YmQtN2IyYS00NThhLWE5MTItNmQ1OGQ5YWJlMWU0IiwidXBuIjoidXNlckBlbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYWRkcmVzcyI6e30sIm5hbWUiOiJ1c2VyQGVtYWlsLmNvbSB1c2VyQGVtYWlsLmNvbSIsImdyb3VwcyI6WyJkZWZhdWx0LXJvbGVzLWxhbWJkYSIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJhZG1pbi1hY2Nlc3MiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlckBlbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoidXNlckBlbWFpbC5jb20iLCJmYW1pbHlfbmFtZSI6InVzZXJAZW1haWwuY29tIiwiZW1haWwiOiJ1c2VyQGVtYWlsLmNvbSJ9.STj_SzRRexGtujv4hh4dGf1m9hjXe4Yva2AL6Ka763yyMX2cQyppF2ZdxgZyhQYUz2XT0wIjIv79flHkQwMvljsOacogd1JZ59FHuL6WMhNi5xel56y1OHEWRIIJds1rrg5MtJ5oemD-97QVTUWmPFnO1d_7rQ-xm-7dcC3imJKzWij8KnmEq2uyX8w0t6IP8DD9XioKl_lNmWEcOx-TgEPJTkP7RNTVsKHvqF4IASxdf-YoOMSXJSBDrjQPIuK922GnD_dx65ZiOl6y6Bgu0pdN6PeTP_pFv0Fsi27rXUnzQ2sUPFhgT1CxEAVj33fzmUB-XX5ZJu2modfH_bIP-g' \
---data-raw '{
-    "firstName": "test@test.com",
-    "lastName": "test@test.com",
-    "email": "test@test.com",
-    "enabled": "true",
-    "username": "test@test.com"
-}'
-```
-
 **Logout**
 
 ```
+# Get idToken from the token response
 http://localhost:8080/auth/realms/lambda/protocol/openid-connect/logout?id_token_hint=idToken&post_logout_redirect_uri=http://localhost:3000`;
 ```
 
@@ -313,7 +299,7 @@ http://localhost:8080/auth/realms/lambda/protocol/openid-connect/logout?id_token
 ```
 # Create a user in Master realm 'createuseradmin'
 # Create a realm-role 'create-user' and assign <realm>manage-users role and assign it to the user
-# Get admin-cli token from keycloak for the user 'createuser@email.com'
+# Get admin-cli token from keycloak for the user 'createuser@email.com' (POST)
 curl --location 'http://localhost:8080/auth/realms/lambda/protocol/openid-connect/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'username=createuser@email.com' \
@@ -321,7 +307,7 @@ curl --location 'http://localhost:8080/auth/realms/lambda/protocol/openid-connec
 --data-urlencode 'grant_type=password' \
 --data-urlencode 'client_id=admin-cli'
 
-# Create user using admin-cli token
+# Create user using admin-cli token (POST)
 curl --location 'http://localhost:8080/auth/admin/realms/lambda/users' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJwZmpNdkdTbUtZcGtIRWVBTnBzeXFsdnU2Q2V2bzNId3JYTEo1R2RsMWM4In0.eyJleHAiOjE2NzgzNzA5MzIsImlhdCI6MTY3ODM3MDg3MiwianRpIjoiMjIyMWI4MmEtNzNlNC00MzJjLTk5MzUtYjhjMzE3ZDI1MDVjIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL21hc3RlciIsInN1YiI6IjRjYzhlNTFkLTlmNjEtNGJlZC1iODA0LTk0ZWFiYTY2MGI1MiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFkbWluLWNsaSIsInNlc3Npb25fc3RhdGUiOiI1YmYwMmZhMy00ODVhLTQ5YzItOWU2My1jM2ZlZWNjNTU0MGUiLCJhY3IiOiIxIiwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwic2lkIjoiNWJmMDJmYTMtNDg1YS00OWMyLTllNjMtYzNmZWVjYzU1NDBlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIiwiZ2l2ZW5fbmFtZSI6IiIsImZhbWlseV9uYW1lIjoiIn0.M8K8_5PEc5oYosIrP_JKmF-5u8aLKq_rdGqkgiRdfD-OOCoWVxBy_avgSF4um8ohQ6PbK52IFKFueIPrD-bfQ5e7rLEQ3tUINSAIx1zZv7pxs50DCC_90GXWbPobuoZKziyG33mgY6eGNv2pzdYmkN3VLmft0pmpLA2occILwi1mhte8yLk2OQrczlmSRgq5y4AydS8bWBC2aEqJx9-_DA-Lolit4uc4wMS_0CoDpZL6BlRLOJz4ABqnmIh3DjyL2B42MTCsnKH-__cVZqndeZ5WlmjF9c0in3pfwgdE4R0d6sxh11zOI6flV7NyDMY66cczWOOHX4B7M-XaCK13QQ' \
