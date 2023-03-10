@@ -1,6 +1,6 @@
 #### Setup Keycloak using nextjs / next-auth
 
- - Keycloak stop suppport of adapters https://www.keycloak.org/2022/02/adapter-deprecation
+ - Keycloak stop support of adapters https://www.keycloak.org/2022/02/adapter-deprecation
  - Best Alternative is https://github.com/panva/node-openid-client, if not using next-auth
 
 ##### Create [...nextauth].tsx
@@ -274,6 +274,7 @@ curl --location 'http://localhost:8080/auth/realms/lambda/protocol/openid-connec
 --data-urlencode 'password=user@email.com' \
 --data-urlencode 'grant_type=password' \
 --data-urlencode 'client_id=student-portal-client'
+--data-urlencode 'otp=262004'
 ```
 
 **Refresh Token** (POST)
