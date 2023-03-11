@@ -140,6 +140,15 @@ export const handler = async (event, context, callback) => {
 };
 ```
 
+#### Test Lambda Example
+
+```
+{
+  "body": "{\"text\":\"A cat \"}"
+}
+
+```
+
 ### CloudWatch
 
 ``` 
