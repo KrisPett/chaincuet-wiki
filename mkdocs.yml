@@ -57,9 +57,9 @@ nav:
       - CSS Styling: frontend/css-styling.md
       - Javascript & Typescript: frontend/javascript-typescript.md
       - Gists: frontend/gists.md
-  # - AI:
-  #     - Artificial intelligence: ai/index.md
-  #     - OpenAI: ai/openAI.md
+  - AI:
+      - Artificial intelligence: ai/index.md
+      - OpenAI: ai/openAI.md
   - Linux:
       - Linux Overview: linux/index.md
       - Alias: linux/alias.md
