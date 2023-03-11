@@ -65,7 +65,7 @@ Set timeout to 30 seconds or Internal server error will be thrown
 
 ### Api-Gateway
 
-#### Using Api-Gateway to trigger lambda
+#### Using Api-Gateway to trigger lambda fucntions 
 
 ```jsx
 fetch("https://vd56h5ip1a.execute-api.us-east-1.amazonaws.com/sendgrip-stage/send-email", {
@@ -101,7 +101,7 @@ Audience = <client-id> or account
 Identity source = $request.header.Authorization
 ```
 
-#### Using Api-Gateway to trigger lambda we need a special syntax (this code fails in test aws-lambda but works in production)
+#### Using Api-Gateway to trigger lambda functions
 
 ```jsx
 import { Configuration, OpenAIApi } from "openai";
