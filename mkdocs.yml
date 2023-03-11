@@ -30,7 +30,7 @@ theme:
 nav:
   - Welcome:
       - "": index.md
-  - AWS / Devops:
+  - AWS / Devopss:
       - AWS Overview: aws/index.md
       - S3 & Cloudfront: aws/s3-cloudfront.md
       - Route53: aws/route53.md
@@ -57,6 +57,9 @@ nav:
       - CSS Styling: frontend/css-styling.md
       - Javascript & Typescript: frontend/javascript-typescript.md
       - Gists: frontend/gists.md
+  # - AI:
+  #     - Artificial intelligence: ai/index.md
+  #     - OpenAI: ai/openAI.md
   - Linux:
       - Linux Overview: linux/index.md
       - Alias: linux/alias.md
