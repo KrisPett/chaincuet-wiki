@@ -36,6 +36,7 @@ nav:
       - Route53: aws/route53.md
       - AWS Lambda & API Gateway: aws/aws-lambda-api-gateway.md
       - ECS/ECR: aws/ecs.md
+      - DynamoDB: aws/dynamoDB.md
       - Terraform: aws/terraform.md
       - VPN: aws/vpn.md
       - Nginx: aws/nginx.md
