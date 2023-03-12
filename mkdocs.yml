@@ -30,7 +30,7 @@ theme:
 nav:
   - Welcome:
       - "": index.md
-  - AWS / Devopss:
+  - AWS / DevOps:
       - AWS Overview: aws/index.md
       - S3 & Cloudfront: aws/s3-cloudfront.md
       - Route53: aws/route53.md

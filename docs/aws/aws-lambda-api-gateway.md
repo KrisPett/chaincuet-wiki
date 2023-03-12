@@ -146,7 +146,6 @@ export const handler = async (event, context, callback) => {
 {
   "body": "{\"text\":\"A cat \"}"
 }
-
 ```
 
 ### CloudWatch
