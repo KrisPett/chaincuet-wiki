@@ -301,6 +301,34 @@ docker exec -it postgres_name psql -U postgres -c "\l"
     }
 ```
 
+##### Delete user
+
+```jsx
+    private Mono<String> getUserSubId(String accessToken, String email) {
+        String endpointUrl = "http://localhost:8080/auth/admin/realms/lambda/users?email=" + email;
+        WebClient webClient = WebClient.builder().baseUrl(endpointUrl).build();
+        return webClient.get()
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
+                .retrieve()
+                .bodyToMono(String.class)
+                .map(response -> {
+                    JSONArray jsonArray = new JSONArray(response);
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    return jsonObject.getString("id");
+                });
+    }
+
+    private Mono<String> deleteUserByUserid(String accessToken, String subId) {
+        String endpointUrl = "http://localhost:8080/auth/admin/realms/lambda/users/";
+        WebClient webClient = WebClient.builder().baseUrl(endpointUrl).build();
+        return webClient.delete()
+                .uri(subId)
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
+                .retrieve()
+                .bodyToMono(String.class);
+    }
+```
+
 #### Keycloak Rest API
 
 ##### quay.io/keycloak/keycloak:19.0.3-legacy
@@ -380,4 +408,18 @@ curl --location 'http://localhost:8080/auth/admin/realms/lambda/users' \
         }
     ]
 }'
+```
+
+**Get userId by email**
+```
+curl --location 'http://localhost:8080/auth/admin/realms/lambda/users?email=email@email.com' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQ3JMUHhXUVJsZVh1NHkwMHVVV2RkVkJtSlZkMDVJSUZVZ3dpM0pwMjVvIn0.eyJleHAiOjE2Nzg3MDQ0MjAsImlhdCI6MTY3ODcwNDEyMCwianRpIjoiODMwY2UwZDAtZjg0YS00NTUxLTljMDctMzc1MmE5M2UyNzczIiwiaXNzIjoiaHR0cHM6Ly9pYW0uc2Vuc2VyYS5zZS9hdXRoL3JlYWxtcy9sYW1iZGEiLCJzdWIiOiIxNzgzOTI4OS1hNDcxLTRjMjItYjc2MC02OGIwM2U2YzYzMzQiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiY2Q2ZDcwYzgtYzQyYi00N2UzLTgxNDAtNTNmMTQ4YmVmNzAxIiwiYWNyIjoiMSIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6Ik1hbmFnZSBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoibWFuYWdldXNlciIsImdpdmVuX25hbWUiOiJNYW5hZ2UiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Im1hbmFnZXVzZXJAZW1haWwuY29tIn0.DM1U49hbqU1k-_K7e5seqJWvUg6Z6E_RZeoJ05OpmUPBswJ7vkjSXsOuB56eO1x5nvjxWsWNCcxF7A7ArsmfwyrcuiSbS3iWL7YG-U0wEBi_mXgN0OnEKPYhPpT8R64dAfmzSOZrl57Ia8lnoY0YcvxQEUjbqi36lUGuhuaFK5ZqzYQvOH0BAzu5Xg2Dg8QzJEupt6Isr0QNj7O__R-8f1QfSV577jyNCx1q3Z-rAzIhpjIB9DG-4Sxe0HvUCsRNsKRQpNZbHLMfOJ-5xR3R0fx9LthlYw8rkBq863YrxAuUT5wk0V4JWzJur8MnRME8YQ1gvdNKl2gRLsjXZSNhyw'
+```
+
+**Delete user by userId**
+```
+curl --location --request DELETE 'http://localhost:8080/auth/admin/realms/lambda/users/55a0adfc-b5e5-425d-afc2-c37814ba4a15' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQ3JMUHhXUVJsZVh1NHkwMHVVV2RkVkJtSlZkMDVJSUZVZ3dpM0pwMjVvIn0.eyJleHAiOjE2Nzg3MDQ4MTAsImlhdCI6MTY3ODcwNDUxMCwianRpIjoiMDFmYjEwNTYtYzdjNS00OWRhLWE0Y2UtZWM3YzY3YjE3ZDE5IiwiaXNzIjoiaHR0cHM6Ly9pYW0uc2Vuc2VyYS5zZS9hdXRoL3JlYWxtcy9sYW1iZGEiLCJzdWIiOiIxNzgzOTI4OS1hNDcxLTRjMjItYjc2MC02OGIwM2U2YzYzMzQiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiYzUzNzE2N2EtNTNiYS00ZTRhLThiNzktYzg5NGYzYTcyZTU0IiwiYWNyIjoiMSIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6Ik1hbmFnZSBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoibWFuYWdldXNlciIsImdpdmVuX25hbWUiOiJNYW5hZ2UiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Im1hbmFnZXVzZXJAZW1haWwuY29tIn0.cklfxHDVKXAaH9f0O1cZLMwP09nrKVvLM_Xo3taTV7-VhRrdWjiJn7ZWaAyFYEh91fQAaNZwnkkO-dnQtKWH41RZqlBAQzXUlJ8rRmf0xPf8vzYeitxLxCYKmNqa3TWPAE0Z873cUHSZ7AFJOy9xGVpLsJBgbItJ1NrlmQEjBlETnh6xTFwOFcLoPGNk4SDfkA16-Ts9Ko6p25TDEnsTsHnVsftC5aVcnZSyrq3JTVXA4Vq5iMN7EuJwlh6XZBOoEAMZVoWYNN_AaEbyuYo2lMxcwxkuDtQFLs_V9Q1j52qHt1za1ZnQpJjkNGtHG7cpePVbLRuFL0AANSdHkwhFeg' \
+--data ''
 ```
