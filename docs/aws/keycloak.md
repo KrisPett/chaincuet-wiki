@@ -423,3 +423,21 @@ curl --location --request DELETE 'http://localhost:8080/auth/admin/realms/lambda
 --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQ3JMUHhXUVJsZVh1NHkwMHVVV2RkVkJtSlZkMDVJSUZVZ3dpM0pwMjVvIn0.eyJleHAiOjE2Nzg3MDQ4MTAsImlhdCI6MTY3ODcwNDUxMCwianRpIjoiMDFmYjEwNTYtYzdjNS00OWRhLWE0Y2UtZWM3YzY3YjE3ZDE5IiwiaXNzIjoiaHR0cHM6Ly9pYW0uc2Vuc2VyYS5zZS9hdXRoL3JlYWxtcy9sYW1iZGEiLCJzdWIiOiIxNzgzOTI4OS1hNDcxLTRjMjItYjc2MC02OGIwM2U2YzYzMzQiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiYzUzNzE2N2EtNTNiYS00ZTRhLThiNzktYzg5NGYzYTcyZTU0IiwiYWNyIjoiMSIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6Ik1hbmFnZSBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoibWFuYWdldXNlciIsImdpdmVuX25hbWUiOiJNYW5hZ2UiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Im1hbmFnZXVzZXJAZW1haWwuY29tIn0.cklfxHDVKXAaH9f0O1cZLMwP09nrKVvLM_Xo3taTV7-VhRrdWjiJn7ZWaAyFYEh91fQAaNZwnkkO-dnQtKWH41RZqlBAQzXUlJ8rRmf0xPf8vzYeitxLxCYKmNqa3TWPAE0Z873cUHSZ7AFJOy9xGVpLsJBgbItJ1NrlmQEjBlETnh6xTFwOFcLoPGNk4SDfkA16-Ts9Ko6p25TDEnsTsHnVsftC5aVcnZSyrq3JTVXA4Vq5iMN7EuJwlh6XZBOoEAMZVoWYNN_AaEbyuYo2lMxcwxkuDtQFLs_V9Q1j52qHt1za1ZnQpJjkNGtHG7cpePVbLRuFL0AANSdHkwhFeg' \
 --data ''
 ```
+
+**Update user**
+
+```
+curl --location --request PUT 'https://iam.sensera.se/auth/admin/realms/lambda/users/67958fa7-e7a4-43fb-8c60-432169bf1d07' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQ3JMUHhXUVJsZVh1NHkwMHVVV2RkVkJtSlZkMDVJSUZVZ3dpM0pwMjVvIn0.eyJleHAiOjE2Nzg3MTM4NzgsImlhdCI6MTY3ODcxMzU3OCwianRpIjoiMWIzMmE1M2UtODQyNC00Zjc0LTk1NDgtY2M4ZmVmNWIyMDRjIiwiaXNzIjoiaHR0cHM6Ly9pYW0uc2Vuc2VyYS5zZS9hdXRoL3JlYWxtcy9sYW1iZGEiLCJzdWIiOiIxNzgzOTI4OS1hNDcxLTRjMjItYjc2MC02OGIwM2U2YzYzMzQiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiOTljOTg5MDEtYzZhNi00Mjg4LTlhMGMtMDkzZGM2MzgxMWI3IiwiYWNyIjoiMSIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6Ik1hbmFnZSBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoibWFuYWdldXNlciIsImdpdmVuX25hbWUiOiJNYW5hZ2UiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Im1hbmFnZXVzZXJAZW1haWwuY29tIn0.jKioR0YuuR3ZkioYTbXwYDTbCLcS1MlVX03pV4WpZnOmzJ1llQdkEqJjr9beLS7LxrgyQfi-DeGIZcWAWcbG5mT-OLUiXNAOvWHlDhbQ7N4TKxIb7DiTolc_Sue3vv6l_SXA6XZsm6StIK3pOSdlwIZJqSIqszA9QB-nRAWVj4MvPLL9yWrX9o-PnZy3NN8Sttt1m9WW_kPTvgI0j-egOzuFZd646EWr0SQ1DrBDS22GsXil3kGWro3MTDqNIwyDu-5ycG8bNyPMPSm4iL4X60SSgkVR5FBz-Y5_ajKQ_jOW5j3tsZsUOV7ATPZ_mQiQXFOlEMOZuiOjn-kuOimZcA' \
+--data-raw '{
+    "firstName": "newFirstname",
+    "lastName": "newLastname",
+    "email": "new@email.com",
+    "credentials": [
+        {
+            "type": "password",
+            "value": "newPassword"        }
+    ]
+}'
+```
