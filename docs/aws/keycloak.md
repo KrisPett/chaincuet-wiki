@@ -410,13 +410,13 @@ curl --location 'http://localhost:8080/auth/admin/realms/lambda/users' \
 }'
 ```
 
-**Get userId by email**
+**Get userId by email (GET)**
 ```
 curl --location 'http://localhost:8080/auth/admin/realms/lambda/users?email=email@email.com' \
 --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQ3JMUHhXUVJsZVh1NHkwMHVVV2RkVkJtSlZkMDVJSUZVZ3dpM0pwMjVvIn0.eyJleHAiOjE2Nzg3MDQ0MjAsImlhdCI6MTY3ODcwNDEyMCwianRpIjoiODMwY2UwZDAtZjg0YS00NTUxLTljMDctMzc1MmE5M2UyNzczIiwiaXNzIjoiaHR0cHM6Ly9pYW0uc2Vuc2VyYS5zZS9hdXRoL3JlYWxtcy9sYW1iZGEiLCJzdWIiOiIxNzgzOTI4OS1hNDcxLTRjMjItYjc2MC02OGIwM2U2YzYzMzQiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiY2Q2ZDcwYzgtYzQyYi00N2UzLTgxNDAtNTNmMTQ4YmVmNzAxIiwiYWNyIjoiMSIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6Ik1hbmFnZSBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoibWFuYWdldXNlciIsImdpdmVuX25hbWUiOiJNYW5hZ2UiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Im1hbmFnZXVzZXJAZW1haWwuY29tIn0.DM1U49hbqU1k-_K7e5seqJWvUg6Z6E_RZeoJ05OpmUPBswJ7vkjSXsOuB56eO1x5nvjxWsWNCcxF7A7ArsmfwyrcuiSbS3iWL7YG-U0wEBi_mXgN0OnEKPYhPpT8R64dAfmzSOZrl57Ia8lnoY0YcvxQEUjbqi36lUGuhuaFK5ZqzYQvOH0BAzu5Xg2Dg8QzJEupt6Isr0QNj7O__R-8f1QfSV577jyNCx1q3Z-rAzIhpjIB9DG-4Sxe0HvUCsRNsKRQpNZbHLMfOJ-5xR3R0fx9LthlYw8rkBq863YrxAuUT5wk0V4JWzJur8MnRME8YQ1gvdNKl2gRLsjXZSNhyw'
 ```
 
-**Delete user by userId**
+**Delete user by userId (DELETE)**
 ```
 curl --location --request DELETE 'http://localhost:8080/auth/admin/realms/lambda/users/55a0adfc-b5e5-425d-afc2-c37814ba4a15' \
 --header 'Content-Type: application/json' \
@@ -424,10 +424,10 @@ curl --location --request DELETE 'http://localhost:8080/auth/admin/realms/lambda
 --data ''
 ```
 
-**Update user**
+**Update user using admin privilegios (PUT)**
 
 ```
-curl --location --request PUT 'https://iam.sensera.se/auth/admin/realms/lambda/users/67958fa7-e7a4-43fb-8c60-432169bf1d07' \
+curl --location --request PUT 'http://localhost:8080/auth/admin/realms/lambda/users/67958fa7-e7a4-43fb-8c60-432169bf1d07' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQ3JMUHhXUVJsZVh1NHkwMHVVV2RkVkJtSlZkMDVJSUZVZ3dpM0pwMjVvIn0.eyJleHAiOjE2Nzg3MTM4NzgsImlhdCI6MTY3ODcxMzU3OCwianRpIjoiMWIzMmE1M2UtODQyNC00Zjc0LTk1NDgtY2M4ZmVmNWIyMDRjIiwiaXNzIjoiaHR0cHM6Ly9pYW0uc2Vuc2VyYS5zZS9hdXRoL3JlYWxtcy9sYW1iZGEiLCJzdWIiOiIxNzgzOTI4OS1hNDcxLTRjMjItYjc2MC02OGIwM2U2YzYzMzQiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiOTljOTg5MDEtYzZhNi00Mjg4LTlhMGMtMDkzZGM2MzgxMWI3IiwiYWNyIjoiMSIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6Ik1hbmFnZSBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoibWFuYWdldXNlciIsImdpdmVuX25hbWUiOiJNYW5hZ2UiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Im1hbmFnZXVzZXJAZW1haWwuY29tIn0.jKioR0YuuR3ZkioYTbXwYDTbCLcS1MlVX03pV4WpZnOmzJ1llQdkEqJjr9beLS7LxrgyQfi-DeGIZcWAWcbG5mT-OLUiXNAOvWHlDhbQ7N4TKxIb7DiTolc_Sue3vv6l_SXA6XZsm6StIK3pOSdlwIZJqSIqszA9QB-nRAWVj4MvPLL9yWrX9o-PnZy3NN8Sttt1m9WW_kPTvgI0j-egOzuFZd646EWr0SQ1DrBDS22GsXil3kGWro3MTDqNIwyDu-5ycG8bNyPMPSm4iL4X60SSgkVR5FBz-Y5_ajKQ_jOW5j3tsZsUOV7ATPZ_mQiQXFOlEMOZuiOjn-kuOimZcA' \
 --data-raw '{
@@ -441,3 +441,18 @@ curl --location --request PUT 'https://iam.sensera.se/auth/admin/realms/lambda/u
     ]
 }'
 ```
+
+**Update user using account endpoint (POST)**
+**Use user access token**
+
+```
+curl --location 'http://localhost:8080/auth/realms/lambda/account' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQ3JMUHhXUVJsZVh1NHkwMHVVV2RkVkJtSlZkMDVJSUZVZ3dpM0pwMjVvIn0.eyJleHAiOjE2Nzg3MjE2MzcsImlhdCI6MTY3ODcyMTMzNywianRpIjoiY2VlNGM0YjgtZTRhMy00ODI5LTgzNTItZjY2MmRiNjMwZTEzIiwiaXNzIjoiaHR0cHM6Ly9pYW0uc2Vuc2VyYS5zZS9hdXRoL3JlYWxtcy9sYW1iZGEiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiZGI2MTQ2YTItNDBkNy00MmUxLTkyMTctMzJkNTI4MTM1NTIwIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoic3R1ZGVudC1wb3J0YWwtY2xpZW50Iiwic2Vzc2lvbl9zdGF0ZSI6IjNjMmM5YzQ5LTAxYTItNDZiNS05NTQ2LWVkMzk5NTkxY2EwNiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6Im5ld0ZpcnN0bmFtZSBsYXN0TmFtZSIsInByZWZlcnJlZF91c2VybmFtZSI6InRlc3RAZ21haWwuY29tIiwiZ2l2ZW5fbmFtZSI6Im5ld0ZpcnN0bmFtZSIsImZhbWlseV9uYW1lIjoibGFzdE5hbWUiLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIn0.PDDTJZjlVfQH0ZNKysHNl-erAZ22bpO_-Q9TZ3gcTxgArQsJw85PKCAgUXn_KY0YjUHXi9yclHXBdcrkUkwFj39D_8fr4OWFTvpONM1B-Sig19thjd9byQfmdADBV3_C3osb1xIr0ClY3xTPRU3oXMVvpZOV13ELJBUUfftUgJMSYO_fpsETCWx-SADGWLbfjEslAbYjKWKsnXnRph8Qu14QNCuve7lKtjLYBv3UDiirOoQB3UeTpjl8NaPxc6cupgCOFc_CEi3XwTI3w6r0mrUgjBY0DBcaPs7HA2axE35v9lR6w6swaxEQFh4D2AjGwiq5eEBg3geVkAA57wfzKw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "firstName": "newFirstname",
+    "lastName": "lastName",
+    "email": "test@gmail.com"
+}'
+```
+
