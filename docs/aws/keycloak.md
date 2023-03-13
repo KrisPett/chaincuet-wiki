@@ -250,6 +250,57 @@ http://localhost:8080/auth/
 docker exec -it postgres_name psql -U postgres -c "\l"
 ```
 
+#### Using Java webclient
+
+##### Create new user
+
+```jsx
+    private static Mono<String> getAccessTokenFromClientAdminCli() {
+        String endpointUrl = "http://localhost:8080/auth/auth/realms/lambda/protocol/openid-connect/token";
+        WebClient webClient = WebClient.builder().baseUrl(endpointUrl).build();
+
+        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+        body.add("username", "manageuser");
+        body.add("password", "password");
+        body.add("grant_type", "password");
+        body.add("client_id", "admin-cli");
+
+        return webClient.post()
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                .body(BodyInserters.fromFormData(body))
+                .retrieve()
+                .bodyToMono(String.class)
+                .map(response -> new JSONObject(response).getString("access_token"));
+    }
+
+    private static Mono<String> createNewUserUsingAccessToken(String accessToken) {
+        String endpointUrl = "http://localhost:8080/auth/admin/realms/lambda/users";
+        WebClient webClient = WebClient.builder().baseUrl(endpointUrl).build();
+
+        JSONObject newUser = new JSONObject();
+        newUser.put("enabled", true);
+        newUser.put("username", "test@gmail.com");
+        newUser.put("email", "test@gmail.com");
+        newUser.put("firstName", "test@gmail.com");
+        newUser.put("lastName", "test@gmail.com");
+
+        JSONArray credentials = new JSONArray();
+        JSONObject credential = new JSONObject();
+        credential.put("type", "password");
+        credential.put("value", "123");
+        credential.put("temporary", false);
+        credentials.put(credential);
+        newUser.put("credentials", credentials);
+
+        return webClient.post()
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromValue(newUser.toString()))
+                .retrieve()
+                .bodyToMono(String.class);
+    }
+```
+
 #### Keycloak Rest API
 
 ##### quay.io/keycloak/keycloak:19.0.3-legacy

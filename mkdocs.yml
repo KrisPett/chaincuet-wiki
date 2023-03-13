@@ -47,11 +47,12 @@ nav:
       - Docker: docker-kubernetes/docker.md
       - Kubernetes Commands: docker-kubernetes/kubernetes-commands.md
       - Kubernetes Production: docker-kubernetes/kubernetes-production.md
-  - Spring Cloud Architecture:
-      - Spring Cloud Overview: spring-cloud-architecture/index.md
-      - Domains: spring-cloud-architecture/domains.md
-      - Services: spring-cloud-architecture/services.md
-      - Tracing: spring-cloud-architecture/tracing.md
+  - Java / Spring Cloud:
+      - Spring Cloud Overview: java-spring-cloud/index.md
+      - Domains: java-spring-cloud/domains.md
+      - Services: java-spring-cloud/services.md
+      - Tracing: java-spring-cloud/tracing.md
+      - Reactive IO: java-spring-cloud/reactiveio.md
   - Frontend:
       - Frontend Overview: frontend/index.md
       - HTML: frontend/html.md
