@@ -163,7 +163,7 @@ const { id } = router.query
 ```
 
 #### Slug Route
-#### Example http://localhost:3000/about/1/2/3/4/dwad?name=testName
+**Example http://localhost:3000/about/1/2/3/4/dwad?name=testName**
 ```
 about -> folder -> index.tsx -> [id].tsx -> [...ids].tsx
 
@@ -176,4 +176,23 @@ const name = (router.query.name as string)
 ```
 Environment variables are prefixed with NEXT_PUBLIC_ and can be accessed from the client side but environment variables without the prefix are only accessible on the server side.
 Server side is pages/api and client side is pages
+```
+
+## Fetch
+
+#### Download file
+
+```JSX
+fetch(url)
+  .then(response => response.blob())
+  .then(blob => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'image.jpg';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
 ```

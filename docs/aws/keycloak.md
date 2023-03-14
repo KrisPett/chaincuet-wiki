@@ -437,7 +437,8 @@ curl --location --request PUT 'http://localhost:8080/auth/admin/realms/lambda/us
     "credentials": [
         {
             "type": "password",
-            "value": "newPassword"        }
+            "value": "newPassword"        
+        }
     ]
 }'
 ```
