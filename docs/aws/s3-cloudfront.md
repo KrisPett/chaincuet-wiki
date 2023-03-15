@@ -1,4 +1,4 @@
-#### Policies
+### IAM Policies
 ```
 # Allow Cloudfront using s3 block public access
 {
@@ -52,7 +52,7 @@ Use Origin access control settings (recommended)
 Update policy in s3
 ```
 
-#### Create iam role for s3 bucket for pipeline
+**Create iam role for s3 bucket for pipeline**
 ```
 s3-bucket-cloudfront user
 Permissions:
@@ -85,7 +85,7 @@ AmazonS3FullAccess
 }
 ```
 
-#### Using cloudfront with s3 website endpoint instead requires special policy
+**Using cloudfront with s3 website endpoint instead requires special policy**
 
 ```
 {
@@ -107,7 +107,7 @@ AmazonS3FullAccess
 }
 ```
 
-#### Change CORS policy for s3
+#### CORS policy for s3
 ```
 [
     {
@@ -125,6 +125,50 @@ AmazonS3FullAccess
         "MaxAgeSeconds": 3000
     }
 ]
+```
+
+### AWS SDK
+
+#### Setup s3
+```jsx
+import AWS from "aws-sdk";
+yarn add aws-sdk
+npm i aws-sdk
+
+const s3 = new AWS.S3({
+  credentials: {
+    accessKeyId: process.env.NEXT_PUBLIC_REACT_APP_AWS_ACCESS_KEY_ID || "",
+    secretAccessKey: process.env.NEXT_PUBLIC_REACT_APP_AWS_SECRET_ACCESS_KEY || ""
+  },
+  region: process.env.NEXT_PUBLIC_REACT_APP_AWS_REGION || ""
+});
+```
+
+#### Upload file to s3
+```jsx
+  const sourceUrl = 'https://images.unsplash.com/...';
+  
+  fetch(sourceUrl)
+    .then(response => response.blob())
+    .then(blob => {
+      const splitUrl = sourceUrl.split('/').pop();
+      if (!splitUrl) throw new Error("Filename is undefined");
+      const s3Params = {
+        Bucket: <bucket_name>,
+        Key: 'images/' + splitUrl,
+        Body: blob,
+        ContentType: blob.type
+      };
+
+      s3.upload(s3Params, (err: any, data: { Location: any; }) => {
+        if (err) {
+          console.log('Error uploading file: ', err);
+        } else {
+          console.log('File uploaded successfully. Location:', data.Location);
+        }
+      });
+    })
+
 ```
 
 #### Download S3 file using Javascript fetch
