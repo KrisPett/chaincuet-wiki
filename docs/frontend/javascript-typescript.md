@@ -181,6 +181,7 @@ Server side is pages/api and client side is pages
 ## Fetch
 
 #### Download file
+*Works if not blocked by cors*
 
 ```JSX
 fetch(url)
