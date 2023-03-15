@@ -115,7 +115,8 @@ AmazonS3FullAccess
             "*"
         ],
         "AllowedMethods": [
-            "GET"
+            "GET",
+            "PUT"
         ],
         "AllowedOrigins": [
             "http://localhost:3000"
