@@ -62,6 +62,7 @@ nav:
   - AI:
       - Artificial intelligence: ai/index.md
       - OpenAI: ai/openAI.md
+      - DALL·E: ai/dalle.md
   - Linux:
       - Linux Overview: linux/index.md
       - Alias: linux/alias.md

@@ -34,3 +34,16 @@ git --version
 git config --global push.autoSetupRemote true
 git config --global push.default upstream
 ```
+
+#### Uncommit changes when accident commit
+
+```
+git reset --soft HEAD^
+```
+
+#### Clone a folder from github using svn
+
+```
+svn ls https://github.com/marcel-dempers/docker-development-youtube-series/
+svn export https://github.com/marcel-dempers/docker-development-youtube-series/trunk/hashicorp/vault-2022/
+```
