@@ -42,8 +42,9 @@ git reset --soft HEAD^
 ```
 
 #### Clone a folder from github using svn
-
+**Example**
 ```
+sudo apt install subversion
 svn ls https://github.com/marcel-dempers/docker-development-youtube-series/
 svn export https://github.com/marcel-dempers/docker-development-youtube-series/trunk/hashicorp/vault-2022/
 ```

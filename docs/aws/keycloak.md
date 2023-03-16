@@ -250,6 +250,16 @@ http://localhost:8080/auth/
 docker exec -it postgres_name psql -U postgres -c "\l"
 ```
 
+#### Keycloak Extensions
+
+##### Install an extension 
+
+```
+svn export https://github.com/thomasdarimont/keycloak-extension-playground/trunk/auth-identity-first-extension
+mvn clean install
+docker cp auth-trust-device-0.0.1-SNAPSHOT.jar <container_id>:/opt/jboss/keycloak/standalone/deployments
+```
+
 #### Using Java webclient
 
 ##### Create new user
