@@ -1,7 +1,15 @@
-#### Setup Keycloak using nextjs / next-auth
+#### Keycloak Notes
 
  - Keycloak stop support of adapters https://www.keycloak.org/2022/02/adapter-deprecation
  - Best Alternative is https://github.com/panva/node-openid-client, if not using next-auth
+
+
+##### Public vs confidential client
+
+ - Public client: Using redirect_uri to authenticate client to server after user login
+ - Confidential client: Using client_secret to authenticate client to server, used for backend servers that cannot use user-interaction flow
+
+#### Setup Keycloak using nextjs / next-auth
 
 ##### Create [...nextauth].tsx
 

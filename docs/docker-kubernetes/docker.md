@@ -8,6 +8,12 @@ docker run -it --rm -p 3000:3000 --name node -v ${PWD}:/app node:19.5.0-alpine s
 docker run -it --rm -p 3000:3000 --name node -v ${PWD}:/app node:14.0.0-alpine sh
 ```
 
+#### Run maven with a specific version
+
+```
+docker run -it --rm -p 1000:1000 --name maven-11 -v ${PWD}:/app maven:3.8.6-openjdk-11 sh
+```
+
 #### On windows may run powershell on administrator
 
 ```
