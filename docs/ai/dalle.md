@@ -20,25 +20,35 @@ const s3 = new AWS.S3({
 });
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const sourceUrl = 'https://oaidalleapiprodscus....';
-  try {
-    const response = await axios.get(sourceUrl, {responseType: 'arraybuffer'});
-    const splitUrl = sourceUrl.split('/').pop();
-    const s3Params = {
-      Bucket: <bucker_name>,
-      Key: 'images/' + splitUrl,
-      Body: response.data,
-      ContentType: response.headers['content-type'],
-    };
-    const result = await s3.upload(s3Params).promise();
-    console.log('File uploaded successfully. Location:', result.Location);
-    res.status(200).json({message: 'Success'});
-  } catch (error) {
-    console.error('Error uploading file:', error);
-    res.status(500).json({message: 'Error uploading file'});
-  }
-};
+  const {text} = req.body;
 
-export default handler;
+  openai.createImage({prompt: text, n: 4, size: "256x256"})
+    .then(async (data) => {
+      const responseImages = [];
+      if (data.data.data) {
+        const urls = data.data.data
+        for (const url of urls) {
+          if (url.url) {
+            const response = await axios.get(url.url, {responseType: 'arraybuffer'});
+            const uuid = uuidv4();
+            const s3Params = {
+              Bucket: <bucket_name>,
+              Key: 'images/' + uuid,
+              Body: response.data,
+              ContentType: response.headers['content-type'],
+            };
+            const result = await s3.upload(s3Params).promise();
+            console.log(`File uploaded successfully. Location:`, result.Location);
+            responseImages.push(result.Location);
+          }
+        }
+      }
+      res.status(200).json(responseImages);
+    })
+    .catch((error) => {
+      console.error('Error creating images:', error);
+      res.status(500).json({message: 'Error creating images'});
+    });
+};
 
 ```
