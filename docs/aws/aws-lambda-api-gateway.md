@@ -63,9 +63,43 @@ zip the new folder and import in aws lambda
 Set timeout to 30 seconds or Internal server error will be thrown
 ```
 
+#### Allow lambda to put object in s3
+
+```
+{
+    "Version": "2008-10-17",
+    "Id": "PolicyForCloudFrontPrivateContent",
+    "Statement": [
+        {
+            "Sid": "AllowCloudFrontServicePrincipal",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "cloudfront.amazonaws.com"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::s3_bucket/*",
+            "Condition": {
+                "StringEquals": {
+                    "AWS:SourceArn": "arn:aws:cloudfront::cloudfront_distribution_id"
+                }
+            }
+        },
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::<role_that_has_s3_put_permissions>"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::s3_bucket/*"
+        }
+    ]
+}
+```
+
 ### Api-Gateway
 
-#### Using Api-Gateway to trigger lambda fucntions 
+#### Using Api-Gateway to trigger lambda functions 
 
 ```jsx
 fetch("https://vd56h5ip1a.execute-api.us-east-1.amazonaws.com/sendgrip-stage/send-email", {
