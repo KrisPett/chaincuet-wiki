@@ -108,6 +108,7 @@ AmazonS3FullAccess
 ```
 
 #### CORS policy for s3
+
 ```
 [
     {
@@ -127,9 +128,19 @@ AmazonS3FullAccess
 ]
 ```
 
+#### CORS policy for cloudfront
+
+**To fetch and download from s3**
+
+```
+Response headers policy - optional
+Make a custom policy that allows all origins
+```
+
 ### AWS SDK
 
 #### Setup s3
+
 ```jsx
 import AWS from "aws-sdk";
 yarn add aws-sdk
