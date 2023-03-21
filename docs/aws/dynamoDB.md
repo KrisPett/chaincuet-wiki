@@ -9,6 +9,10 @@
 
 ```
 On demand pricing
+Cost for one table:
+Total read capacity units = 5
+Total write capacity units = 5
+Estimated monthly cost = $2.91 / month | 29,10 SEK / month
 ```
 
 #### Setup
