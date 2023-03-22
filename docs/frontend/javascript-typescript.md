@@ -181,8 +181,11 @@ Server side is pages/api and client side is pages
 #### Token from api
 
 ```jsx
+import {decode} from "jsonwebtoken";
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(req.headers.authorization)
+  const access_token = req.headers.authorization
+  const token = access_token?.replace('Bearer ', '')
+  const sub = decode(token)?.sub
 }
 export default handler;
 ```
