@@ -178,6 +178,16 @@ Environment variables are prefixed with NEXT_PUBLIC_ and can be accessed from th
 Server side is pages/api and client side is pages
 ```
 
+#### Token from api
+
+```jsx
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  console.log(req.headers.authorization)
+}
+export default handler;
+```
+
+
 ## Fetch
 
 #### Download file
