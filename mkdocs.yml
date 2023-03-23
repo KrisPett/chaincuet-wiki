@@ -63,6 +63,11 @@ nav:
       - Artificial intelligence: ai/index.md
       - OpenAI: ai/openAI.md
       - DALL·E: ai/dalle.md
+  - Databases:
+      - Databse Overview: databases/index.md
+      - Postgres: databases/postgres.md
+      - MongoDB: databases/mongodb.md
+      - Redis: databases/redis.md
   - Linux:
       - Linux Overview: linux/index.md
       - Alias: linux/alias.md
