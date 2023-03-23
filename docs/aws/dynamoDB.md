@@ -100,9 +100,29 @@ export default handler;
 #### Put Item
 
 ```jsx
+interface ImageObject {
+  S: string;
+}
+interface Image {
+  M: {
+    imageId: ImageObject;
+    url: ImageObject;
+  };
+}
+interface ImagesCollectionObject {
+  S: string;
+}
+interface ImagesCollection {
+  images: { L: Image[] };
+  imagesCollectionId: ImagesCollectionObject;
+  timestamp: ImageObject;
+}
+interface Images {
+  L: [{ M: ImagesCollection }];
+}
 import {PutItemInput} from "aws-sdk/clients/dynamodb";
 import {decode} from "jsonwebtoken";
-export const images = {
+export const images: Images = {
   "L": [{
     "M": {
       "images": {
