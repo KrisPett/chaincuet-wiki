@@ -47,16 +47,20 @@ echo -n c2VjcmV0UGFzc3dvcmQK | base64 --decode
 ```
 
 ### Backup postgres data
-
+**Dont restore backup while**
 ```
 mkdir backup && cd backup
-docker run --rm \
-    -v postgres_data:/data \
-    -v $(pwd):/backup \
-    busybox tar czf /backup/postgres_data.tar.gz /data
 
+# Make a backup
 docker run --rm \
-    -v postgres_data:/data \
+    -v postgres_data_03_25_23:/data \
     -v $(pwd):/backup \
-    busybox tar xzf /backup/postgres_data.tar.gz
+    busybox tar czf /backup/postgres_data_03_25_23.tar.gz /data
+    
+# Restore backup
+# Dont restore backup while postgres is running
+docker run --rm \
+    -v postgres_data_03_25_23:/data \
+    -v $(pwd):/backup \
+    busybox tar xzf /backup/postgres_data_03_25_23.tar.gz
 ```
