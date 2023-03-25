@@ -182,6 +182,17 @@ export const handler = async (event, context, callback) => {
 }
 ```
 
+#### Using Authorization header
+
+```
+Authorization might be lower case authorization when using HTTP and not REST
+const access_token = event.headers.authorization;
+```
+{
+  "body": "{\"text\":\"A cat \"}"
+}
+```
+
 ### CloudWatch
 
 ``` 
