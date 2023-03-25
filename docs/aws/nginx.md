@@ -3,13 +3,19 @@
 ##### Setup ssl/tls
 
 ```
-ln -s /path/to/auth.example.com.conf /path/to/symlink
+sudo ln -s /path/to/auth.example.com.conf /path/to/symlink
 # Run it from sites-enabled (../sites-available/auth.example.com.conf .)
 
 sudo apt install certbot
 sudo apt-get install python3-certbot-nginx
 sudo certbot --nginx --redirect -d auth.example.com
-# Disable vpn connection when issue a certificate
+sudo systemctl restart nginx
+
+# Troubleshooting
+Disable vpn connection when issue a certificate
+nslookup example.com
+dig ns example.com
+Use A record instead of CNAME
 ```
 
 ##### Clean Setup (auth.example.com.conf)

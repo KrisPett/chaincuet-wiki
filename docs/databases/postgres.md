@@ -64,3 +64,44 @@ docker run --rm \
     -v $(pwd):/backup \
     busybox tar xzf /backup/postgres_data_03_25_23.tar.gz
 ```
+
+### pgAdmin4
+
+```
+# export POSTGRES_PASSWORD=postgres_password
+version: "3.8"
+services:
+  pgadmin_03_25_23:
+    container_name: pgadmin_03_25_23
+    image: dpage/pgadmin4:6.21
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data_03_25_23:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin_03_25_23@email.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmin_03_25_23@email.com
+    networks:
+      - chaincue-tech-net
+
+  postgres_kc_03_25_23:
+    container_name: postgres_kc_03_25_23
+    image: postgres:10.4
+    restart: always
+    volumes:
+      - postgres_data_03_25_23:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak_DB
+      POSTGRES_USER: keycloak_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5433:5432"
+    networks:
+      - chaincue-tech-net
+      
+volumes:
+  postgres_data_03_25_23:
+    name: postgres_data_03_25_23
+  pgadmin_data_03_25_23:
+    name: pgadmin_data_03_25_23
+```
