@@ -9,6 +9,69 @@
  - Public client: Using redirect_uri to authenticate client to server after user login
  - Confidential client: Using client_secret to authenticate client to server, used for backend servers that cannot use user-interaction flow
 
+#### Docker-compose
+
+##### Using postgres
+
+```
+# docker stop postgres_kc_03_25_23 keycloak_03_25_23 && docker rm postgres_kc_03_25_23 keycloak_03_25_23 && docker volume rm postgres_data_03_25_23
+# docker exec -it postgres_kc_03_25_23 psql -U keycloak_user -d keycloak_DB
+# docker exec -it postgres_kc_03_25_23 psql -U postgres
+
+# export POSTGRES_PASSWORD=postgres_password
+# docker-compose -f docker-compose-kc.yml up
+# docker-compose -f docker-compose-kc.yml down && docker volume rm postgres_data_03_25_23
+
+version: "3.8"
+services:
+  postgres_kc_03_25_23:
+    container_name: postgres_kc_03_25_23
+    image: postgres:10.4
+    restart: always
+    volumes:
+      - postgres_data_03_25_23:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak_DB
+      POSTGRES_USER: keycloak_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5433:5432"
+    networks:
+      - chaincue-tech-net
+
+  keycloak_03_25_23:
+    container_name: keycloak_03_25_23
+    image: quay.io/keycloak/keycloak:19.0.3-legacy
+    restart: always
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres_kc_03_25_23
+      DB_DATABASE: keycloak_DB
+      DB_USER: keycloak_user
+      DB_SCHEMA: public
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      PROXY_ADDRESS_FORWARDING: "true"
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    depends_on:
+      - postgres_kc_03_25_23
+    networks:
+      - chaincue-tech-net
+
+volumes:
+  postgres_data_03_25_23:
+    name: postgres_data_03_25_23
+
+networks:
+  chaincue-tech-net:
+    name: chaincue-tech-net
+    driver: bridge
+
+```
+
 #### Setup Keycloak using nextjs / next-auth
 
 ##### Create [...nextauth].tsx
@@ -188,7 +251,7 @@ if (loading) return <></>
 #### Theming Keycloak
 
 ##### docker-compose.yml example
-```
+```jsx
 # docker stop keycloak_name && docker rm keycloak_name && docker stop postgres_name && docker rm postgres_name && docker volume rm postgres_data
 # docker-compose up -d
 

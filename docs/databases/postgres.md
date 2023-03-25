@@ -45,3 +45,18 @@ echo -n c2VjcmV0UGFzc3dvcmQK | base64 --decode
 ```
 \q
 ```
+
+### Backup postgres data
+
+```
+mkdir backup && cd backup
+docker run --rm \
+    -v postgres_data:/data \
+    -v $(pwd):/backup \
+    busybox tar czf /backup/postgres_data.tar.gz /data
+
+docker run --rm \
+    -v postgres_data:/data \
+    -v $(pwd):/backup \
+    busybox tar xzf /backup/postgres_data.tar.gz
+```

@@ -66,6 +66,7 @@ nav:
   - Databases:
       - Databse Overview: databases/index.md
       - Postgres: databases/postgres.md
+      - Mysql: databases/mysql.md
       - MongoDB: databases/mongodb.md
       - Redis: databases/redis.md
   - Linux:
