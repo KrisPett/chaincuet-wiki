@@ -37,7 +37,7 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
 
 ```
-#### remove all <none> tag images 
+#### remove all 'none' tag images 
 ```
 docker image prune --filter="dangling=true"
 ```
