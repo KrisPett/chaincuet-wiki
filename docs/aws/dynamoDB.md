@@ -10,6 +10,13 @@ Total write capacity units = 5
 Estimated monthly cost = $2.91 / month | 29,10 SEK / month
 ```
 
+#### Query vs Scan
+
+Query is used to retrieve a subset of items from a table based on a primary key value or a secondary index value.
+Scan is used to retrieve all items from a table or a secondary index.
+ 
+Query is faster than scan
+
 #### Setup
 
 ```
@@ -165,3 +172,28 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 export default handler;
 ```
 
+#### Get Item
+
+```jsx
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  const access_token = req.headers.authorization
+  const token = access_token?.replace('Bearer ', '')
+  if (token) {
+    const subId = decode(token)?.sub as string
+    const params: GetItemInput = {
+      TableName: "user_images",
+      Key: {"userId": {"S": subId}}
+    }
+    try {
+      const data = await updatedynamoDB.getItem(params).promise();
+      const item = data.Item as unknown as UserImages;
+      const imagesCollection = item.imagesCollection;
+      res.status(200).json(imagesCollection);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({message: 'Failed to get item'});
+    }
+  }
+}
+export default handler;
+```
