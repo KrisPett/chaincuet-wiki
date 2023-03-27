@@ -56,8 +56,3 @@ Setup VPC
 - Launch backend-server in another public subnet or private subnets
 - Launch Keycloak Auth Server Instance in another public subnet
 - Launch database server Instance in private subnet (NAT), keycloak auth server can access it
-
-
-
-port 22 allow -> jump-server
-shh jump-server -> ssh1 ssh2 ssh3

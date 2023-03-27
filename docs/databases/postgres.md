@@ -52,14 +52,14 @@ echo -n c2VjcmV0UGFzc3dvcmQK | base64 --decode
 mkdir backup && cd backup
 
 # Make a backup
-docker run --rm \
+sudo docker run --rm \
     -v postgres_data_03_25_23:/data \
     -v $(pwd):/backup \
     busybox tar czf /backup/postgres_data_03_25_23.tar.gz /data
     
 # Restore backup
 # Dont restore backup while postgres is running
-docker run --rm \
+sudo docker run --rm \
     -v postgres_data_03_25_23:/data \
     -v $(pwd):/backup \
     busybox tar xzf /backup/postgres_data_03_25_23.tar.gz
@@ -104,4 +104,22 @@ volumes:
     name: postgres_data_03_25_23
   pgadmin_data_03_25_23:
     name: pgadmin_data_03_25_23
+```
+
+#### create admin user in keycloak
+
+```
+SELECT * FROM user_entity;
+
+INSERT INTO user_entity (id, username, email, first_name, last_name) VALUES ('uuid', 'admin', 'admin@example.com', 'Admin', 'User');
+
+SELECT * FROM credential;
+
+Hashed password
+echo -n 'password' | openssl dgst -sha256
+
+INSERT INTO credential (id, user_id, created_date, credential_data, type, user_label) VALUES ('UUid', 'uuidID', now(), '<hashed_password>', 'password', 'password');
+
+
+INSERT INTO user_role (id, realm_id, user_id, role_id) VALUES ('<new_uuid>', 'master', '<user_entity_id>', '<admin_role_id>');
 ```

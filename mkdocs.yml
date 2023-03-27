@@ -42,6 +42,7 @@ nav:
       - Nginx: aws/nginx.md
       - Vault: aws/vault.md
       - Keycloak: aws/keycloak.md
+      - Email: aws/email.md
   - Docker & Kubernetes:
       - Overview: docker-kubernetes/index.md
       - Docker: docker-kubernetes/docker.md
