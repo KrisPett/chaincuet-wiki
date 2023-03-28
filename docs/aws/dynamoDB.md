@@ -197,3 +197,35 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 export default handler;
 ```
+
+#### Get one object from Item
+**Only works if knowing indexPosition and Id in advance**
+
+```jsx
+public QueryResponse getItemFiltered(String userId, String imagesCollectionId, String imageIndex) {
+    log.info("userId: {}, imagesCollectionId: {}", userId, imagesCollectionId);
+    DynamoDbClient dynamoDbClient = createClient(awsCredentials.getAccessKey(), awsCredentials.getSecretKey());
+
+     Map<String, AttributeValue> expressionAttributeValues = new HashMap<>();
+    expressionAttributeValues.put(":userId", AttributeValue.builder().s(userId).build());
+    expressionAttributeValues.put(":imagesCollectionId", AttributeValue.builder().s(imagesCollectionId).build());
+
+     QueryRequest queryRequest = QueryRequest.builder()
+            .tableName(TABLE_NAME)
+            .keyConditionExpression("userId = :userId")
+            .expressionAttributeValues(expressionAttributeValues)
+            .filterExpression("contains(imagesCollection[" + imageIndex + "].imagesCollectionId, :imagesCollectionId)")
+            .projectionExpression("imagesCollection[" + imageIndex + "]")
+            .build();
+
+     return dynamoDbClient.query(queryRequest);
+}
+
+ private static DynamoDbClient createClient(String accessKey, String secretKey) {
+    var basicCredentials = AwsBasicCredentials.create(accessKey, secretKey);
+    return DynamoDbClient.builder()
+            .region(Region.US_EAST_1)
+            .credentialsProvider(StaticCredentialsProvider.create(basicCredentials))
+            .build();
+}
+```
