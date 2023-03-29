@@ -97,6 +97,46 @@ Set timeout to 30 seconds or Internal server error will be thrown
 }
 ```
 
+### Using Java
+
+#### Maven
+
+```jsx
+language: Java 11
+Build System: Maven
+Group Id: com.chainbot
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.2.0</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>org.example.Main</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+@Override
+  public Integer handleRequest(List<Integer> event, Context context) {
+      LambdaLogger logger = context.getLogger();
+      if (event.size() != 2) {
+          throw new InputLengthException("Input must be an array that contains 2 numbers.");
+      }
+      int numerator = event.get(0);
+      int denominator = event.get(1);
+      logger.log("EVENT: Numerator is " + event.get(0).toString() + "; Denominator is " + event.get(1).toString());
+      return numerator / denominator;
+  }
+org.example.Handler::handleRequest
+```
+
 ### Api-Gateway
 
 #### Using Api-Gateway to trigger lambda functions 
