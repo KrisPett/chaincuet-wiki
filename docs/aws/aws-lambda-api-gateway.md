@@ -124,16 +124,38 @@ Group Id: com.chainbot
 </build>
 
 @Override
-  public Integer handleRequest(List<Integer> event, Context context) {
-      LambdaLogger logger = context.getLogger();
-      if (event.size() != 2) {
-          throw new InputLengthException("Input must be an array that contains 2 numbers.");
-      }
-      int numerator = event.get(0);
-      int denominator = event.get(1);
-      logger.log("EVENT: Numerator is " + event.get(0).toString() + "; Denominator is " + event.get(1).toString());
-      return numerator / denominator;
-  }
+public String handleRequest(APIGatewayV2HTTPResponse event, Context context) {
+    LambdaLogger logger = context.getLogger()
+    JSONObject headers = new JSONObject(event.getHeaders());
+    String authorization = headers.getString("authorization");
+    String token = authorization.replace("Bearer ", "");
+    String subId = JWTHelper.getSubId(token)
+    JSONObject body = new JSONObject(event.getBody());
+    String imagesCollectionId = body.getString("imagesCollectionId");
+    String imageIndex = body.getString("imageIndex")
+    logger.log("subId: " + subId);
+    logger.log("imagesCollectionId: " + imagesCollectionId);
+    logger.log("imageIndex: " + imageIndex)
+    var itemFromDynamoDB = getItemFiltered(subId);
+    logger.log("itemFromDynamoDB: " + itemFromDynamoDB);
+}
+
+// Dont have to provide secrets when using aws-lambda in java code
+public GetItemResponse getItemFromDynamoDB(String userId) {
+     var sdkHttpClient = ApacheHttpClient.builder().build();
+     DynamoDbClient dynamoDbClient = DynamoDbClient.builder()
+             .region(Region.US_EAST_1)
+             .httpClient(sdkHttpClient)
+             .build()
+     Map<String, AttributeValue> key = new HashMap<>();
+     key.put("userId", AttributeValue.builder().s(userId).build())
+     GetItemRequest getItemRequest = GetItemRequest.builder()
+             .tableName(TABLE_NAME)
+             .key(key)
+             .build()
+     return dynamoDbClient.getItem(getItemRequest);
+}
+
 org.example.Handler::handleRequest
 ```
 
