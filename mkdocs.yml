@@ -77,3 +77,4 @@ nav:
       - Utils Overview: utils/index.md
       - Emoji: utils/emoji.md
       - Git: utils/git.md
+      - Go: utils/go.md
