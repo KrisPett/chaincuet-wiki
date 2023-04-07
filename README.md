@@ -19,3 +19,8 @@ Edit mkdocs.yml
 ```
 mkdocs build
 ```
+
+#### specify IP address and port
+```
+mkdocs serve --dev-addr=0.0.0.0:9000
+```

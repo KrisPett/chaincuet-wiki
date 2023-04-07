@@ -44,3 +44,15 @@ project-root/
 In this structure, the cmd/ directory holds the main application executable, which in this case would be the server. The internal/ directory contains the internal packages used by the application, including config/, handlers/, middleware/, models/, and routes/. The pkg/ directory is used to store reusable packages that can be used by other Go projects. The vendor/ directory holds the external dependencies of the project.
 
 This structure follows the standard layout recommended by the Go community and makes it easier to organize the code in a modular and scalable way. However, this is just a recommendation and you are free to organize your code in a way that works best for you and your project.
+
+**Testing**
+
+- "github.com/stretchr/testify/assert"
+
+**Object-Relational Mapping (ORM)**
+
+-  go get -u gorm.io/gorm 
+
+**Build project**
+
+- go build -o main ./cmd/server
