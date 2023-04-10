@@ -1,4 +1,14 @@
 
+### Metrics
+
+**Cold start time is the time it takes for the Lambda function to initialize and execute for the first time, or after a period of inactivity**
+
+- Java execution time (cold start)    -  14822 ms
+- Golang execution time (cold start)  -  150.0 ms
+- ratio = 14822 ms / 150.0 ms = 98.81 -> This means that Golang is approximately 98.81 times faster than Java for this specific scenario. 
+- percentage improvement = (98.81 - 1) * 100 = 9781%
+
+
 ### Setup Lambda
 
 ```
