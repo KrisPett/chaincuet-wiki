@@ -1,3 +1,5 @@
+### Git Setup
+
 #### Git New Repository
 
 ```
@@ -48,3 +50,18 @@ sudo apt install subversion
 svn ls https://github.com/marcel-dempers/docker-development-youtube-series/
 svn export https://github.com/marcel-dempers/docker-development-youtube-series/trunk/hashicorp/vault-2022/
 ```
+
+### Github
+
+#### Github Settings
+
+```
+
+```
+
+### Gitlab
+
+#### Private Repo
+
+- Settings -> General -> Visibility -> Allow anyone to pull from Package Registry
+
