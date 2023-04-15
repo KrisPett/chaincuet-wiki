@@ -70,6 +70,9 @@ nav:
       - Mysql: databases/mysql.md
       - MongoDB: databases/mongodb.md
       - Redis: databases/redis.md
+  - Blockchain:
+      - Overview: blockchain/index.md
+      - Ethereum: blockchain/ethereum.md
   - Linux:
       - Linux Overview: linux/index.md
       - Alias: linux/alias.md
