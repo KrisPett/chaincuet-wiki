@@ -8,4 +8,4 @@ Metamask is a browser extension that allows you to interact with the Ethereum bl
 
 - Install Metamask
 - Install Ganache -> HTTP://127.0.0.1:7545 (RPC) -> 1337 (chain id) -> ETH (Symbol)
-- Use WalletConnect for mobile
+- Use WalletConnect for mobile (web3Modal)
