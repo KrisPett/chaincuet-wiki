@@ -14,7 +14,11 @@ Metamask is a browser extension that allows you to interact with the Ethereum bl
 
 Solidity is an object-oriented, high-level language for implementing smart contracts.
 
-- Ganache
-- Truffle
+- Ganache (local blockchain)
+- Truffle (development framework)
+- Create account Infura (for deploying to testnet)
+
+#### Truffle
+- truffle compile (compiles contracts - creates build folder)
 
 

@@ -55,7 +55,7 @@ nav:
       - Tracing: java-spring-cloud/tracing.md
       - Reactive IO: java-spring-cloud/reactiveio.md
   - Frontend:
-      - Frontend Overview: frontend/index.md
+      - Node: frontend/index.md
       - HTML: frontend/html.md
       - CSS Styling: frontend/css-styling.md
       - Javascript & Typescript: frontend/javascript-typescript.md
