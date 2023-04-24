@@ -18,7 +18,30 @@ Solidity is an object-oriented, high-level language for implementing smart contr
 - Truffle (development framework)
 - Create account Infura (for deploying to testnet)
 
-#### Truffle
+#### Truffle | Ganache
+
+```
+├── build
+│   └── contracts
+│       ├── Adoption.json
+│       └── Migrations.json
+├── contracts
+│   ├── Adoption.sol
+│   └── Migrations.sol
+├── migrations
+│   ├── 1_initial_migration.js
+│   └── 2_deploy_contracts.js
+├── package.json
+├── package-lock.json
+├── src
+│   ├── index.html
+├── test
+└── truffle-config.js
+```
+
 - truffle compile (compiles contracts - creates build folder)
+- Link truffle in Ganache using truffle-config.js location
+- truffle migrate (migrates contracts to blockchain) each migration cost gas
+- truffle test (runs tests)
 
 
