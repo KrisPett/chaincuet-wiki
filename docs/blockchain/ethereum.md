@@ -44,4 +44,29 @@ Solidity is an object-oriented, high-level language for implementing smart contr
 - truffle migrate (migrates contracts to blockchain) each migration cost gas
 - truffle test (runs tests)
 
+#### NFTs
 
+Nfts are non-fungible tokens. They store metadata on the blockchain and the actual file is stored on IPFS (InterPlanetary File System).
+
+IPFS is a decentralized storage and content-addressed distribution protocol that allows for efficient and secure sharing of files on a global scale.
+
+#### Metadata
+```
+{
+    "name": "My NFT",
+    "description": "This is an example NFT",
+    "image": "https://example.com/my-nft-image.jpg",
+    "external_url": "https://example.com/my-nft",
+    "attributes": [
+        {
+            "trait_type": "Artist",
+            "value": "John Doe"
+        },
+        {
+            "trait_type": "Year Created",
+            "value": "2021"
+        }
+    ],
+    "s3_bucket_uri": "s3://my-s3-bucket/my-nft-image.jpg"
+}
+```
