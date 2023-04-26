@@ -2,6 +2,10 @@
 
 Ethereum is a decentralized platform that runs smart contracts: applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third party interference.
 
+#### ERC (Ethereum Request for Comments)
+- ERC-20 -> Is the most commonly used standard for creating tokens on Ethereum. This standard defines the functions that a token contract should have, such as the ability to transfer tokens from one address to another, check the balance of an address, and approve others to spend tokens on your behalf.
+- ERC-721 -> Is another standard that is used for creating unique, non-fungible tokens (NFTs). These tokens are unique and cannot be exchanged for one another as each token represents a distinct asset.
+- ERC-1155 -> Is a newer standard that allows for the creation of both fungible and non-fungible tokens in a single contract. This means that developers can create a contract that can handle a variety of tokens, making it more flexible and efficient.
 #### Setup Metamask
 
 Metamask is a browser extension that allows you to interact with the Ethereum blockchain.

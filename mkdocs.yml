@@ -73,6 +73,8 @@ nav:
   - Blockchain:
       - Overview: blockchain/index.md
       - Ethereum: blockchain/ethereum.md
+      - BNB Chain: blockchain/bnb.md
+      - Hyperledger: blockchain/hyperledger.md
   - Linux:
       - Linux Overview: linux/index.md
       - Alias: linux/alias.md
