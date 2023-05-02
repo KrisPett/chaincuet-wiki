@@ -80,3 +80,22 @@ IPFS is a decentralized storage and content-addressed distribution protocol that
 #### Infura
 
 Infura is a service that provides access to Ethereum and IPFS networks. It allows developers to build applications without having to run their own nodes.
+
+Use Sepolia testnet for testing.
+Get faucet from https://www.infura.io/faucet/sepolia?ref=infura.ghost.io
+
+##### Curl Requests
+
+```
+curl https://mainnet.infura.io/v3/<API_KEY> \
+    -X POST \
+    -H "Content-Type: application/json" \
+    --data '{"jsonrpc": "2.0", "id": 1, "method": "eth_blockNumber", "params": []}'
+```
+
+```
+curl https://mainnet.infura.io/v3/<API_KEY> \
+    -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"jsonrpc":"2.0","method":"eth_getBalance","params": ["0x00000000219ab540356cBB839Cbe05303d7705Fa", "latest"],"id":1}'
+```
