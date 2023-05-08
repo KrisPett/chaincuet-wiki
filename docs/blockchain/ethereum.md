@@ -56,6 +56,11 @@ Nfts are non-fungible tokens. They store metadata on the blockchain and the actu
 
 IPFS is a decentralized storage and content-addressed distribution protocol that allows for efficient and secure sharing of files on a global scale.
 
+
+#### IPFS
+
+IPFS is a peer-to-peer network for storing and sharing data in a distributed file system. It is designed to be a decentralized alternative to the HTTP protocol, which is used to transfer data over the internet.
+
 #### Metadata
 ```
 {
