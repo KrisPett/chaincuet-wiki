@@ -42,9 +42,10 @@ kill $(lsof -t -i:3000)
 docker kill $(docker ps -q)
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
-
 ```
+
 #### remove all 'none' tag images 
+
 ```
 docker image prune --filter="dangling=true"
 ```
@@ -66,4 +67,12 @@ docker run --rm \
     -v postgres_data_03_25_23:/data \
     -v $(pwd):/backup \
     busybox tar xzf /backup/postgres_data_03_25_23.tar.gz
+```
+
+### Setup Docker without docker
+
+```
+sudo groupadd docker
+sudo gpasswd -a $USER docker
+Restart pc
 ```
