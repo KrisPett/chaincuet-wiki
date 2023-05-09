@@ -61,6 +61,28 @@ IPFS is a decentralized storage and content-addressed distribution protocol that
 
 IPFS is a peer-to-peer network for storing and sharing data in a distributed file system. It is designed to be a decentralized alternative to the HTTP protocol, which is used to transfer data over the internet.
 
+
+#### ERC
+
+The term "ERC" stands for Ethereum Request for Comment, which is a protocol proposal for implementing new features or standards on the Ethereum network.
+
+
+##### ERC-20
+
+ERC-20 is a standard for creating fungible tokens on the Ethereum blockchain.
+
+##### ERC-721
+
+ERC-721 is a standard for creating non-fungible tokens (NFTs) on the Ethereum blockchain. 
+
+##### ERC-1155
+
+ERC-1155 is a standard for creating both fungible and non-fungible tokens on the Ethereum blockchain.
+
+#### OpenZeppelin
+
+OpenZeppelin is an open-source framework for building secure smart contracts on Ethereum. It provides a set of reusable, audited, and community-vetted smart contracts that can be used to build decentralized applications (dApps).
+
 #### Metadata
 ```
 {
