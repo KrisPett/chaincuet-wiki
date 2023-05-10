@@ -104,6 +104,17 @@ OpenZeppelin is an open-source framework for building secure smart contracts on 
 }
 ```
 
+#### ABI
+
+ABI stands for Application Binary Interface. It serves as the interface definition for the contract, specifying the functions, events, and data structures that can be accessed from outside the contract.
+
+```
+docker run -v ${PWD}:/workdir ethereum/solc:0.8.19-alpine --abi \
+--include-path /workdir/node_modules/ \
+--base-path . /workdir/contracts/ChaincueNFT.sol \
+-o /workdir/abi
+```
+
 #### Infura
 
 Infura is a service that provides access to Ethereum and IPFS networks. It allows developers to build applications without having to run their own nodes.
