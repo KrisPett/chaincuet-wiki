@@ -11,11 +11,11 @@ docker run -it --rm -p 3000:3000 --name node -v ${PWD}:/app node:14.0.0-alpine s
 #### Run container with network host and command 
 
 ```
-docker run -it --rm -p 3000:3000 --name node -v ${PWD}:/app --network host node:19.0.0-alpine sh -c "\
+docker run -it --rm -p 3000:3000 --name node --network host -v ${PWD}:/workdir node:19.0.0-alpine sh -c "\
 npm install -g npm && \
 npm install -g truffle && \
 apk add --no-cache git && \
-cd /app && \
+cd /workdir && \
 sh"
 ```
 
