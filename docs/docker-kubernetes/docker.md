@@ -6,8 +6,12 @@ docker run -it --rm -p 3000:3000 --name node -v ${PWD}:/app node:19.5.0-alpine s
 docker run -it --rm -p 3000:3000 --name node -v ${PWD}:/app node:19.5.0-alpine sh -c "cd app && yarn dev"
 
 docker run -it --rm -p 3000:3000 --name node -v ${PWD}:/app node:14.0.0-alpine sh
+```
 
-docker run -it --rm -p 3000:3000 --name node -v ${PWD}:/app node:18.4.0-alpine sh -c "\
+#### Run container with network host and command 
+
+```
+docker run -it --rm -p 3000:3000 --name node -v ${PWD}:/app --network host node:19.0.0-alpine sh -c "\
 npm install -g npm && \
 npm install -g truffle && \
 apk add --no-cache git && \
