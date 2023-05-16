@@ -19,6 +19,14 @@ cd /workdir && \
 sh"
 ```
 
+#### Update package.json version and build
+
+```
+docker run -it --rm -e NEW_VERSION=1.154.0 -v ${PWD}:/workdir -w /workdir node:20-alpine sh -c '\
+sed -i "s/\"version\": \"[0-9]*\\.[0-9]*\\.[0-9]*\"/\"version\": \"$NEW_VERSION\"/g" package.json && \
+npm run build'
+```
+
 #### Run maven with a specific version
 
 ```
@@ -79,4 +87,10 @@ docker run --rm \
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 Restart pc
+```
+
+### Show info about docker
+
+```
+docker info
 ```
