@@ -33,6 +33,12 @@ npm run build'
 docker run -it --rm -p 1000:1000 --name maven-11 -v ${PWD}:/app maven:3.8.6-openjdk-11 sh
 ```
 
+#### Run with a specific cpuset-cpus
+
+```
+docker run -it --rm -p 3000:3000 --name node --cpuset-cpus 7 --network host -v ${PWD}:/workdir -w /workdir node:14 bash
+```
+
 #### On windows may run powershell on administrator
 
 ```

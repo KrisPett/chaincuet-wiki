@@ -8,3 +8,8 @@
 ```
 sudo chown -R work ./
 ```
+
+#### Check OS
+```
+cat /etc/os-release
+```
