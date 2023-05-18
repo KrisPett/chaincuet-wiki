@@ -143,3 +143,37 @@ curl https://mainnet.infura.io/v3/<API_KEY> \
     -H "Content-Type: application/json" \
     -d '{"jsonrpc":"2.0","method":"eth_getBalance","params": ["0x00000000219ab540356cBB839Cbe05303d7705Fa", "latest"],"id":1}'
 ```
+
+#### Frontend integration
+
+- web3.js is a JavaScript library for interacting with the Ethereum blockchain.
+- ethers.js is a JavaScript library for interacting with the Ethereum blockchain.
+- web3Modal is a library that makes it easy to integrate with Ethereum and IPFS.
+- wagmi is a collection of React components that make it easy to integrate with Ethereum and IPFS.
+##### WalletConnect
+
+**Use WalletConnect for mobile (web3Modal)**
+
+```jsx
+<WagmiConfig client={wagmiClient}>
+  <HomeView/>
+</WagmiConfig>
+<Web3Modal projectId={projectId} ethereumClient={ethereumClient}/>
+```
+
+##### Example of minting NFT
+
+```jsx
+import {CONTRACT_ABI} from "@/contracts/ContractABI";
+
+const Web3 = require('web3');
+
+const CONTRACT_PUBLIC_ADDRESS = "0x000";
+
+export const mintNFTContractWeb3 = async (tokenURI: string) => {
+  const web3 = await new Web3(window.ethereum);
+  const signer = await web3.eth.getAccounts()
+  const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_PUBLIC_ADDRESS);
+  return contract.methods.mintNFT(signer[0], tokenURI).send({from: signer[0]});
+};
+```
