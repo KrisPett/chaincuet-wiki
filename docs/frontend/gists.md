@@ -154,3 +154,24 @@ export default function PubText({category, filename}: Props) {
   )
 }
 ```
+
+## Prevent copy paste
+
+```jsx
+const handleMouseUp = () => {
+  if (window.getSelection) {
+    const selection = window.getSelection();
+    if (selection) selection.removeAllRanges();
+  } else if (document.getSelection) {
+    const selection = document.getSelection();
+    if (selection) selection.removeAllRanges();
+  }
+}
+<Grid item
+      onCopy={e => e.preventDefault()}
+      onMouseDown={e => e.preventDefault()}
+      onMouseUp={handleMouseUp}
+>
+  <Typography variant={"body1"}>Text cant be copied</Typography>
+</Grid>
+```
