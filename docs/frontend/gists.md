@@ -175,3 +175,51 @@ const handleMouseUp = () => {
   <Typography variant={"body1"}>Text cant be copied</Typography>
 </Grid>
 ```
+
+
+## Drag and drop
+
+```jsx
+import {DragDropContext, Draggable, Droppable, DropResult} from 'react-beautiful-dnd';
+const [queries, updateQueries] = useState<Query[]>();
+
+const handleOnDragEnd = (result: DropResult) => {
+  if (!result.destination) return;
+  const items = Array.from(queries);
+  const [reorderedItem] = items.splice(result.source.index, 1);
+  items.splice(result.destination.index, 0, reorderedItem);
+  updateQueries(items);
+  const updateQueriesPrioritiesRQ: RequestBodyUpdateQueriesPriorities = {
+    assignmentId: assignmentId,
+    queries: items.map(item => ({queryId: item.id, priority: item.priority}))
+  }
+  fetchUpdateQueriesPriorities(token, updateQueriesPrioritiesRQ).then(value => {
+    setAssignment(value)
+    updateQueries(value.queries)
+  })
+}
+
+<DragDropContext onDragEnd={handleOnDragEnd}>
+  <Droppable droppableId="queries">
+    {provided => (
+      <ul {...provided.droppableProps} ref={provided.innerRef}>
+        <Grid container direction={"column"}>
+          <Grid container direction={"column"} gap={1} mt={1}>
+            {queries.map((query, index) => {
+              return (
+                <Draggable key={query.id} draggableId={query.id} index={index}>
+                  {provided => (
+                    <div ref={provided.innerRef}{...provided.draggableProps}{...provided.dragHandleProps}>
+                        <div key={query.id}/>
+                    </div>
+                  )}
+                </Draggable>
+              )
+            })}
+          </Grid>)
+        </Grid>
+      </ul>
+    )}
+  </Droppable>
+</DragDropContext>
+```
