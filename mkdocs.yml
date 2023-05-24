@@ -64,6 +64,7 @@ nav:
       - Artificial intelligence: ai/index.md
       - OpenAI: ai/openAI.md
       - DALL·E: ai/dalle.md
+      - Tensorflow: ai/tensorflow.md
   - Databases:
       - Databse Overview: databases/index.md
       - Postgres: databases/postgres.md
@@ -83,4 +84,5 @@ nav:
       - Emoji: utils/emoji.md
       - Git: utils/git.md
       - Go: utils/go.md
+      - Python: utils/python.md
       - IDEs: utils/ides.md
