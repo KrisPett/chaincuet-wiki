@@ -13,3 +13,9 @@ sudo chown -R work ./
 ```
 cat /etc/os-release
 ```
+
+#### List users
+
+```
+cat /etc/passwd
+```

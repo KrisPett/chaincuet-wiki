@@ -19,6 +19,12 @@ cd /workdir && \
 sh"
 ```
 
+#### Run container with specific user for permission issues
+
+```
+docker run -it --rm -p 1337:1337 --name tensorflow -u $(id -u):$(id -g) --network host -v ${PWD}:/workdir -w /workdir tensorflow/tensorflow:latest-gpu bash
+```
+
 #### Update package.json version and build
 
 ```
