@@ -100,3 +100,43 @@ Restart pc
 ```
 docker info
 ```
+
+### Remove containers with a specific image
+
+```
+docker ps -a | awk '$2 == "docker/compose:1.29.2" {print $1}' | xargs docker rm
+```
+
+### TestContainer
+
+```
+<dependency>
+    <groupId>org.testcontainers</groupId>
+    <artifactId>testcontainers</artifactId>
+    <version>1.18.1</version>
+    <scope>test</scope>
+</dependency>
+@SpringBootTest
+@Testcontainers
+class ContainersTest {
+
+    @Container
+    private static final DockerComposeContainer<?> serverContainer = new DockerComposeContainer(new File("src/test/resources/docker-compose.yml"))
+            .withExposedService("server", 8082);
+
+    @BeforeEach
+    void setUp() {
+        serverContainer.start();
+    }
+
+    @AfterEach
+    void tearDown() {
+        serverContainer.stop();
+    }
+
+    @Test
+    void test() {
+
+    }
+}
+```
