@@ -185,6 +185,7 @@ const [queries, updateQueries] = useState<Query[]>();
 
 const handleOnDragEnd = (result: DropResult) => {
   if (!result.destination) return;
+  if (result.source.index === result.destination.index) return;
   const items = Array.from(queries);
   const [reorderedItem] = items.splice(result.source.index, 1);
   items.splice(result.destination.index, 0, reorderedItem);
