@@ -38,9 +38,10 @@ git config --global push.default upstream
 ```
 
 #### Uncommit changes when accident commit
-
+**Go to correct directory**
 ```
 git reset --soft HEAD^
+git reset --soft HEAD~1
 ```
 
 #### Clone a folder from github using svn
