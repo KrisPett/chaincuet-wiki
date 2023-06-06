@@ -7,6 +7,7 @@ Is a package manager for Python packages, or modules if you like.
 - pip install package (install package)
 - pip list (list packages)
 - pip install -r requirements.txt (install packages from requirements.txt)
+- pip uninstall -r requirements.txt -y
 
 #### Conda
 
