@@ -177,3 +177,4 @@ export const mintNFTContractWeb3 = async (tokenURI: string) => {
   return contract.methods.mintNFT(signer[0], tokenURI).send({from: signer[0]});
 };
 ```
+
