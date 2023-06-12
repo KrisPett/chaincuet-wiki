@@ -27,7 +27,7 @@ Is a package manager, environment manager, and Python distribution that was crea
   system-related tasks.
 - **string** -> The string library in Python is a built-in module that provides various utility functions and constants
   for working with strings. It offers a collection of helpful tools for string manipulation, formatting, and processing.
-- **re** -> Is a built-in module in Python that provides support for regular expressions (regex). 
+- **re** -> Is a built-in module in Python that provides support for regular expressions (regex).
 - **numpy** -> NumPy (Numerical Python) is a powerful library in Python that provides support for large,
   multi-dimensional
   arrays and matrices, along with a collection of mathematical functions to operate on these arrays efficiently. It is
@@ -44,3 +44,5 @@ Is a package manager, environment manager, and Python distribution that was crea
 - **seaborn** -> Seaborn is a powerful data visualization library in Python built on top of Matplotlib. It provides a
   high-level interface for creating visually appealing and informative statistical graphics. Seaborn is designed to work
   seamlessly with Pandas DataFrames and provides easy-to-use functions for exploring and visualizing data.
+- **pillow** -> PIL stands for Python Imaging Library, which is a free and open-source additional library for the Python
+  programming language. It adds support for opening, manipulating, and saving many different image file formats.
