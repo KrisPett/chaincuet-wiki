@@ -70,4 +70,13 @@ to enable fast experimentation with deep neural networks.
 
 TensorFlow Hub is a library and platform within TensorFlow, an open-source machine learning framework. It provides a
 repository of pre-trained machine learning models, called modules, that can be reused and incorporated into new
-projects. 
+projects.
+
+### Classification Model
+
+A classification model is a type of machine learning model used to categorize or classify data into different classes or
+categories based on input features.
+
+Common examples of classification problems include email spam detection (classifying emails as either spam or not spam),
+sentiment analysis (classifying text as positive, negative, or neutral), and image classification (assigning images to
+predefined categories like cats, dogs, or cars).
