@@ -54,6 +54,7 @@ nav:
       - Services: java-spring-cloud/services.md
       - Tracing: java-spring-cloud/tracing.md
       - Reactive IO: java-spring-cloud/reactiveio.md
+      - Concurrency: java-spring-cloud/concurrency.md
   - Frontend:
       - Node: frontend/index.md
       - HTML: frontend/html.md

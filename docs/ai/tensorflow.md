@@ -33,9 +33,9 @@ there can be one or more hidden layers, each consisting of multiple neurons
 
 ```jsx
 model = keras.Sequential([
-    keras.layers.Flatten(input_shape=(28, 28)),
-    keras.layers.Dense(128, activation='relu'),
-    keras.layers.Dense(10, activation='softmax')
+    keras.layers.Flatten(input_shape = (28, 28)),
+    keras.layers.Dense(128, activation = 'relu'),
+    keras.layers.Dense(10, activation = 'softmax')
 ])
 ```
 
@@ -55,6 +55,21 @@ The hidden layer is the Dense layer with 128 neurons and the relu activation fun
 The first Dense layer with 128 neurons is the hidden layer because it is located between the input layer (the Flatten
 layer) and the output layer (the Dense layer with 10 neurons). The relu activation function is applied to the output of
 the hidden layer.
+
+### Tensor
+
+Tensor is a multi-dimensional array of values that can represent complex data structures. Tensors
+can be used to encode multi-dimensional data, such as images, which typically have three dimensions (width, height, and
+color depth). Tensors can range from zero-dimensional (scalars) to one-dimensional (vectors),
+two-dimensional (matrices), and higher-dimensional structures.
+
+```jsx
+tensor_3_d = tf.constant([[[1, 2], [3, 4]], [[5, 6], [7, 8]]], dtype=tf.float32)
+
+one_d_list = [1, 2, 3, 4, 5]
+two_d_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+three_d_list = [[[1, 2, 3], [4, 5, 6], [7, 8, 9]],[[10, 11, 12], [13, 14, 15], [16, 17, 18]]]
+```
 
 ### MNIST
 
