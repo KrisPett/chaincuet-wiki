@@ -19,6 +19,12 @@ cd /workdir && \
 sh"
 ```
 
+#### Run container and extract a tar file
+
+```
+docker run --rm -v %cd%:/data alpine tar -xzf /data/flower_photos.tgz -C /data
+```
+
 #### Run container with specific user for permission issues
 
 ```
