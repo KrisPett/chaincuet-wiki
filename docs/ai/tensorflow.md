@@ -87,11 +87,122 @@ TensorFlow Hub is a library and platform within TensorFlow, an open-source machi
 repository of pre-trained machine learning models, called modules, that can be reused and incorporated into new
 projects.
 
-### Classification Model
+### Binary Classification
 
-A classification model is a type of machine learning model used to categorize or classify data into different classes or
-categories based on input features.
+Binary classification is a supervised learning task in machine learning where the goal is to classify input data into
+one of two distinct classes or categories. The two classes are often referred to as the positive class and the negative
+class. **It does not include scenarios with more than two classes.**
 
-Common examples of classification problems include email spam detection (classifying emails as either spam or not spam),
-sentiment analysis (classifying text as positive, negative, or neutral), and image classification (assigning images to
-predefined categories like cats, dogs, or cars).
+- Spam Email Classification: Predict whether it is spam (positive class) or not spam (negative class).
+- Fraud Detection: Classify whether the transaction is fraudulent (positive class) or legitimate (negative class).
+- Disease Diagnosis: Determine whether the patient has a specific disease or is healthy (positive/negative class).
+- Sentiment Analysis: Classify whether the sentiment is positive (positive class) or negative (negative class).
+
+### Multiclass Classification
+
+In multiclass classification, the input data and associated labels are used to train a model that can make predictions
+for all the different classes. The model learns to distinguish between multiple classes and assign the most appropriate
+label to new, unseen instances.
+
+### Convolutional Neural Network (CNN)
+
+It is a type of deep neural network architecture that is particularly well-suited for tasks such as image
+classification, object detection, and image segmentation. Their ability to learn spatial hierarchies and capture local
+patterns makes them effective in understanding and interpreting visual data.
+
+## API
+
+#### Layers
+
+##### Sequential
+
+```
+  model = tf.keras.Sequential([])
+```
+
+Build a neural network model by stacking layers sequentially
+
+###### Dense
+
+- **tf.keras.layers.Dense(units=64, activation='relu', input_shape=(784,))**
+- In a neural network, a dense layer is a type of layer where each neuron in the layer is connected to every
+  neuron in the previous layer. This means that each neuron in a dense layer receives inputs from all the neurons in the
+  previous layer.
+- By stacking multiple dense layers together, you can create deep neural network architectures capable of learning
+  hierarchical representations of the input data. The choice of activation function depends on the problem at hand,
+  and different activation functions have different properties and are suited for different tasks.
+- **units** specifies the number of neurons in the dense layer, Each neuron in the layer receives input from all the
+  neurons
+  in the previous layer and produces a single output.
+- **activation** functions introduce non-linearity into the network, enabling it to learn complex patterns
+
+###### Rescaling
+
+- **tf.keras.layers.Rescaling(scale=255)**
+- The tf.keras.layers.Rescaling layer with scale=255 is used to rescale the input data by dividing it by 255.
+- In the context of image data, pixel values are often represented as integers in the range [0, 255], where 0 represents
+  black and 255 represents white (for grayscale images). By applying the Rescaling layer with scale=255, each pixel
+  value
+  in the input data will be divided by 255, resulting in rescaled pixel values in the range [0, 1]. This rescaling is
+  commonly performed to normalize the pixel values to a range that is more suitable for the model's learning process.
+- **E.g.** if a pixel value in the input data is 127, after applying the Rescaling layer, it will be rescaled to
+  127/255 =
+  0.498.
+
+###### TimeDistributed
+
+- **tf.keras.layers.TimeDistributed(net)**
+- TimeDistributed is a wrapper layer in TensorFlow's Keras API that applies a layer to every temporal slice of an input
+  tensor independently. It is useful when working with sequential or time-series data, where the input data has a
+  temporal dimension.
+- If working with video data, where each video is a sequence of frames, the TimeDistributed layer can be used to process
+  the video frames at each time step. This allows the model to learn and capture temporal dependencies and patterns
+  present in the video sequence.
+
+###### GlobalAveragePooling3D
+
+- **tf.keras.layers.GlobalAveragePooling3D()**
+- Global average pooling is a technique used to summarize the spatial and temporal information present in a 3D tensor,
+  such as video data.
+- When applied in the context of video classification or 3D object recognition, global average pooling helps to capture
+  the most important features in a concise manner. the model can effectively summarize the spatial and temporal
+  information across the 3D tensor, capturing the most important features in a concise manner. This can be beneficial
+  for tasks such as video classification or 3D object recognition.
+
+##### activation
+
+###### relu
+
+- **tf.keras.activations.relu()**
+- Rectified Linear Unit (ReLU)
+- It returns the input value if it is positive or zero, and it returns zero for any negative input value.
+- ```relu(x) = max(0, x)``` **e.g.** ```relu(20) = 20``` **or** ```relu(-20) = 0```
+- By applying ReLU activation, neural networks can learn complex non-linear mappings and capture intricate patterns in
+  the data, enabling them to solve a wide range of machine learning tasks, including image classification, object
+  detection, and natural language processing.
+
+###### sigmoid
+
+- **tf.keras.activations.sigmoid**
+- The sigmoid function squashes the input value to a range between 0 and 1.
+- ```sigmoid(x) = 1 / (1 + exp(-x))```
+
+#### Compile
+
+```
+model.compile(optimizer=, loss=, metrics= )
+```
+
+##### Optimizer
+
+###### Adam
+
+- adam
+
+##### Loss
+
+###### SparseCategoricalCrossentropy
+
+##### Metrics
+
+###### accuracy

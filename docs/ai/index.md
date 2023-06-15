@@ -1,1 +1,7 @@
-# Artificial intelligence
+# Artificial Intelligence & Machine Learning
+
+**OpenAI**
+
+**TensorFlow**
+
+**PyTorch**

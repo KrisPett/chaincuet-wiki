@@ -61,11 +61,11 @@ nav:
       - CSS Styling: frontend/css-styling.md
       - Javascript & Typescript: frontend/javascript-typescript.md
       - Gists: frontend/gists.md
-  - AI:
-      - Artificial intelligence: ai/index.md
+  - AI / ML:
+      - Overview: ai/index.md
       - OpenAI: ai/openAI.md
-      - DALL·E: ai/dalle.md
-      - Tensorflow: ai/tensorflow.md
+      - TensorFlow: ai/tensorflow.md
+      - PyTorch: ai/pytorch.md
   - Databases:
       - Databse Overview: databases/index.md
       - Postgres: databases/postgres.md
