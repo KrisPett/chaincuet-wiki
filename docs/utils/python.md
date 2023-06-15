@@ -46,3 +46,13 @@ Is a package manager, environment manager, and Python distribution that was crea
   seamlessly with Pandas DataFrames and provides easy-to-use functions for exploring and visualizing data.
 - **pillow** -> PIL stands for Python Imaging Library, which is a free and open-source additional library for the Python
   programming language. It adds support for opening, manipulating, and saving many different image file formats.
+- **tqdm** -> taqaddum is a Python library for adding progress bars to loops and iterable objects, providing real-time
+  feedback on the progress and estimated time remaining.
+- **remotezip** -> remotezip is a Python library for working with remote zip files without downloading the entire
+  archive, allowing extraction of specific files and retrieval of file information.
+- **opencv-python** -> opencv-python is a Python library that provides computer vision and image processing capabilities
+  through a Python interface for the OpenCV (Open Source Computer Vision) library. It allows performing various tasks
+  such as image manipulation, object detection and tracking, facial recognition, image filtering, and more.
+- **imageio** -> imageio is a Python library for reading and writing various image formats, allowing image I/O
+  operations and manipulation. It provides a simple interface to handle tasks like reading images into numpy arrays,
+  writing numpy arrays to image files, and extracting metadata.
