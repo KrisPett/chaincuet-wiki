@@ -110,6 +110,17 @@ It is a type of deep neural network architecture that is particularly well-suite
 classification, object detection, and image segmentation. Their ability to learn spatial hierarchies and capture local
 patterns makes them effective in understanding and interpreting visual data.
 
+### Gradients
+
+Gradients represent the rate of change of a loss function with respect to the parameters of a model. They provide
+information on how the parameters should be adjusted to minimize the loss, and optimizers utilize this information to
+update the model's parameters during training.
+
+### CrossEntropy
+
+Cross-entropy quantifies how well a model's predictions match the true labels. By minimizing cross-entropy, the model
+gets better at making accurate predictions. Cross-entropy is primarily used as a loss function in machine learning
+
 ## API
 
 #### Layers
@@ -121,6 +132,12 @@ patterns makes them effective in understanding and interpreting visual data.
 ```
 
 Build a neural network model by stacking layers sequentially
+
+###### Conv2D
+
+- **tf.keras.layers.Conv2D()**
+- Conv2D layer is used to perform 2D convolution on input tensors. Convolutional layers are commonly used in computer
+  vision tasks to extract relevant features from images or spatial data.
 
 ###### Dense
 
@@ -135,6 +152,51 @@ Build a neural network model by stacking layers sequentially
   neurons
   in the previous layer and produces a single output.
 - **activation** functions introduce non-linearity into the network, enabling it to learn complex patterns
+
+###### Dropout
+
+- **tf.keras.layers.Dropout()**
+- Dropout is a regularization technique that helps prevent overfitting in neural networks by randomly setting a fraction
+  of input units (neuron) to 0 at each update during training.
+
+###### Embedding
+
+- **tf.keras.layers.Embedding()**
+- Embedding is a layer that is used for embedding categorical or discrete input data into a continuous vector
+  representation. It is commonly used in **natural language processing (NLP)** tasks, where words or tokens are
+  transformed into dense, low-dimensional vectors that capture semantic relationships.
+
+###### Flatten
+
+- **tf.keras.layers.Flatten()**
+- Flatten is a layer that reshapes the input tensor into a 1-dimensional array. It is typically used as the first layer
+  in a neural network model to convert multi-dimensional input data, such as images, into a flat vector.
+
+###### GlobalAveragePooling3D
+
+- **tf.keras.layers.GlobalAveragePooling3D()**
+- Global average pooling is a technique used to summarize the spatial and temporal information present in a 3D tensor,
+  such as video data.
+- When applied in the context of video classification or 3D object recognition, global average pooling helps to capture
+  the most important features in a concise manner. the model can effectively summarize the spatial and temporal
+  information across the 3D tensor, capturing the most important features in a concise manner. This can be beneficial
+  for tasks such as video classification or 3D object recognition.
+
+###### GlobalAveragePooling1D
+
+- **tf.keras.layers.GlobalAveragePooling1D()**
+- GlobalAveragePooling1D layer is commonly used in sequence-based models, such as text classification or sentiment
+  analysis, where the length of the input sequence may vary. It provides a way to summarize the temporal information in
+  a fixed-length representation by capturing the average value of each feature across all timesteps.
+
+###### MaxPooling2D
+
+- **tf.keras.layers.MaxPooling2D()**
+- The MaxPooling2D() layer helps in reducing the spatial dimensions of the feature maps, which can reduce the
+  computational complexity and control overfitting by promoting spatial invariance. It is commonly used after
+  convolutional layers to progressively downsample the feature maps while retaining the most important features.
+- MaxPooling2D layer is a key component in CNN architectures for extracting relevant features and spatial
+  information while reducing the spatial dimensions of the feature maps.
 
 ###### Rescaling
 
@@ -158,16 +220,6 @@ Build a neural network model by stacking layers sequentially
 - If working with video data, where each video is a sequence of frames, the TimeDistributed layer can be used to process
   the video frames at each time step. This allows the model to learn and capture temporal dependencies and patterns
   present in the video sequence.
-
-###### GlobalAveragePooling3D
-
-- **tf.keras.layers.GlobalAveragePooling3D()**
-- Global average pooling is a technique used to summarize the spatial and temporal information present in a 3D tensor,
-  such as video data.
-- When applied in the context of video classification or 3D object recognition, global average pooling helps to capture
-  the most important features in a concise manner. the model can effectively summarize the spatial and temporal
-  information across the 3D tensor, capturing the most important features in a concise manner. This can be beneficial
-  for tasks such as video classification or 3D object recognition.
 
 ##### activation
 
@@ -193,16 +245,57 @@ Build a neural network model by stacking layers sequentially
 model.compile(optimizer=, loss=, metrics= )
 ```
 
-##### Optimizer
+##### Optimizers
+
+Optimizers are classes that implement various optimization algorithms used to update the parameters of a
+machine learning model during the training process. The goal of an optimizer is to minimize the loss or error of the
+model by iteratively adjusting the model's parameters based on the gradients of the loss function.
 
 ###### Adam
 
-- adam
+- **tf.keras.optimizers.Adam(learning_rate=0.001)**
+- **Adam** stands for **Adaptive Moment Estimation**
+- It is a variant of the stochastic gradient descent (SGD) algorithm that adapts the learning rate for each parameter in
+  the neural network.
+- The Adam optimizer combines two main ideas: adaptive learning rates and momentum. The adaptive
+  learning rate means that the algorithm automatically adjusts the learning rate for each parameter based on their past
+  gradients. This allows the algorithm to converge faster and more efficiently compared to using a fixed learning rate.
 
 ##### Loss
 
+A loss function takes both the predicted values and the true values as input and computes a scalar value that quantifies
+the discrepancy between them. It helps guide the optimization process during training by evaluating the model's
+performance and guiding it towards minimizing the error.
+
+###### BinaryCrossentropy
+
+- **tf.keras.losses.BinaryCrossentropy**
+- BinaryCrossentropy is a loss function specifically designed for binary classification problems. It is commonly used
+  when the task involves predicting binary outcomes, where each sample can belong to one of two classes.
+
 ###### SparseCategoricalCrossentropy
+
+- **tf.keras.losses.SparseCategoricalCrossentropy**
+- SparseCategoricalCrossentropy is a loss function commonly used for multi-class classification problems where the true
+  labels are integers representing the class labels.
 
 ##### Metrics
 
-###### accuracy
+Metrics are used to evaluate the performance of machine learning models during training and evaluation.
+
+###### Accuracy
+
+- **metrics=["accuracy"]**
+- Is a metric used to measure the accuracy of a classification model during training and evaluation.
+
+###### MeanAbsoluteError
+
+- **metrics=['mae']**
+- Is a metric used to measure the mean absolute error between the predicted outputs and the true values during training
+  and evaluation.
+
+###### BinaryCrossentropy
+
+- **metrics=[tf.keras.metrics.BinaryCrossentropy(from_logits=True, name='binary_crossentropy'),'accuracy'])**
+- The binary cross-entropy loss measures the discrepancy between the predicted probabilities and the true binary labels,
+  while the accuracy metric provides a measure of the model's classification accuracy.
