@@ -133,11 +133,23 @@ gets better at making accurate predictions. Cross-entropy is primarily used as a
 
 Build a neural network model by stacking layers sequentially
 
+###### CategoryEncoding
+
+- **tf.keras.layers.CategoryEncoding**
+- CategoryEncoding class is a preprocessing layer that encodes integer features into a categorical encoding. It is
+  used to represent discrete or categorical data in a format that can be fed into a machine learning model.
+
 ###### Conv2D
 
 - **tf.keras.layers.Conv2D()**
 - Conv2D layer is used to perform 2D convolution on input tensors. Convolutional layers are commonly used in computer
   vision tasks to extract relevant features from images or spatial data.
+
+###### Concatenate
+
+- **tf.keras.layers.Concatenate()**
+- Concatenate class is used to concatenate multiple input tensors along a specified axis. It takes a list of tensors
+  as input and returns a single tensor that is the concatenation of all the input tensors along the specified axis.
 
 ###### Dense
 
@@ -198,6 +210,13 @@ Build a neural network model by stacking layers sequentially
 - MaxPooling2D layer is a key component in CNN architectures for extracting relevant features and spatial
   information while reducing the spatial dimensions of the feature maps.
 
+###### Normalization
+
+- **tf.keras.layers.Normalization()**
+- Normalization is used to normalize the activations of the previous layer for each example in a batch independently. It
+  applies a transformation that maintains the mean activation within each example close to 0 and the activation standard
+  deviation close to 1.
+
 ###### Rescaling
 
 - **tf.keras.layers.Rescaling(scale=255)**
@@ -210,6 +229,13 @@ Build a neural network model by stacking layers sequentially
 - **E.g.** if a pixel value in the input data is 127, after applying the Rescaling layer, it will be rescaled to
   127/255 =
   0.498.
+
+###### StringLookup
+
+- **tf.keras.layers.StringLookup**
+- StringLookup class is a preprocessing layer that maps string features to integer indices. It is often used in
+  natural language processing tasks to convert textual data into a numerical representation that can be fed into a
+  machine learning model.
 
 ###### TimeDistributed
 
@@ -278,6 +304,13 @@ performance and guiding it towards minimizing the error.
 - **tf.keras.losses.SparseCategoricalCrossentropy**
 - SparseCategoricalCrossentropy is a loss function commonly used for multi-class classification problems where the true
   labels are integers representing the class labels.
+
+###### MeanSquaredError
+
+- **tf.keras.losses.MeanSquaredError**
+- MeanSquaredError is a loss function in TensorFlow's Keras API that calculates the mean squared error (MSE) between the
+  predicted and target values of a regression problem. MSE is a commonly used loss function for regression tasks.
+- The formula for calculating MSE is: **MSE = (1/n) * Σ(y_true - y_pred)^2**
 
 ##### Metrics
 
