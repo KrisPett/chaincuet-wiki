@@ -201,6 +201,13 @@ Build a neural network model by stacking layers sequentially
   analysis, where the length of the input sequence may vary. It provides a way to summarize the temporal information in
   a fixed-length representation by capturing the average value of each feature across all timesteps.
 
+###### IntegerLookup
+
+- **tf.keras.layers.IntegerLookup()**
+- IntegerLookup is a preprocessing layer in TensorFlow that maps integer features to contiguous ranges. It can be used
+  to convert integer inputs into integer outputs using a table-based lookup. The layer also provides options for
+  handling out-of-vocabulary (OOV) tokens.
+
 ###### MaxPooling2D
 
 - **tf.keras.layers.MaxPooling2D()**

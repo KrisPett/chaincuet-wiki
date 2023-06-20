@@ -37,6 +37,8 @@ Is a package manager, environment manager, and Python distribution that was crea
   Separated Values), Excel spreadsheets, SQL databases, and more. This versatility allows data scientists to easily load
   data from different sources, perform data analysis and preprocessing using Pandas, and then save the processed data
   back into the desired format for further use in machine learning pipelines.
+- **pprint** -> stands for "pretty print," and it is a Python module that provides a way to format and display data
+  structures in a more readable and visually appealing manner. It is part of the standard library in Python.
 - **matplotlib** -> Matplotlib is a widely used data visualization library for Python. It provides a comprehensive set
   of functions and classes for creating high-quality static, animated, and interactive visualizations in Python.
   Matplotlib allows you to create a wide range of plots, charts, and graphs, making it a versatile tool for data
