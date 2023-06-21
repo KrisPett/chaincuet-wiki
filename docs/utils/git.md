@@ -62,6 +62,12 @@ svn export https://github.com/marcel-dempers/docker-development-youtube-series/t
 
 ### Gitlab
 
+#### Search Repo
+
+```
+https://gitlab.com/projects/{project_id}
+```
+
 #### Private Repo
 
 - Settings -> General -> Visibility -> Allow anyone to pull from Package Registry
