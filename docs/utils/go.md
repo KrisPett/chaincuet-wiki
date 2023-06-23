@@ -1,5 +1,8 @@
 #### Setup
 
+- go get ./... (install all dependencies)
+
+
 ```
 mkdir aws-go-examples
 cd aws-go-examples
