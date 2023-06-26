@@ -121,6 +121,15 @@ update the model's parameters during training.
 Cross-entropy quantifies how well a model's predictions match the true labels. By minimizing cross-entropy, the model
 gets better at making accurate predictions. Cross-entropy is primarily used as a loss function in machine learning
 
+## Models
+
+#### BERT
+
+BERT (Bidirectional Encoder Representations from Transformers) is a pre-trained transformer-based model for natural
+language processing (NLP) tasks. It captures bidirectional context by considering both preceding and following words,
+leading to a deep understanding of language semantics. BERT achieves state-of-the-art results by fine-tuning its
+pre-trained representations on specific NLP tasks.
+
 ## API
 
 #### Layers

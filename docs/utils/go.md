@@ -1,7 +1,8 @@
-#### Setup
-
+- go mod init test (create go project)
 - go get ./... (install all dependencies)
+- go get github.com/stretchr/testify/assert (install specific dependencies)
 
+#### Setup
 
 ```
 mkdir aws-go-examples
@@ -14,7 +15,8 @@ go get -u github.com/gin-gonic/gin
 go run main.go
 ```
 
-- The cmd/ directory contains the main applications for the project. Each subdirectory under cmd/ represents a separate application.
+- The cmd/ directory contains the main applications for the project. Each subdirectory under cmd/ represents a separate
+  application.
 
 - The internal/ directory contains packages that are used only by the main applications in cmd/.
 
@@ -25,7 +27,6 @@ go run main.go
 - The go.mod file contains the module definition for the project.
 
 - The go.sum file contains the cryptographic hashes of the dependencies used in the project.
-
 
 ```
 project-root/
@@ -44,9 +45,14 @@ project-root/
 └── go.sum
 ```
 
-In this structure, the cmd/ directory holds the main application executable, which in this case would be the server. The internal/ directory contains the internal packages used by the application, including config/, handlers/, middleware/, models/, and routes/. The pkg/ directory is used to store reusable packages that can be used by other Go projects. The vendor/ directory holds the external dependencies of the project.
+In this structure, the cmd/ directory holds the main application executable, which in this case would be the server. The
+internal/ directory contains the internal packages used by the application, including config/, handlers/, middleware/,
+models/, and routes/. The pkg/ directory is used to store reusable packages that can be used by other Go projects. The
+vendor/ directory holds the external dependencies of the project.
 
-This structure follows the standard layout recommended by the Go community and makes it easier to organize the code in a modular and scalable way. However, this is just a recommendation and you are free to organize your code in a way that works best for you and your project.
+This structure follows the standard layout recommended by the Go community and makes it easier to organize the code in a
+modular and scalable way. However, this is just a recommendation and you are free to organize your code in a way that
+works best for you and your project.
 
 **Testing**
 
@@ -54,7 +60,7 @@ This structure follows the standard layout recommended by the Go community and m
 
 **Object-Relational Mapping (ORM)**
 
--  go get -u gorm.io/gorm 
+- go get -u gorm.io/gorm
 
 **Build project**
 
