@@ -64,11 +64,11 @@ color depth). Tensors can range from zero-dimensional (scalars) to one-dimension
 two-dimensional (matrices), and higher-dimensional structures.
 
 ```jsx
-tensor_3_d = tf.constant([[[1, 2], [3, 4]], [[5, 6], [7, 8]]], dtype=tf.float32)
+tensor_3_d = tf.constant([[[1, 2], [3, 4]], [[5, 6], [7, 8]]], dtype = tf.float32)
 
 one_d_list = [1, 2, 3, 4, 5]
 two_d_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-three_d_list = [[[1, 2, 3], [4, 5, 6], [7, 8, 9]],[[10, 11, 12], [13, 14, 15], [16, 17, 18]]]
+three_d_list = [[[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[10, 11, 12], [13, 14, 15], [16, 17, 18]]]
 ```
 
 ### MNIST
@@ -120,6 +120,32 @@ update the model's parameters during training.
 
 Cross-entropy quantifies how well a model's predictions match the true labels. By minimizing cross-entropy, the model
 gets better at making accurate predictions. Cross-entropy is primarily used as a loss function in machine learning
+
+### Unsupervised Learning
+
+Unsupervised learning is a machine learning approach where data is unlabeled. It aims to discover patterns, structures,
+or relationships within the data. It does not rely on predefined labels or target outputs for training.
+
+- An example of unsupervised learning is clustering customer data for market segmentation. Let's say you have a dataset
+  of customer information such as age, income, and purchase history, but you don't have any predefined labels or
+  categories. Using unsupervised learning algorithms like k-means clustering, you can group customers based on their
+  similarities in terms of these features. The algorithm will automatically identify clusters or segments within the
+  data, allowing you to discover patterns and potentially tailor marketing strategies or product offerings to different
+  customer groups.
+
+### Supervised Learning
+
+In supervised learning, the model is trained on labeled data where each data point has a corresponding target output or
+label. The goal is to learn a mapping between the input data and the desired output based on the provided labels.
+Supervised learning algorithms are guided by these labeled examples to make predictions or classify new, unseen data.
+Unlike unsupervised learning, supervised learning relies on explicit supervision and predefined labels to train the
+model.
+
+- An example of supervised learning is training a model to classify emails as either "spam" or "not spam." In this
+  scenario, you would have a labeled dataset where each email is labeled as either spam or not spam. The model is
+  trained using this labeled data to learn patterns and features that distinguish between spam and non-spam emails. Once
+  trained, the model can be used to predict the class (spam or not spam) of new, unseen emails based on the patterns it
+  has learned from the labeled examples.
 
 ## Models
 
