@@ -26,6 +26,8 @@ Is a package manager, environment manager, and Python distribution that was crea
   offers various functions for working with files and directories, managing processes, accessing environment variables,
   and more. The os module serves as a bridge between Python and the underlying operating system, allowing you to perform
   system-related tasks.
+- **shutil** -> 'shell utilities' is a Python module for file and directory operations. It provides functions for tasks
+  like copying, moving, and removing files and directories. It simplifies common file system operations in Python.
 - **string** -> The string library in Python is a built-in module that provides various utility functions and constants
   for working with strings. It offers a collection of helpful tools for string manipulation, formatting, and processing.
 - **re** -> Is a built-in module in Python that provides support for regular expressions (regex).
