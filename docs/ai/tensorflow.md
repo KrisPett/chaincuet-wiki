@@ -169,6 +169,11 @@ to different parts of the input sequence when capturing contextual relationships
 the model has 8 self-attention heads. A higher number of attention heads allows the model to capture more fine-grained
 dependencies and interactions between words in the input.
 
+**When choosing model we need to choose the correct preprocess model as well**.
+Using the correct preprocessing model ensures that the text data is processed in a manner consistent with the
+tokenization and formatting expectations of the BERT model. It helps transform the raw text into the appropriate input
+format, including tokenization, subword encoding, special token addition, and attention mask generation.
+
 #### BERT
 
 BERT (Bidirectional Encoder Representations from Transformers) is a pre-trained transformer-based model for natural
