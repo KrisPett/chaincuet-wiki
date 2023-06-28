@@ -149,6 +149,26 @@ model.
 
 ## Models
 
+**small_bert/bert_en_uncased_L-4_H-512_A-8**
+
+**(L=4 hidden layers), (hidden size of H=512), and A=8 (attention heads)**
+
+**L-4**: This refers to the number of layers in the model. In this case, "L-4" means that the model consists of 4
+layers.
+The number of layers in a model affects its capacity to capture complex patterns and relationships in the data.
+Generally, a higher number of layers allows for better representation learning but comes at the cost of increased
+computational resources.
+
+**H-512**: This indicates the hidden size or the dimensionality of the hidden states in the model. In this case, "H-512"
+means that the hidden size is 512. The hidden size determines the capacity of the model to capture and represent
+information. A larger hidden size allows for more expressive representations but also requires more memory and
+computational resources.
+
+**A-8**: This represents the number of self-attention heads in the model. Self-attention heads allow the model to attend
+to different parts of the input sequence when capturing contextual relationships. With "A-8" in this case, it means that
+the model has 8 self-attention heads. A higher number of attention heads allows the model to capture more fine-grained
+dependencies and interactions between words in the input.
+
 #### BERT
 
 BERT (Bidirectional Encoder Representations from Transformers) is a pre-trained transformer-based model for natural
