@@ -78,7 +78,7 @@ nav:
       - BNB Chain: blockchain/bnb.md
       - Hyperledger: blockchain/hyperledger.md
   - Linux:
-      - Linux Overview: linux/index.md
+      - Overview: linux/index.md
       - Alias: linux/alias.md
   - Utils: 
       - Utils Overview: utils/index.md

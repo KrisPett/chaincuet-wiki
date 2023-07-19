@@ -1,5 +1,4 @@
-# Collection of Linux Stuff
-
+<img src="https://images.chaincuet.com/wiki/linux-arc2.jpeg" alt="linux" width="400" height="400">
 
 ### Linux Commands
 
