@@ -30,19 +30,20 @@ theme:
 nav:
   - Welcome:
       - "": index.md
-  - AWS / DevOps:
-      - AWS Overview: aws/index.md
-      - S3 & Cloudfront: aws/s3-cloudfront.md
-      - Route53: aws/route53.md
-      - AWS Lambda & API Gateway: aws/aws-lambda-api-gateway.md
-      - ECS/ECR: aws/ecs.md
-      - DynamoDB: aws/dynamoDB.md
-      - Terraform: aws/terraform.md
-      - VPN: aws/vpn.md
-      - Nginx: aws/nginx.md
-      - Vault: aws/vault.md
-      - Keycloak: aws/keycloak.md
-      - Email: aws/email.md
+  - DevOps:
+      - Overview: devops/index.md
+      - AWS | S3 & Cloudfront: devops/s3-cloudfront.md
+      - AWS | Route53: devops/route53.md
+      - AWS | Lambda & API Gateway: devops/aws-lambda-api-gateway.md
+      - AWS | ECS/ECR: devops/ecs.md
+      - AWS | DynamoDB: devops/dynamoDB.md
+      - AWS | VPN: devops/vpn.md
+      - Azure | Cosmos: devops/vpn.md
+      - Terraform: devops/terraform.md
+      - Nginx: devops/nginx.md
+      - Vault: devops/vault.md
+      - Keycloak: devops/keycloak.md
+      - Email: devops/email.md
   - Docker & Kubernetes:
       - Overview: docker-kubernetes/index.md
       - Docker: docker-kubernetes/docker.md
@@ -67,7 +68,7 @@ nav:
       - TensorFlow: ai/tensorflow.md
       - PyTorch: ai/pytorch.md
   - Databases:
-      - Databse Overview: databases/index.md
+      - Database Overview: databases/index.md
       - Postgres: databases/postgres.md
       - Mysql: databases/mysql.md
       - MongoDB: databases/mongodb.md
