@@ -82,7 +82,7 @@ nav:
   - Linux:
       - Overview: linux/index.md
       - Alias: linux/alias.md
-  - Utils: 
+  - Utils:
       - Utils Overview: utils/index.md
       - Emoji: utils/emoji.md
       - Git: utils/git.md
