@@ -40,6 +40,7 @@ nav:
       - AWS | VPN: devops/vpn.md
       - Azure | Storage: devops/az-storage.md
       - Azure | Cosmos DB: devops/az-cosmosdb.md
+      - Azure | Active Directory: devops/az-default-directory.md
       - Terraform: devops/terraform.md
       - Nginx: devops/nginx.md
       - Vault: devops/vault.md
