@@ -206,6 +206,13 @@ shares). you will only need 3 out of the 5 key shares to reconstruct the root ke
 
 Change owner of files **sudo chown -R systemd-network .**
 
+**Use same encryption as nginx**
+
+```
+ssl_certificate /etc/letsencrypt/live/vault.example.com/fullchain.pem; # managed by Certbot
+ssl_certificate_key /etc/letsencrypt/live/vault.example.com/privkey.pem; # managed by Certbot
+```
+
 ```
 openssl genpkey -algorithm RSA -out localhost.key
 openssl req -new -key localhost.key -out localhost.csr -subj "/CN=localhost"
@@ -214,7 +221,7 @@ openssl x509 -req -days 365 -in localhost.csr -signkey localhost.key -out localh
 
 ```
 openssl genpkey -algorithm RSA -out vault.key
-openssl req -new -key vault.key -out vault.csr -subj "/CN=vault.chaincuet.com"
+openssl req -new -key vault.key -out vault.csr -subj "/CN=vault.example.com"
 openssl x509 -req -days 365 -in vault.csr -signkey vault.key -out vault.crt
 sudo chown -R systemd-network .
 ```
