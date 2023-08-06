@@ -213,7 +213,8 @@ openssl x509 -req -days 365 -in localhost.csr -signkey localhost.key -out localh
 ```
 
 ```
-openssl genpkey -algorithm RSA -out vault.example.com.key
-openssl req -new -key vault.example.com.key -out vault.example.com.csr -subj "/CN=vault.example.com"
-certbot certonly --standalone -d vault.example.com
+openssl genpkey -algorithm RSA -out vault.key
+openssl req -new -key vault.key -out vault.csr -subj "/CN=vault.chaincuet.com"
+openssl x509 -req -days 365 -in vault.csr -signkey vault.key -out vault.crt
+sudo chown -R systemd-network .
 ```
