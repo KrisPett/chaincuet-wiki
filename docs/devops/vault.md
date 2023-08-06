@@ -3,6 +3,7 @@
 [https://github.com/visa2learn/spring-cloud-vault-db-cred-rotation](https://github.com/visa2learn/spring-cloud-vault-db-cred-rotation)
 
 ### init
+
 ```
 docker-compose -f docker-compose-vault.yml up -d --build
 docker exec -it <...> bash
@@ -18,6 +19,7 @@ export VAULT_TOKEN=your_token_goes_here
 ```
 
 ### Usefull commands:
+
 ```
 export VAULT_ADDR=http://127.0.0.1:8200
 
@@ -39,6 +41,7 @@ vault kv get secret/psql
 ```
 
 ### Config vault with postgres example
+
 ```
 vault secrets disable database
 vault secrets enable database
@@ -59,4 +62,128 @@ vault write database/roles/loginToPostgres db_name=postgresql \
 
 vault list database/roles/
 vault read database/creds/loginToPostgres
+```
+
+### Prod Setup
+
+#### docker-compose.yml
+
+```
+version: '3.5'
+
+services:
+  vault:
+    build:
+      context: ./vault
+      dockerfile: Dockerfile
+    container_name: vault-1
+    ports:
+      - 8200:8200
+    volumes:
+      - ./vault/config:/vault/config
+      - ./vault/policies:/vault/policies
+      - ./vault/data:/vault/data
+      - ./vault/logs:/vault/logs
+    environment:
+      - VAULT_ADDR=http://127.0.0.1:8200
+      - VAULT_API_ADDR=http://127.0.0.1:8200
+    command: server -config=/vault/config/vault-config.json
+    cap_add:
+      - IPC_LOCK
+```
+
+#### Dockerfile
+
+```
+# base image
+FROM alpine:3.14
+
+# set vault version
+ENV VAULT_VERSION 1.8.2
+
+# create a new directory
+RUN mkdir /vault
+
+# download dependencies
+RUN apk --no-cache add \
+      bash \
+      ca-certificates \
+      wget
+
+# download and set up vault
+RUN wget --quiet --output-document=/tmp/vault.zip https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip && \
+    unzip /tmp/vault.zip -d /vault && \
+    rm -f /tmp/vault.zip && \
+    chmod +x /vault
+
+# update PATH
+ENV PATH="PATH=$PATH:$PWD/vault"
+
+# add the config file
+COPY ./config/vault-config.json /vault/config/vault-config.json
+
+# expose port 8200
+EXPOSE 8200
+
+# run vault
+ENTRYPOINT ["vault"]
+```
+
+#### ~/vault/config
+
+vault-config.json
+
+```
+{
+  "backend": {
+    "file": {
+      "path": "vault/data"
+    }
+  },
+  "listener": {
+    "tcp":{
+      "address": "0.0.0.0:8200",
+      "tls_disable": 1
+    }
+  },
+  "ui": true
+}
+```
+
+#### Scripts
+
+**auth.py**
+
+```
+#!/usr/bin/env python3
+
+import hvac
+
+def init_server():
+
+    client = hvac.Client(url='http://127.0.0.1:8200')
+    print(f" Is client authenticated: {client.is_authenticated()}")
+
+init_server()
+```
+
+**read.py**
+
+```
+#!/usr/bin/env python3
+
+import hvac
+
+def read_secret():
+
+    client = hvac.Client(url='http://127.0.0.1:8200')
+    print(f" Is client authenticated: {client.is_authenticated()}")
+    read_response = client.secrets.kv.v1.read_secret(path='psql')
+    print(read_response['data']['password'])
+    
+    return read_response['data']['password']
+
+read_secret()
+
+
 ```
