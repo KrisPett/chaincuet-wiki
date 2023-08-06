@@ -18,7 +18,7 @@ vault login
 export VAULT_TOKEN=your_token_goes_here
 ```
 
-### Usefull commands:
+### Usefully commands:
 
 ```
 export VAULT_ADDR=http://127.0.0.1:8200
@@ -65,6 +65,8 @@ vault read database/creds/loginToPostgres
 ```
 
 ### Prod Setup
+
+[https://github.com/KQT3/vault-setup](https://github.com/KQT3/vault-setup)
 
 #### docker-compose.yml
 
@@ -184,6 +186,34 @@ def read_secret():
     return read_response['data']['password']
 
 read_secret()
+```
 
+#### Setup using UI
 
+- Key Shares (Default): 5 key shares
+- Key Threshold (Default): 3 key shares
+
+In the default setup, when you initialize Vault for the first time, the root key will be split into 5 parts (key
+shares). you will only need 3 out of the 5 key shares to reconstruct the root key and unseal Vault.
+
+- Enable new engine
+- KV
+- Create secret
+
+#### Create tls
+
+**https://localhost:8200/ui/vault**
+
+Change owner of files **sudo chown -R systemd-network .**
+
+```
+openssl genpkey -algorithm RSA -out localhost.key
+openssl req -new -key localhost.key -out localhost.csr -subj "/CN=localhost"
+openssl x509 -req -days 365 -in localhost.csr -signkey localhost.key -out localhost.crt
+```
+
+```
+openssl genpkey -algorithm RSA -out vault.example.com.key
+openssl req -new -key vault.example.com.key -out vault.example.com.csr -subj "/CN=vault.example.com"
+certbot certonly --standalone -d vault.example.com
 ```
