@@ -123,11 +123,17 @@ docker ps -a | awk '$2 == "docker/compose:1.29.2" {print $1}' | xargs docker rm
 
 ```
 <dependency>
-    <groupId>org.testcontainers</groupId>
-    <artifactId>testcontainers</artifactId>
-    <version>1.18.1</version>
-    <scope>test</scope>
-</dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>testcontainers</artifactId>
+      <version>1.18.1</version>
+      <scope>test</scope>
+  </dependency>
+  <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>1.18.1</version>
+      <scope>test</scope>
+  </dependency>
 @SpringBootTest
 @Testcontainers
 class ContainersTest {
