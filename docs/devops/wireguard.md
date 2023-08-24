@@ -14,7 +14,7 @@
   PublicKey =
   PresharedKey =
   Endpoint = <>
-  AllowedIPs = 000.000.000.0/24,0.0.0.0/0 # to allow internet access
+  AllowedIPs = 000.000.000.0/24,0.0.0.0/0,::/0 # to allow internet access
 ```
 
 - sudo wg-quick up peer1
