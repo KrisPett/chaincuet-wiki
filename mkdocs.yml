@@ -52,6 +52,7 @@ nav:
       - Overview: docker-kubernetes/index.md
       - Docker: docker-kubernetes/docker.md
       - Kubernetes Commands: docker-kubernetes/kubernetes-commands.md
+      - Microk8s: docker-kubernetes/microk8s.md
       - Kubernetes Production: docker-kubernetes/kubernetes-production.md
   - Java / Spring Cloud:
       - Spring Cloud Overview: java-spring-cloud/index.md
