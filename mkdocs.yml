@@ -46,6 +46,8 @@ nav:
       - Vault: devops/vault.md
       - Keycloak: devops/keycloak.md
       - Email: devops/email.md
+      - Wireguard: devops/wireguard.md
+
   - Docker & Kubernetes:
       - Overview: docker-kubernetes/index.md
       - Docker: docker-kubernetes/docker.md

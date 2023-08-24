@@ -9,6 +9,7 @@ sudo chown -R work ./
 ```
 
 #### Check OS
+
 ```
 cat /etc/os-release
 ```
@@ -17,4 +18,10 @@ cat /etc/os-release
 
 ```
 cat /etc/passwd
+```
+
+#### Change password
+
+```
+sudo passwd <username>
 ```
