@@ -1,6 +1,7 @@
 #### Setup
 
 - sudo apt install wireguard
+- sudo apt install openresolv # sometimes necessary
 - touch /etc/wireguard/peer1.conf
 
 ```
