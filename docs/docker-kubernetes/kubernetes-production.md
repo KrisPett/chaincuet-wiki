@@ -1,40 +1,63 @@
 https://kubernetes.github.io/ingress-nginx/deploy/#network-load-balancer-nlb
 
-## Information
+## Key Concepts
 
 ### MasterNodes and WorkerNodes in Kubernetes
 
-In a Kubernetes cluster, the master nodes are responsible for managing the state of the cluster and coordinating the work of the worker nodes. The worker nodes are responsible for running the containers that make up the applications and services deployed in the cluster.
+In a Kubernetes cluster, the master nodes are responsible for managing the state of the cluster and coordinating the
+work of the worker nodes. The worker nodes are responsible for running the containers that make up the applications and
+services deployed in the cluster.
 
-In a cluster running on EC2 servers, the master nodes can run on a separate EC2 instance or instances from the worker nodes. This allows for better control over the resources and performance of the cluster, and provides a level of redundancy in case one of the instances fails.
+In a cluster running on EC2 servers, the master nodes can run on a separate EC2 instance or instances from the worker
+nodes. This allows for better control over the resources and performance of the cluster, and provides a level of
+redundancy in case one of the instances fails.
 
-The master nodes typically need more resources and a more robust network connection than the worker nodes, as they are responsible for maintaining the state of the cluster, scheduling pods, and serving the API. Running the master nodes on separate EC2 instances helps to ensure that they have the resources they need to perform their tasks, and that any failures of the worker nodes will not affect the performance of the master nodes.
+The master nodes typically need more resources and a more robust network connection than the worker nodes, as they are
+responsible for maintaining the state of the cluster, scheduling pods, and serving the API. Running the master nodes on
+separate EC2 instances helps to ensure that they have the resources they need to perform their tasks, and that any
+failures of the worker nodes will not affect the performance of the master nodes.
 
-The worker nodes can run on different EC2 instances for a number of reasons. For example, you might want to separate the worker nodes onto different instances to better manage resource usage, or to provide redundancy in case one of the instances fails. Running worker nodes on different instances also allows you to scale the number of worker nodes up or down as needed, to accommodate changes in the workload.
+The worker nodes can run on different EC2 instances for a number of reasons. For example, you might want to separate the
+worker nodes onto different instances to better manage resource usage, or to provide redundancy in case one of the
+instances fails. Running worker nodes on different instances also allows you to scale the number of worker nodes up or
+down as needed, to accommodate changes in the workload.
 
-In summary, the master and worker nodes in a Kubernetes cluster running on EC2 servers can run on different instances to better manage resources, provide redundancy, and allow for scalability. The configuration of the cluster depends on the specific needs and requirements of the deployment.
+In summary, the master and worker nodes in a Kubernetes cluster running on EC2 servers can run on different instances to
+better manage resources, provide redundancy, and allow for scalability. The configuration of the cluster depends on the
+specific needs and requirements of the deployment.
 
 ### Kops resources
 
 []: #
 
-Kops creates several resources in an Amazon Web Services (AWS) account when spinning up a Kubernetes cluster. These resources include:
+Kops creates several resources in an Amazon Web Services (AWS) account when spinning up a Kubernetes cluster. These
+resources include:
 
-- EC2 instances: Kops creates EC2 instances for the nodes in the cluster, which run the Kubernetes components and host the containers.
+- EC2 instances: Kops creates EC2 instances for the nodes in the cluster, which run the Kubernetes components and host
+  the containers.
 
 - VPC: Kops creates a Virtual Private Cloud (VPC) to contain the resources for the cluster.
 
 - Security Groups: Kops creates security groups to control network access to the instances in the cluster.
 
-- Auto Scaling groups: Kops creates Auto Scaling groups to manage the number of nodes in the cluster, ensuring that the cluster has the desired number of nodes even in the case of node failures.
+- Auto Scaling groups: Kops creates Auto Scaling groups to manage the number of nodes in the cluster, ensuring that the
+  cluster has the desired number of nodes even in the case of node failures.
 
-- Load Balancers: Kops creates load balancers to distribute incoming traffic to the nodes in the cluster, ensuring that the cluster is highly available.
+- Load Balancers: Kops creates load balancers to distribute incoming traffic to the nodes in the cluster, ensuring that
+  the cluster is highly available.
 
-- DNS records: Kops creates DNS records in Amazon Route 53 to associate domain names with the load balancers in the cluster.
+- DNS records: Kops creates DNS records in Amazon Route 53 to associate domain names with the load balancers in the
+  cluster.
 
 - IAM roles: Kops creates IAM roles to control access to AWS resources from the instances in the cluster.
 
-In addition to these resources, Kops also creates S3 buckets to store cluster configuration and state information, as well as other resources as required by the cluster. The exact set of resources created by Kops depends on the specific configuration of the cluster.
+In addition to these resources, Kops also creates S3 buckets to store cluster configuration and state information, as
+well as other resources as required by the cluster. The exact set of resources created by Kops depends on the specific
+configuration of the cluster.
+
+### NodePort
+
+Allowed range of 30000 to 32767 ports
 
 ## Kops
 

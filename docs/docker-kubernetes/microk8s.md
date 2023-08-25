@@ -1,7 +1,12 @@
 #### Kubernetes Dashboard
 
-- microk8s enable dashboard
-- microk8s kubectl create token default
+```
+microk8s enable dashboard
+```
+
+```
+microk8s kubectl create token default
+```
 
 ```
 microk8s kubectl port-forward --address 0.0.0.0 -n kube-system service/kubernetes-dashboard 10443:443
@@ -29,3 +34,5 @@ microk8s kubectl create secret docker-registry gitlab-registry \
   --docker-username=your-username \
   --docker-password=your-token
 ```
+
+
