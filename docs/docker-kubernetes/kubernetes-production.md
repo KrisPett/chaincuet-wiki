@@ -26,6 +26,36 @@ In summary, the master and worker nodes in a Kubernetes cluster running on EC2 s
 better manage resources, provide redundancy, and allow for scalability. The configuration of the cluster depends on the
 specific needs and requirements of the deployment.
 
+### Pod
+
+Pod is a running application (replica) of a deployment
+
+### Service
+
+Exposes a port for deployment (Nodeport=deployment available from outside the cluster, ClusterIp=internal communication
+for deployments only , Loadbalancer)
+
+### Daemonset
+
+A daemonset exposes the deployment to all nodes. This behavior is especially useful for deploying system-level
+operations
+across each node, such as log collectors and collecting metrics. E.g Ingress controller (rather than using nodeport),
+Prometheus Node Exporter.
+
+### Deployment
+
+A Deployment is a higher-level API object in Kubernetes that manages the desired state for Pods and ReplicaSets.
+
+### Replicaset
+
+A ReplicaSet ensures that a specified number of Pod replicas are running at any given time. It's often used by
+Deployments to handle Pod scaling and updates.
+
+### Statefulset
+
+A StatefulSet manages the deployment and scaling of a set of Pods and provides guarantees about the ordering and
+uniqueness of these Pods. It's used for stateful applications like databases.
+
 ### Kops resources
 
 []: #

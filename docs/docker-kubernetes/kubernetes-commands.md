@@ -1,9 +1,3 @@
-### Minikube
-
-```
-minikube start
-```
-
 ### Kubectl Commands
 
 #### Create and run a config file
@@ -12,10 +6,14 @@ minikube start
 kubectl apply -f <>
 ```
 
-#### List all Srevices
+#### List all resources
+
+- Need to specify namespaces
 
 ```
 kubectl get all
+kubectl get all -A
+kubectl get pods -n ingress-nginx
 ```
 
 ```
@@ -43,7 +41,10 @@ kubectl scale <deployment.apps/> --replicas=2
 #### Create Secret
 
 ```
-create secret docker-registry gitlab-registry \
+kubectl get secrets
+kubectl delete secret gitlab-registry
+
+kubectl create secret docker-registry gitlab-registry \
 --docker-server=registry.gitlab.com \
 --docker-username=<> \
 --docker-password=<>
@@ -55,11 +56,41 @@ create secret docker-registry gitlab-registry \
 kubectl delete all --all
 ```
 
-####  Create a database inside k8s-postgres
+#### Create a database inside k8s-postgres
 
 ```
 kubectl exec -it postgres-backend-0 -- psql -U admin -d postgres -c "CREATE DATABASE \"backend-pqsl-db\";"
 
 kubectl exec -it postgres-backend-0 -- /bin/bash
 psql -U admin postgres
+```
+
+### Minikube
+
+#### Setup
+
+```
+minikube start
+```
+
+#### Kubernetes dashboard
+
+```
+minikube addons list
+minikube enable dashboard
+minikube dashboard
+```
+
+#### Minicube Ip
+
+**E.g http://192.192.00.00:30000/**
+
+```
+minikube ip
+```
+
+#### Ingress Controller
+
+```
+minikube addons enable ingress
 ```
