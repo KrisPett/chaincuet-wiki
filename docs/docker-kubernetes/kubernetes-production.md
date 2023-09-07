@@ -198,7 +198,12 @@ dig ns chainqt3.com
 ```
 
 ## cert-manager
-### Install 
+
+### Install
+
+- Issuer
+- Certificate
+- Secret
 
 ```
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
