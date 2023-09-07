@@ -196,3 +196,31 @@ kops get cluster chainqt3.com -o yaml
 ```
 dig ns chainqt3.com
 ```
+
+## cert-manager
+### Install 
+
+```
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml
+kubectl get pods --namespace cert-manager
+
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: selfsigned-issuer
+spec:
+  selfSigned: {}
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: selfsigned-cert
+spec:
+  commonName: teacher-portal.minikube
+  secretName: selfsigned-cert-tls
+  issuerRef:
+    name: selfsigned-issuer
+
+```

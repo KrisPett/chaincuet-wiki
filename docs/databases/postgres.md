@@ -16,7 +16,7 @@ docker exec -it postgres_name psql -U postgres -c "\l"
 docker exec -it postgres_name psql -U postgres -c "\du"
 ```
 
-### Swtich to keycloak database
+### Switch to keycloak database
 
 ```
 \c keycloak
@@ -44,6 +44,11 @@ echo -n c2VjcmV0UGFzc3dvcmQK | base64 --decode
 
 ```
 \q
+```
+### Delete from table
+```
+SELECT * FROM materials;
+DELETE FROM materials WHERE id = '43df4b5-bf0d-4a98-a0cf-ab45adc92f38';
 ```
 
 ### Backup postgres data
