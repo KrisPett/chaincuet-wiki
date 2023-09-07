@@ -35,4 +35,10 @@ microk8s kubectl create secret docker-registry gitlab-registry \
   --docker-password=your-token
 ```
 
+#### Setup k9s
+
+```
+microk8s.kubectl config view --raw > ~/.kube/config
+```
+
 

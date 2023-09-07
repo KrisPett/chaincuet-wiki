@@ -94,3 +94,14 @@ minikube ip
 ```
 minikube addons enable ingress
 ```
+
+#### Ingress
+
+- When tesing ingress locally
+
+```
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout backend.minikube.key -out backend.minikube.crt -subj "/CN=backend.minikube/O=backend"
+kubectl create secret tls backend-tls-secret --key backend.minikube.key --cert backend.minikube.crt
+echo "$(minikube ip) backend.minikube" | sudo tee -a /etc/hosts
+```
+
