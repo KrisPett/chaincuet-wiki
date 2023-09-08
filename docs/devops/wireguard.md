@@ -28,7 +28,7 @@
 **Macvlan network**
 
 - docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=enp0s31f6 my_macvlan
-- docker run --rm -d -p 1000:1000 --network my_macvlan --dns 8.8.8.8 --privileged docker:dind
+- docker run --rm -d --network my_macvlan --dns 8.8.8.8 --privileged docker:dind
 
 **Host network**
 
