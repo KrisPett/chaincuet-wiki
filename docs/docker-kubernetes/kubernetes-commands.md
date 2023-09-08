@@ -65,6 +65,15 @@ kubectl exec -it postgres-backend-0 -- /bin/bash
 psql -U admin postgres
 ```
 
+#### Check resources
+
+```
+kubectl get pods --all-namespaces | grep metrics-server
+kubectl top pod
+kubectl top node
+microk8s kubectl top pod <pod_name>
+```
+
 ### Minikube
 
 #### Setup
@@ -104,4 +113,10 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout backend.minikube.key
 kubectl create secret tls backend-tls-secret --key backend.minikube.key --cert backend.minikube.crt
 echo "$(minikube ip) backend.minikube" | sudo tee -a /etc/hosts
 ```
+
+#### Metrics
+```
+minikube addons enable metrics-server
+```
+
 
