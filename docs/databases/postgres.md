@@ -70,6 +70,36 @@ sudo docker run --rm \
     busybox tar xzf /backup/postgres_data_03_25_23.tar.gz
 ```
 
+### Standard Docker Compose
+
+```
+version: '3.9'
+services:
+  postgres_09_12_23:
+    container_name: postgres_09_12_23
+    image: postgres:15.3
+    environment:
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_09_12_23:/var/lib/postgresql/data
+    networks:
+      - backend_network
+
+volumes:
+  postgres_data_09_12_23:
+    name: postgres_data_09_12_23
+    driver: local
+
+networks:
+  backend_network:
+    name: backend_network
+    driver: bridge
+```
+
 ### pgAdmin4
 
 ```
