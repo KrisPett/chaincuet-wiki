@@ -6,6 +6,24 @@
 - sudo chown -R ubuntu ~/.kube (mkdir .kube)
 - newgrp microk8s
 
+#### List addons
+
+```
+microk8s status
+addons:
+  enabled:
+    dashboard
+    dns
+    ha-cluster
+    helm
+    helm3
+    host-access
+    hostpath-storage
+    ingress
+    metrics-server
+    storage
+```
+
 #### Kubernetes Dashboard
 
 ```
@@ -15,6 +33,8 @@ microk8s enable dashboard
 ```
 microk8s kubectl create token default
 ```
+
+(Enable access from 10443)
 
 ```
 microk8s kubectl port-forward --address 0.0.0.0 -n kube-system service/kubernetes-dashboard 10443:443
