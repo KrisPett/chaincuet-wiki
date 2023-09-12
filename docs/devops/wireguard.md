@@ -1,3 +1,5 @@
+[Install](https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04#step-3-%E2%80%94-creating-a-wireguard-server-configuration])
+
 ### Install Ubuntu
 
 - sudo apt install wireguard
@@ -48,3 +50,35 @@
   AllowedIPs = 0.0.0.0/0" > wg0.conf
 - wg-quick up wg0
 
+### Docker Compose 
+
+```
+version: "2.1"
+services:
+  wireguard:
+    image: lscr.io/linuxserver/wireguard:latest
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Stockholm
+      - SERVERURL=wireguard.m2k.se #optional
+      - SERVERPORT=51821 #optional
+      - PEERS=10 #optional
+      - PEERDNS=auto #optional
+#      - INTERNAL_SUBNET=10.13.13.0 #optional
+      - ALLOWEDIPS=<private_ip_of_instance>,<private_ip_of_instance> #optional
+#      - PERSISTENTKEEPALIVE_PEERS= #optional
+      - LOG_CONFS=true #optional
+    volumes:
+      - /opt/wireguard/config:/config
+      - /lib/modules:/lib/modules #optional
+    ports:
+      - 51821:51820/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
+
+```

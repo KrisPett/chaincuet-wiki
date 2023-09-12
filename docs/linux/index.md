@@ -25,3 +25,10 @@ cat /etc/passwd
 ```
 sudo passwd <username>
 ```
+
+#### Check storage
+
+```
+df -h 
+sudo fdisk -l
+```
