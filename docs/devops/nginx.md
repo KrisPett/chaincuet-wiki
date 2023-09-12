@@ -1,3 +1,7 @@
+#### Install Nginx
+
+- sudo apt install nginx-core (/usr/sbin/nginx)
+
 #### Nginx conf on server
 
 ##### Setup ssl/tls
