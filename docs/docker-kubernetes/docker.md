@@ -99,12 +99,12 @@ docker run --rm \
     busybox tar xzf /backup/postgres_data_03_25_23.tar.gz
 ```
 
-### Setup Docker without docker
+### Setup docker without using sudo
 
 ```
 sudo groupadd docker
 sudo gpasswd -a $USER docker
-Restart pc
+Restart pc/logout from server
 ```
 
 ### Show info about docker

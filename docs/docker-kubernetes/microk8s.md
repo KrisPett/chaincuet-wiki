@@ -1,3 +1,11 @@
+#### Install
+
+- sudo snap install microk8s --classic
+- alias kubectl='microk8s kubectl'
+- sudo usermod -a -G microk8s ubuntu
+- sudo chown -R ubuntu ~/.kube (mkdir .kube)
+- newgrp microk8s
+
 #### Kubernetes Dashboard
 
 ```
