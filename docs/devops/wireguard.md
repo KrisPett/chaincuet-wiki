@@ -116,3 +116,8 @@ Endpoint = <public_ip_of_server_or_domain_name>:51821
 AllowedIPs = <public_subnet_ip>, 0.0.0.0/0, ::/0
 ```
 
+- Edit aws security group
+- Custom UDP = 51821, 0.0.0.0/0
+- Custom TCP = 51821, 0.0.0.0/0
+- SSH = 22, 10.13.13.2/32
+
