@@ -74,6 +74,13 @@ kubectl top node
 microk8s kubectl top pod <pod_name>
 ```
 
+#### Restart Pod
+
+```
+kubectl delete pod my-pod
+kubectl rollout restart deployment my-deployment
+```
+
 ### Minikube
 
 #### Setup

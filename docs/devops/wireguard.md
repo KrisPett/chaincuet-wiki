@@ -50,27 +50,28 @@
   AllowedIPs = 0.0.0.0/0" > wg0.conf
 - wg-quick up wg0
 
-### Docker Compose 
+### Docker Compose
+
+https://github.com/christianlempa/videos/tree/main/wireguard-docker
 
 ```
-version: "2.1"
+version: "3.9"
 services:
   wireguard:
     image: lscr.io/linuxserver/wireguard:latest
     container_name: wireguard
     cap_add:
       - NET_ADMIN
+      - SYS_MODULE
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Stockholm
-      - SERVERURL=wireguard.m2k.se #optional
+      - SERVERURL=<public_ip_of_server_or_domain_name>:51821 #optional
       - SERVERPORT=51821 #optional
       - PEERS=10 #optional
       - PEERDNS=auto #optional
-#      - INTERNAL_SUBNET=10.13.13.0 #optional
-      - ALLOWEDIPS=<private_ip_of_instance>,<private_ip_of_instance> #optional
-#      - PERSISTENTKEEPALIVE_PEERS= #optional
+      - ALLOWEDIPS=<public_subnet_ip> #optional
       - LOG_CONFS=true #optional
     volumes:
       - /opt/wireguard/config:/config
@@ -80,5 +81,38 @@ services:
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
+```
+
+Will create 10 peers, use peers to connect from client to server
+
+**peer1_server**
 
 ```
+[Interface]
+Address = 10.13.13.2
+PrivateKey = <peer1_private_ip>
+ListenPort = 51820
+DNS = 10.13.13.1
+
+[Peer]
+PublicKey = <peer1_public_ip>
+PresharedKey = <peer1_preeshared_ip>
+Endpoint = <public_ip_of_server_or_domain_name>:51821
+AllowedIPs = <public_subnet_ip>
+```
+
+**peer1-client**
+
+```
+[Interface]
+Address = 10.13.13.2
+PrivateKey = <peer1_private_ip>
+ListenPort = 51820
+DNS = 10.13.13.1
+[Peer]
+PublicKey = <peer1_public_ip>
+PresharedKey = <peer1_preeshared_ip>
+Endpoint = <public_ip_of_server_or_domain_name>:51821
+AllowedIPs = <public_subnet_ip>, 0.0.0.0/0, ::/0
+```
+

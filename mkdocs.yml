@@ -32,6 +32,7 @@ nav:
       - "": index.md
   - DevOps:
       - Overview: devops/index.md
+      - AWS | VPC: devops/aws-vpc.md
       - AWS | S3 & Cloudfront: devops/s3-cloudfront.md
       - AWS | Route53: devops/route53.md
       - AWS | Lambda & API Gateway: devops/aws-lambda-api-gateway.md

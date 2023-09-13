@@ -45,14 +45,24 @@ echo -n c2VjcmV0UGFzc3dvcmQK | base64 --decode
 ```
 \q
 ```
+
 ### Delete from table
+
 ```
 SELECT * FROM materials;
 DELETE FROM materials WHERE id = '43df4b5-bf0d-4a98-a0cf-ab45adc92f38';
 ```
 
+### Create Database
+
+```
+CREATE DATABASE "backend-pqsl-db";
+```
+
 ### Backup postgres data
+
 **Dont restore backup while**
+
 ```
 mkdir backup && cd backup
 
