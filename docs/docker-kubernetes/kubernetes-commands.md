@@ -81,6 +81,39 @@ kubectl delete pod my-pod
 kubectl rollout restart deployment my-deployment
 ```
 
+### Helm
+
+#### Setup
+
+```
+sudo snap install helm --classic
+```
+
+#### Add repo
+
+```
+helm repo add gitlab https://charts.gitlab.io
+```
+
+#### List repo
+
+```
+helm repo list
+```
+
+#### Search repo
+
+```
+helm search repo gitlab
+```
+
+#### Install a helm chart
+
+```
+helm install --namespace gitlab-runner gitlab-runner -f values.yaml gitlab/gitlab-runner
+helm install
+```
+
 ### Minikube
 
 #### Setup
@@ -122,6 +155,7 @@ echo "$(minikube ip) backend.minikube" | sudo tee -a /etc/hosts
 ```
 
 #### Metrics
+
 ```
 minikube addons enable metrics-server
 ```
