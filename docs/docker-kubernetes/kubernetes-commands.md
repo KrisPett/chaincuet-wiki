@@ -114,6 +114,12 @@ helm install --namespace gitlab-runner gitlab-runner -f values.yaml gitlab/gitla
 helm install
 ```
 
+#### Uninstall helm
+
+```
+helm uninstall -n gitlab-runner gitlab-runner
+```
+
 ### Minikube
 
 #### Setup
