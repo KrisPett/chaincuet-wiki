@@ -97,7 +97,53 @@ rbac:
    - apiGroups: [""]
      resources: ["pods/exec"]
      verbs: ["create", "patch", "delete"]
-``` 
+     
+# If docker in docker docker:dind
+runners:
+  config: |
+    [[runners]]
+      [runners.kubernetes]
+        namespace = "{{.Release.Namespace}}"
+        image = "ubuntu:22.04"
+        privileged = true
+      [[runners.kubernetes.volumes.empty_dir]]
+        name = "docker-certs"
+        mount_path = "/certs/client"
+        medium = "Memory"
+
+stages:
+  - maven_test_and_build
+  - docker_build_and_push
+
+maven_test_and_build:
+  stage: maven_test_and_build
+  image: maven:3.8.5-openjdk-17
+  script: "mvn package deploy -B -s ci_settings.xml"
+  artifacts:
+    paths:
+      - target/*.jar
+
+docker_build_and_push:
+  stage: docker_build_and_push
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_TLS_VERIFY: 1
+    DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+
+  before_script:
+    - docker info
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+```
 
 - kubectl create namespace gitlab-runner
 - helm install --namespace gitlab-runner gitlab-runner -f values.yaml gitlab/gitlab-runner
+- helm upgrade gitlab-runner -n gitlab-runner -f values.yaml gitlab/gitlab-runner
+- helm uninstall -n gitlab-runner gitlab-runner
+

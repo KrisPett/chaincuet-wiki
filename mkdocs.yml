@@ -48,8 +48,8 @@ nav:
       - Keycloak: devops/keycloak.md
       - Email: devops/email.md
       - Wireguard: devops/wireguard.md
-      - Github: devops/github.md
       - Gitlab: devops/gitlab.md
+      - Github: devops/github.md
 
   - Docker & Kubernetes:
       - Overview: docker-kubernetes/index.md
