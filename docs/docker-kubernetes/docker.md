@@ -8,7 +8,7 @@ docker run -it --rm -p 3000:3000 --name node -v ${PWD}:/app node:19.5.0-alpine s
 docker run -it --rm -p 3000:3000 --name node -v ${PWD}:/app node:14.0.0-alpine sh
 ```
 
-#### Run container with network host and command 
+#### Run container with network host and command
 
 ```
 docker run -it --rm -p 3000:3000 --name node --network host -v ${PWD}:/workdir node:19.0.0-alpine sh -c "\
@@ -74,14 +74,22 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
 ```
 
-#### remove all 'none' tag images 
+#### remove all 'none' tag images
 
 ```
 docker image prune --filter="dangling=true"
 ```
 
+#### Build using specific dockerfile
+
+```
+docker build -f wireguard.Dockerfile -t wire .
+```
+
 ### Backup volume data
+
 **Dont restore backup while**
+
 ```
 mkdir backup && cd backup
 
@@ -160,6 +168,7 @@ class ContainersTest {
 ```
 
 ### Gitlab login
+
 - docker login registry.gitlab.com
 - Username (gitlab_username)
 - Password (token_with_read_registry_permission)
