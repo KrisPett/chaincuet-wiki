@@ -147,3 +147,14 @@ docker_build_and_push:
 - helm upgrade gitlab-runner -n gitlab-runner -f values.yaml gitlab/gitlab-runner
 - helm uninstall -n gitlab-runner gitlab-runner
 
+#### Gitlab shared runners
+
+- Go to project root -> Build -> Runners -> New group runner -> add tag shared-runner
+
+```
+deploy:
+  stage: stage
+  tags:
+    - shared-runner
+```
+
