@@ -1,3 +1,5 @@
+### Docker Commands
+
 #### Run node mount volume in current directory 'npm i' inside container
 
 ```
@@ -86,9 +88,11 @@ docker image prune --filter="dangling=true"
 docker build -f wireguard.Dockerfile -t wire .
 ```
 
-### Backup volume data
+### Docker Configs
 
-**Dont restore backup while**
+#### Backup volume data
+
+**Dont restore backup while postgres is running**
 
 ```
 mkdir backup && cd backup
@@ -107,7 +111,7 @@ docker run --rm \
     busybox tar xzf /backup/postgres_data_03_25_23.tar.gz
 ```
 
-### Setup docker without using sudo
+#### Setup docker without using sudo
 
 ```
 sudo groupadd docker
@@ -115,19 +119,19 @@ sudo gpasswd -a $USER docker
 Restart pc/logout from server
 ```
 
-### Show info about docker
+#### Show info about docker
 
 ```
 docker info
 ```
 
-### Remove containers with a specific image
+#### Remove containers with a specific image
 
 ```
 docker ps -a | awk '$2 == "docker/compose:1.29.2" {print $1}' | xargs docker rm
 ```
 
-### TestContainer
+#### TestContainer
 
 ```
 <dependency>
@@ -167,8 +171,53 @@ class ContainersTest {
 }
 ```
 
-### Gitlab login
+#### Gitlab login
 
 - docker login registry.gitlab.com
 - Username (gitlab_username)
 - Password (token_with_read_registry_permission)
+
+#### Docker registry
+
+```
+version: '3.9'
+services:
+  registry:
+    image: registry:2
+    container_name: registry
+    ports:
+      - "5000:5000"
+    volumes:
+      - registry_data:/var/lib/registry
+      - ./registry.crt:/certs/registry.crt
+      - ./registry.key:/certs/registry.key
+      - ./htpasswd:/htpasswd
+    environment:
+      - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/registry.crt
+      - REGISTRY_HTTP_TLS_KEY=/certs/registry.key
+      - REGISTRY_AUTH=htpasswd
+      - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
+      - REGISTRY_AUTH_HTPASSWD_PATH=/htpasswd
+    networks:
+      - registry
+
+volumes:
+  registry_data:
+    name: registry_data
+    driver: local
+
+networks:
+  registry:
+    name: registry
+    driver: bridge
+
+```
+
+**List all images stored**
+
+```curl -X GET http://localhost:5000/v2/_catalog```
+
+- openssl req -newkey rsa:4096 -nodes -sha256 -keyout registry.key -x509 -days 365 -out registry.crt
+- htpasswd -B -c ./htpasswd john
+
+
