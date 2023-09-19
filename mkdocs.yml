@@ -97,3 +97,4 @@ nav:
       - Go: utils/go.md
       - Python: utils/python.md
       - IDEs: utils/ides.md
+      - SSH: utils/ssh.md
