@@ -2,6 +2,7 @@
 
 ```
 docker exec -it postgres_name psql -U postgres
+psql -U admin -d postgres
 ```
 
 ### LIST DATABASES
