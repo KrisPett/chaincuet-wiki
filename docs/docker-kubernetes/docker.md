@@ -173,6 +173,7 @@ class ContainersTest {
 
 #### Gitlab login
 
+- docker login registry.gitlab.com --username <username> --password <password>
 - docker login registry.gitlab.com
 - Username (gitlab_username)
 - Password (token_with_read_registry_permission)
