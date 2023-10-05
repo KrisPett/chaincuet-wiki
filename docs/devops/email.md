@@ -29,7 +29,7 @@ https://www.smtper.net/
 - Login to google account
 - Enable TFA
 - Search for app password and generate app password
-- smtp.gmail.com -> 465 <app_password> -> example@gmail.como
+- smtp.gmail.com -> 465 <app_password> -> example@gmail.com
 
 #### Google SMTP (new way)
 
