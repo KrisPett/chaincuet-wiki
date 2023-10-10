@@ -32,3 +32,9 @@ sudo passwd <username>
 df -h 
 sudo fdisk -l
 ```
+
+# Check networks reachability
+
+```ping <private_ip> 5433```
+
+```telnet <private_ip> 5433```

@@ -111,6 +111,12 @@ networks:
     driver: bridge
 ```
 
+# Change trust to restrict password
+
+- cd /var/lib/postgresql/data
+- cat pg_hba.conf -> should not be trust 
+- POSTGRES_HOST_AUTH_METHOD: md5
+
 ### pgAdmin4
 
 ```
