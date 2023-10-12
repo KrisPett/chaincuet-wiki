@@ -38,7 +38,7 @@ Amazon Web Services (AWS)
 
 #### AWS Setup Credentials
 
-####               
+####                
 
 ```
 aws configure
@@ -56,8 +56,17 @@ s3 -> cloudfront -> route53 - cert
 #### EC2
 
 ```
+t2.small
 Price: $0.023 per On Demand Linux t2.small Instance Hour
-$0.023 x 24 hours/day x 30 days/month = $16.56 per month
+$0.023 x 24 hours/day x 30 days/month = $16.56 per month (180.22 SEK)
+
+t2.medium
+Price: $0.0464 per On Demand Linux t2.medium Instance Hour
+$0.0464 x 24 hours/day x 30 days/month = $33.408 per month (363.57 SEK)
+
+t2.large
+Price: $0.0928 per On Demand Linux t2.large Instance Hour
+$0.0928 x 24 hours/day x 30 days/month = $67.1232 per month (730.48 SEK)
 
 EBS (Elastic Block Store) Price: $0.10 per GB-month of General Purpose SSD
 ```
