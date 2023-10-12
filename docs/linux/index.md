@@ -33,8 +33,53 @@ df -h
 sudo fdisk -l
 ```
 
-# Check networks reachability
+#### List all Users
+
+```
+awk -F: '{ if ($3 >= 1000 && $3 != 65534) print $1 }' /etc/passwd
+```
+
+#### List all groups
+
+```
+cat /etc/group
+```
+
+#### Create a group
+
+```
+sudo groupadd docker
+```
+
+#### Create user
+
+```
+sudo adduser bitwarden
+sudo passwd bitwarden
+```
+
+#### Login to a specific user
+
+```
+su bitwarden
+```
+
+#### Add user to a group
+
+```
+sudo usermod -aG docker bitwarden
+```
+
+#### Change permission of directory
+
+```
+sudo chmod -R 700 /opt/bitwarden
+sudo chown -R bitwarden:bitwarden /opt/bitwarden
+```
+
+## Check networks reachability
 
 ```ping <private_ip> 5433```
 
 ```telnet <private_ip> 5433```
+
