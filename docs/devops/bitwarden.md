@@ -9,7 +9,7 @@
 - (!) Do you want to use Let's Encrypt to generate a free SSL certificate? (y/n): n
 - (!) Enter the database name for your Bitwarden instance (ex. vault): vault
 - (!) Enter your installation id (get at https://bitwarden.com/host):
-- (!) Enter your installation key: 
+- (!) Enter your installation key:
 - (!) Enter your region (US/EU) [US]: EU
 - (!) Do you have a SSL certificate to use? (y/N): n
 - (!) Do you want to generate a self-signed SSL certificate? (y/N): y
