@@ -46,8 +46,9 @@ nav:
       - Nginx: devops/nginx.md
       - Vault: devops/vault.md
       - Keycloak: devops/keycloak.md
-      - Email: devops/email.md
+      - Bitwarden: devops/bitwarden.md
       - Wireguard: devops/wireguard.md
+      - Email: devops/email.md
       - Gitlab: devops/gitlab.md
       - Github: devops/github.md
 
