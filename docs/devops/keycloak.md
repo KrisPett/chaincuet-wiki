@@ -569,6 +569,7 @@ curl --location --request DELETE 'http://localhost:8080/auth/admin/realms/lambda
 
 - Use admin-cli token
 - manage-realm role needs to be assigned to admin-users
+- view-realm is enough as role
 
 ```
 curl --location 'http://localhost:8080/auth/admin/realms/lambda/roles' \
