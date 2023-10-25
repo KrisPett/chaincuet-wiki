@@ -1,13 +1,13 @@
 #### Keycloak Notes
 
- - Keycloak stop support of adapters https://www.keycloak.org/2022/02/adapter-deprecation
- - Best Alternative is https://github.com/panva/node-openid-client, if not using next-auth
-
+- Keycloak stop support of adapters https://www.keycloak.org/2022/02/adapter-deprecation
+- Best Alternative is https://github.com/panva/node-openid-client, if not using next-auth
 
 ##### Public vs confidential client
 
- - Public client: Using redirect_uri to authenticate client to server after user login
- - Confidential client: Using client_secret to authenticate client to server, used for backend servers that cannot use user-interaction flow
+- Public client: Using redirect_uri to authenticate client to server after user login
+- Confidential client: Using client_secret to authenticate client to server, used for backend servers that cannot use
+  user-interaction flow
 
 #### Docker-compose
 
@@ -182,6 +182,7 @@ export default NextAuth({
 ```
 
 ##### Secret needs to be set for production
+
 ```
 openssl rand -base64 32
 secret: process.env.NEXTAUTH_SECRET
@@ -251,57 +252,82 @@ if (loading) return <></>
 #### Theming Keycloak
 
 ##### docker-compose.yml example
+
 ```jsx
-# docker stop keycloak_name && docker rm keycloak_name && docker stop postgres_name && docker rm postgres_name && docker volume rm postgres_data
-# docker-compose up -d
+#
+docker
+stop
+keycloak_name && docker
+rm
+keycloak_name && docker
+stop
+postgres_name && docker
+rm
+postgres_name && docker
+volume
+rm
+postgres_data
+#
+docker - compose
+up - d
 
 version: '3.5'
 services:
-  postgres:
-    container_name: postgres_name
-    image: postgres:10.4
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: POSTGRES_PASSWORD
-    ports:
-      - "5433:5432"
-    networks:
-      - keycloak_net
+    postgres:
+        container_name: postgres_name
+image: postgres:10.4
+volumes:
+    -postgres_data
+:
+/var/
+lib / postgresql / data
+environment:
+    POSTGRES_DB: keycloak
+POSTGRES_USER: keycloak
+POSTGRES_PASSWORD: POSTGRES_PASSWORD
+ports:
+    -"5433:5432"
+networks:
+    -keycloak_net
 
-  keycloak:
+keycloak:
     container_name: keycloak_name
-    image: quay.io/keycloak/keycloak:19.0.3-legacy
-    environment:
-      DB_VENDOR: POSTGRES
-      DB_ADDR: postgres
-      DB_DATABASE: keycloak
-      DB_USER: keycloak
-      DB_SCHEMA: public
-      DB_PASSWORD: POSTGRES_PASSWORD
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
-      PROXY_ADDRESS_FORWARDING: "true"
-    ports:
-      - "8080:8080"
-      - "8443:8443"
-    # volumes:
-    #    - /keycloak-theme:/opt/jboss/keycloak/themes/keycloak/
-    depends_on:
-      - postgres
-    networks:
-      - keycloak_net
+image: quay.io / keycloak / keycloak
+:
+19.0
+.3 - legacy
+environment:
+    DB_VENDOR: POSTGRES
+DB_ADDR: postgres
+DB_DATABASE: keycloak
+DB_USER: keycloak
+DB_SCHEMA: public
+DB_PASSWORD: POSTGRES_PASSWORD
+KEYCLOAK_USER: admin
+KEYCLOAK_PASSWORD: admin
+PROXY_ADDRESS_FORWARDING: "true"
+ports:
+    -"8080:8080"
+    - "8443:8443"
+#
+volumes:
+    #
+-/keycloak-theme:/
+opt / jboss / keycloak / themes / keycloak /
+depends_on
+:
+-postgres
+networks:
+    -keycloak_net
 
 volumes:
-  postgres_data:
-    name: postgres_data
+    postgres_data:
+        name: postgres_data
 
 networks:
-  keycloak_net:
-    name: keycloak_net
-    driver: bridge
+    keycloak_net:
+        name: keycloak_net
+driver: bridge
 ```
 
 ```
@@ -316,14 +342,15 @@ http://0.0.0.0:8080/auth/
 http://localhost:8080/auth/
 ```
 
-##### List databases 
+##### List databases
+
 ```
 docker exec -it postgres_name psql -U postgres -c "\l"
 ```
 
 #### Keycloak Extensions
 
-##### Install an extension 
+##### Install an extension
 
 ```
 svn export https://github.com/thomasdarimont/keycloak-extension-playground/trunk/auth-identity-first-extension
@@ -336,78 +363,109 @@ docker cp auth-trust-device-0.0.1-SNAPSHOT.jar <container_id>:/opt/jboss/keycloa
 ##### Create new user
 
 ```jsx
-    private static Mono<String> getAccessTokenFromClientAdminCli() {
-        String endpointUrl = "http://localhost:8080/auth/auth/realms/lambda/protocol/openid-connect/token";
-        WebClient webClient = WebClient.builder().baseUrl(endpointUrl).build();
+    private
+static
+Mono < String > getAccessTokenFromClientAdminCli()
+{
+    String
+    endpointUrl = "http://localhost:8080/auth/auth/realms/lambda/protocol/openid-connect/token";
+    WebClient
+    webClient = WebClient.builder().baseUrl(endpointUrl).build();
 
-        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
-        body.add("username", "manageuser");
-        body.add("password", "password");
-        body.add("grant_type", "password");
-        body.add("client_id", "admin-cli");
+    MultiValueMap < String, String > body = new LinkedMultiValueMap < > ();
+    body.add("username", "manageuser");
+    body.add("password", "password");
+    body.add("grant_type", "password");
+    body.add("client_id", "admin-cli");
 
-        return webClient.post()
-                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-                .body(BodyInserters.fromFormData(body))
-                .retrieve()
-                .bodyToMono(String.class)
-                .map(response -> new JSONObject(response).getString("access_token"));
-    }
+    return webClient.post()
+        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+        .body(BodyInserters.fromFormData(body))
+        .retrieve()
+        .bodyToMono(String.class)
+        .map(response -> new JSONObject(response).getString("access_token"));
+}
 
-    private static Mono<String> createNewUserUsingAccessToken(String accessToken) {
-        String endpointUrl = "http://localhost:8080/auth/admin/realms/lambda/users";
-        WebClient webClient = WebClient.builder().baseUrl(endpointUrl).build();
+private
+static
+Mono < String > createNewUserUsingAccessToken(String
+accessToken
+)
+{
+    String
+    endpointUrl = "http://localhost:8080/auth/admin/realms/lambda/users";
+    WebClient
+    webClient = WebClient.builder().baseUrl(endpointUrl).build();
 
-        JSONObject newUser = new JSONObject();
-        newUser.put("enabled", true);
-        newUser.put("username", "test@gmail.com");
-        newUser.put("email", "test@gmail.com");
-        newUser.put("firstName", "test@gmail.com");
-        newUser.put("lastName", "test@gmail.com");
+    JSONObject
+    newUser = new JSONObject();
+    newUser.put("enabled", true);
+    newUser.put("username", "test@gmail.com");
+    newUser.put("email", "test@gmail.com");
+    newUser.put("firstName", "test@gmail.com");
+    newUser.put("lastName", "test@gmail.com");
 
-        JSONArray credentials = new JSONArray();
-        JSONObject credential = new JSONObject();
-        credential.put("type", "password");
-        credential.put("value", "123");
-        credential.put("temporary", false);
-        credentials.put(credential);
-        newUser.put("credentials", credentials);
+    JSONArray
+    credentials = new JSONArray();
+    JSONObject
+    credential = new JSONObject();
+    credential.put("type", "password");
+    credential.put("value", "123");
+    credential.put("temporary", false);
+    credentials.put(credential);
+    newUser.put("credentials", credentials);
 
-        return webClient.post()
-                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromValue(newUser.toString()))
-                .retrieve()
-                .bodyToMono(String.class);
-    }
+    return webClient.post()
+        .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
+        .contentType(MediaType.APPLICATION_JSON)
+        .body(BodyInserters.fromValue(newUser.toString()))
+        .retrieve()
+        .bodyToMono(String.class);
+}
 ```
 
 ##### Delete user
 
 ```jsx
-    private Mono<String> getUserSubId(String accessToken, String email) {
-        String endpointUrl = "http://localhost:8080/auth/admin/realms/lambda/users?email=" + email;
-        WebClient webClient = WebClient.builder().baseUrl(endpointUrl).build();
-        return webClient.get()
-                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
-                .retrieve()
-                .bodyToMono(String.class)
-                .map(response -> {
-                    JSONArray jsonArray = new JSONArray(response);
-                    JSONObject jsonObject = jsonArray.getJSONObject(0);
-                    return jsonObject.getString("id");
-                });
-    }
+    private
+Mono < String > getUserSubId(String
+accessToken, String
+email
+)
+{
+    String
+    endpointUrl = "http://localhost:8080/auth/admin/realms/lambda/users?email=" + email;
+    WebClient
+    webClient = WebClient.builder().baseUrl(endpointUrl).build();
+    return webClient.get()
+        .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
+        .retrieve()
+        .bodyToMono(String.class)
+        .map(response -> {
+            JSONArray
+            jsonArray = new JSONArray(response);
+            JSONObject
+            jsonObject = jsonArray.getJSONObject(0);
+            return jsonObject.getString("id");
+        });
+}
 
-    private Mono<String> deleteUserByUserid(String accessToken, String subId) {
-        String endpointUrl = "http://localhost:8080/auth/admin/realms/lambda/users/";
-        WebClient webClient = WebClient.builder().baseUrl(endpointUrl).build();
-        return webClient.delete()
-                .uri(subId)
-                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
-                .retrieve()
-                .bodyToMono(String.class);
-    }
+private
+Mono < String > deleteUserByUserid(String
+accessToken, String
+subId
+)
+{
+    String
+    endpointUrl = "http://localhost:8080/auth/admin/realms/lambda/users/";
+    WebClient
+    webClient = WebClient.builder().baseUrl(endpointUrl).build();
+    return webClient.delete()
+        .uri(subId)
+        .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
+        .retrieve()
+        .bodyToMono(String.class);
+}
 ```
 
 #### Keycloak Rest API
@@ -492,17 +550,29 @@ curl --location 'http://localhost:8080/auth/admin/realms/lambda/users' \
 ```
 
 **Get userId by email (GET)**
+
 ```
 curl --location 'http://localhost:8080/auth/admin/realms/lambda/users?email=email@email.com' \
 --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQ3JMUHhXUVJsZVh1NHkwMHVVV2RkVkJtSlZkMDVJSUZVZ3dpM0pwMjVvIn0.eyJleHAiOjE2Nzg3MDQ0MjAsImlhdCI6MTY3ODcwNDEyMCwianRpIjoiODMwY2UwZDAtZjg0YS00NTUxLTljMDctMzc1MmE5M2UyNzczIiwiaXNzIjoiaHR0cHM6Ly9pYW0uc2Vuc2VyYS5zZS9hdXRoL3JlYWxtcy9sYW1iZGEiLCJzdWIiOiIxNzgzOTI4OS1hNDcxLTRjMjItYjc2MC02OGIwM2U2YzYzMzQiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiY2Q2ZDcwYzgtYzQyYi00N2UzLTgxNDAtNTNmMTQ4YmVmNzAxIiwiYWNyIjoiMSIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6Ik1hbmFnZSBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoibWFuYWdldXNlciIsImdpdmVuX25hbWUiOiJNYW5hZ2UiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Im1hbmFnZXVzZXJAZW1haWwuY29tIn0.DM1U49hbqU1k-_K7e5seqJWvUg6Z6E_RZeoJ05OpmUPBswJ7vkjSXsOuB56eO1x5nvjxWsWNCcxF7A7ArsmfwyrcuiSbS3iWL7YG-U0wEBi_mXgN0OnEKPYhPpT8R64dAfmzSOZrl57Ia8lnoY0YcvxQEUjbqi36lUGuhuaFK5ZqzYQvOH0BAzu5Xg2Dg8QzJEupt6Isr0QNj7O__R-8f1QfSV577jyNCx1q3Z-rAzIhpjIB9DG-4Sxe0HvUCsRNsKRQpNZbHLMfOJ-5xR3R0fx9LthlYw8rkBq863YrxAuUT5wk0V4JWzJur8MnRME8YQ1gvdNKl2gRLsjXZSNhyw'
 ```
 
 **Delete user by userId (DELETE)**
+
 ```
 curl --location --request DELETE 'http://localhost:8080/auth/admin/realms/lambda/users/55a0adfc-b5e5-425d-afc2-c37814ba4a15' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQ3JMUHhXUVJsZVh1NHkwMHVVV2RkVkJtSlZkMDVJSUZVZ3dpM0pwMjVvIn0.eyJleHAiOjE2Nzg3MDQ4MTAsImlhdCI6MTY3ODcwNDUxMCwianRpIjoiMDFmYjEwNTYtYzdjNS00OWRhLWE0Y2UtZWM3YzY3YjE3ZDE5IiwiaXNzIjoiaHR0cHM6Ly9pYW0uc2Vuc2VyYS5zZS9hdXRoL3JlYWxtcy9sYW1iZGEiLCJzdWIiOiIxNzgzOTI4OS1hNDcxLTRjMjItYjc2MC02OGIwM2U2YzYzMzQiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiYzUzNzE2N2EtNTNiYS00ZTRhLThiNzktYzg5NGYzYTcyZTU0IiwiYWNyIjoiMSIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6Ik1hbmFnZSBVc2VyIiwicHJlZmVycmVkX3VzZXJuYW1lIjoibWFuYWdldXNlciIsImdpdmVuX25hbWUiOiJNYW5hZ2UiLCJmYW1pbHlfbmFtZSI6IlVzZXIiLCJlbWFpbCI6Im1hbmFnZXVzZXJAZW1haWwuY29tIn0.cklfxHDVKXAaH9f0O1cZLMwP09nrKVvLM_Xo3taTV7-VhRrdWjiJn7ZWaAyFYEh91fQAaNZwnkkO-dnQtKWH41RZqlBAQzXUlJ8rRmf0xPf8vzYeitxLxCYKmNqa3TWPAE0Z873cUHSZ7AFJOy9xGVpLsJBgbItJ1NrlmQEjBlETnh6xTFwOFcLoPGNk4SDfkA16-Ts9Ko6p25TDEnsTsHnVsftC5aVcnZSyrq3JTVXA4Vq5iMN7EuJwlh6XZBOoEAMZVoWYNN_AaEbyuYo2lMxcwxkuDtQFLs_V9Q1j52qHt1za1ZnQpJjkNGtHG7cpePVbLRuFL0AANSdHkwhFeg' \
 --data ''
+```
+
+**View Roles of a realm**
+
+- Use admin-cli token
+- manage-realm role needs to be assigned to admin-users
+
+```
+curl --location 'http://localhost:8080/auth/admin/realms/lambda/roles' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmQ3JMUHhXUVJsZVh1NHkwMHVVV2RkVkJtSlZkMDVJSUZVZ3dpM0pwMjVvIn0.eyJleHAiOjE2OTgyMjgyMDYsImlhdCI6MTY5ODIyNzkwNiwianRpIjoiM2RkZDlmMDItZmJkMS00ZjAxLTgyZDctNDkyMTI2ZWZmZDM1IiwiaXNzIjoiaHR0cHM6Ly9pYW0uc2Vuc2VyYS5zZS9hdXRoL3JlYWxtcy9sYW1iZGEiLCJzdWIiOiIxNzgzOTI4OS1hNDcxLTRjMjItYjc2MC02OGIwM2U2YzYzMzQiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiYjk3YjVhZDYtMDRiYi00ZDM2LTk0MjctMDNjMTJkNTMzNDk4IiwiYWNyIjoiMSIsInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiTWFuYWdlIFVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJtYW5hZ2V1c2VyQHNlbnNlcmEuc2UiLCJnaXZlbl9uYW1lIjoiTWFuYWdlIiwiZmFtaWx5X25hbWUiOiJVc2VyIiwiZW1haWwiOiJtYW5hZ2V1c2VyQHNlbnNlcmEuc2UifQ.fZuzVpy0vNJOc24yKTTyIqx8RdXQuaI2Q901lXhxpxmeENmEG7QqVDFNkJyT-9bW0hTcGFFjTIDKzd931qK0bVQUm8u2rV3i8WeXkF4zVVACLHTGy0JKTixvGux63poJXdkm_Tlrcy68o5IM10BKkwiUyR4Hdg_ktosXoazoJwOWrUVVVxzxD8XmMPYPCwoKAYD-O6rzNcLkia1nuvRoVC7aRCPbp0-G8lF622OQAHzFwHgHvVSFPjFgL7XPAwpKeLQmf5VhFvhvxW25LYVaGNvd0Td87l3JdXl9GRkGXLSZelmUslazHCwMOxBMj7NAW7rME7lSX3uKJSXWFZhSaQ'
 ```
 
 **Update user using admin privilegios (PUT)**
