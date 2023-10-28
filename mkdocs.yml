@@ -51,7 +51,6 @@ nav:
       - Email: devops/email.md
       - Gitlab: devops/gitlab.md
       - Github: devops/github.md
-
   - Docker & Kubernetes:
       - Overview: docker-kubernetes/index.md
       - Docker: docker-kubernetes/docker.md
@@ -71,6 +70,7 @@ nav:
       - HTML: frontend/html.md
       - CSS Styling: frontend/css-styling.md
       - Javascript & Typescript: frontend/javascript-typescript.md
+      - NextJS: frontend/nextjs.md
       - Gists: frontend/gists.md
   - AI / ML:
       - Overview: ai/index.md
