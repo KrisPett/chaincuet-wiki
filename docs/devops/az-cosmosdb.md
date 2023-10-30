@@ -20,9 +20,16 @@ cacerts.
 
 [https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html)
 
+**Manually change emulatorcert1 name**
+
 - ```docker compose up```
 - ```curl -k https://localhost:8081/_explorer/emulator.pem > ./emulatorcert1.crt```
 - ```sudo keytool -import -file emulatorcert1.crt -alias emulatorcert1 -keystore ~/.jdks/corretto-17.0.8.1/lib/security/cacerts -storepass changeit```
+
+**Dynamic generate emulatorcert1 by current date**
+
+- ```curl -k https://localhost:8081/_explorer/emulator.pem > "./emulatorcert$(date +'%Y%m%d%H%M').crt"```
+- ```sudo keytool -import -file emulatorcert$(date +'%Y%m%d%H%M').crt -alias emulatorcert$(date +'%Y%m%d%H%M') -keystore ~/.jdks/corretto-17.0.8.1/lib/security/cacerts -storepass changeit```
 
 ```
 version: '3.9'
