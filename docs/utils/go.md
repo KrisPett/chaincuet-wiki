@@ -1,8 +1,16 @@
+#### Setup Go in IntelliJ
+
+- Download latest from go.dev
+- add ```export PATH=$PATH:/usr/local/go/bin``` in .bashrc
+- IntelliJ > Settings > Langugaes & Frameworks > Go > GOROOT > /use/local/go
+
+#### Useful commands
+
 - go mod init test (create go project)
 - go get ./... (install all dependencies)
 - go get github.com/stretchr/testify/assert (install specific dependencies)
 
-#### Setup
+#### Setup a project
 
 ```
 mkdir aws-go-examples
