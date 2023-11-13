@@ -1,5 +1,3 @@
-# Concurrency vs Parallelism
-
 ### Setup Concurrent Testing
 
 ```

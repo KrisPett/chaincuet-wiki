@@ -58,13 +58,14 @@ nav:
       - Kubernetes Commands: docker-kubernetes/kubernetes-commands.md
       - Microk8s: docker-kubernetes/microk8s.md
       - k9s: docker-kubernetes/k9s.md
-  - Java / Spring Cloud:
-      - Spring Cloud Overview: java-spring-cloud/index.md
-      - Domains: java-spring-cloud/domains.md
-      - Services: java-spring-cloud/services.md
-      - Tracing: java-spring-cloud/tracing.md
-      - Reactive IO: java-spring-cloud/reactiveio.md
-      - Concurrency: java-spring-cloud/concurrency.md
+  - Backend:
+      - Overview: backend/index.md
+      - Java: backend/java.md
+      - Kotlin: backend/kotlin.md
+      - Go: backend/go.md
+      - Python: backend/python.md
+      - Spring Cloud: backend/spring-cloud.md
+      - Reactive IO: backend/reactiveio.md
   - Frontend:
       - Node: frontend/index.md
       - HTML: frontend/html.md
@@ -95,7 +96,5 @@ nav:
       - Utils Overview: utils/index.md
       - Emoji: utils/emoji.md
       - Git: utils/git.md
-      - Go: utils/go.md
-      - Python: utils/python.md
       - IDEs: utils/ides.md
       - SSH: utils/ssh.md
