@@ -67,7 +67,7 @@ nav:
       - Spring Cloud: backend/spring-cloud.md
       - Reactive IO: backend/reactiveio.md
   - Frontend:
-      - Node: frontend/index.md
+      - Overview: frontend/index.md
       - HTML: frontend/html.md
       - CSS Styling: frontend/css-styling.md
       - Javascript & Typescript: frontend/javascript-typescript.md
@@ -79,7 +79,7 @@ nav:
       - TensorFlow: ai/tensorflow.md
       - PyTorch: ai/pytorch.md
   - Databases:
-      - Database Overview: databases/index.md
+      - Overview: databases/index.md
       - Postgres: databases/postgres.md
       - Mysql: databases/mysql.md
       - MongoDB: databases/mongodb.md
@@ -93,7 +93,7 @@ nav:
       - Overview: linux/index.md
       - Alias: linux/alias.md
   - Utils:
-      - Utils Overview: utils/index.md
+      - Overview: utils/index.md
       - Emoji: utils/emoji.md
       - Git: utils/git.md
       - IDEs: utils/ides.md
