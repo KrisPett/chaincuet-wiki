@@ -38,6 +38,28 @@ complexity of traditional threading models.
 
 **E.g. Coroutines creates lightweight threads within the thread that is executing the program**
 
+#### Threads vs Coroutines
+
+Threads are significantly larger than coroutines. This is because threads have their own stack, which is a data
+structure that stores the thread's local variables and the current execution context. Coroutines, on the other hand, do
+not need their own stack. Instead, they share a single stack with the main thread. This makes coroutines much smaller
+than threads.
+
+Threads also use more memory than coroutines. This is because threads need to allocate memory for their stack, as well
+as for other data structures such as the thread control block. Coroutines, on the other hand, do not need to allocate as
+much memory.
+
+The time complexity of creating threads and coroutines is also different. Creating a thread is a relatively expensive
+operation, as it involves allocating memory and setting up the thread's execution context. Creating a coroutine is much
+cheaper, as it does not require as much overhead.
+
+- **1 thread requires around 1MB of memory.**
+- **1 coroutine requires around 2KB of memory.**
+- This means that you can create around 500,000 coroutines in one thread before you start to use up 1 MB of memory.
+- **1 thread takes around 2-5 microseconds to create.**
+- **1 coroutine takes around 200 nanoseconds to create.**
+- 1000 nanoseconds is 1 microsecond. 1000 microseconds is 1 millisecond. and 1000 milliseconds is 1 second.
+
 ### Common Problems
 
 #### Race Conditions
@@ -64,6 +86,7 @@ programming, this can happen when references to objects are not properly managed
 to detect and resolve memory leaks.**
 
 ### Code Gists
+
 #### Testing
 
 ```
