@@ -28,6 +28,12 @@ GET <key>
 FLUSHALL
 ```
 
+### TTL
+
+```
+TTL <key>
+```
+
 ### docker-compose.yml
 
 ```
