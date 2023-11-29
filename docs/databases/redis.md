@@ -22,6 +22,12 @@ KEYS *
 GET <key>
 ```
 
+### Flush all keys
+
+```
+FLUSHALL
+```
+
 ### docker-compose.yml
 
 ```
