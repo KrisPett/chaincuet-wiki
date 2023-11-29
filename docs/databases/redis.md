@@ -28,7 +28,7 @@ GET <key>
 FLUSHALL
 ```
 
-### TTL
+### Expiration time
 
 ```
 TTL <key>
