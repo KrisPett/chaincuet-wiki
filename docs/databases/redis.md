@@ -8,6 +8,9 @@ docker exec -it chaincue-real-estate-redis bash
 
 ```
 redis-cli
+
+using password
+edis-cli -a redis 
 ```
 
 ### List all keys
@@ -44,6 +47,7 @@ services:
     image: redis:7.2.3
     ports:
       - "6379:6379"
+    command: redis-server --requirepass redis
     networks:
       - chaincue-real-estate-network
 
