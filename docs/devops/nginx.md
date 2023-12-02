@@ -6,6 +6,22 @@
 
 ##### Setup ssl/tls
 
+**template**
+```
+server {
+  server_name chain.se;
+  location / {
+          proxy_pass http://172.00.00.00:8080;
+  }
+  listen 80;
+}
+```
+
+- sudo ln -s /path/to/auth.example.com.conf /path/to/symlink
+- sudo certbot --nginx --redirect -d auth.example.com
+- sudo nginx -t
+- sudo systemctl restart nginx
+
 ```
 sudo ln -s /path/to/auth.example.com.conf /path/to/symlink
 # Run it from sites-enabled (../sites-available/auth.example.com.conf .)
@@ -49,13 +65,14 @@ number and size of the buffers, you're allowing Nginx to handle larger headers.
 It's worth noting that while increasing these values can solve this error, it also uses more memory. Therefore, it's
 important to monitor your server's memory usage to ensure it's not running out of memory due to these larger buffers.
 
-- Given that each request consumes 512 kilobytes of memory (0.5 mebibytes or MiB), we can calculate the maximum number of
-requests per second using the following formula:
+- Given that each request consumes 512 kilobytes of memory (0.5 mebibytes or MiB), we can calculate the maximum number
+  of
+  requests per second using the following formula:
 - Maximum Requests per Second = Available Memory / Memory Usage per Request
 - Maximum Requests per Second = 780 MB / 0.5 MiB
 - Maximum Requests per Second = 1560
 - Based on this calculation, your server could potentially handle up to 1560 requests per second, assuming each request
-consumes 512 kilobytes of memory.
+  consumes 512 kilobytes of memory.
 
 ```
 server {
