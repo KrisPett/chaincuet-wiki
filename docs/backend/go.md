@@ -73,3 +73,64 @@ works best for you and your project.
 **Build project**
 
 - go build -o main ./cmd/server
+
+### Check memory usage of go
+
+- go build -o main
+- pgrep -fl main
+- top -p 126868
+- ps -p 126868 -o pid,rss,vsz --sort -rss | awk '{print $1, $2/1024, $3/1024}'
+
+**RSS: is the actually memory being used.**
+
+**VSZ: is allocated memory**
+
+### Compare Kotlin and Go
+
+| Application | PID    | RSS (MB) | VSZ (MB) |
+|-------------|--------|----------|----------|
+| Kotlin      | 129856 | 478.5    | 16.1     |
+| Go          | 126868 | 20.3     | 1.8      |
+
+### Go Commands
+
+#### go mod init
+
+```
+go mod init <module-name>
+```
+
+#### download
+
+```
+go mod download
+```
+
+#### build
+
+```
+go build -o main
+```
+
+#### test
+
+```
+go test -v ./...
+```
+
+#### clean up
+
+```
+go mod tidy
+```
+
+#### verify
+
+```
+go mod verify
+```
+
+#### graph
+```
+go mod graph
+```

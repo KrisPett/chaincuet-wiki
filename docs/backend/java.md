@@ -18,3 +18,17 @@ src
 
 junit.jupiter.execution.parallel.enabled=true
 ```
+
+### Maven
+
+```
+mvn clean install
+java -jar target/<project>.jar
+```
+
+### Gradle
+
+```
+./gradlew clean build
+java -jar build/libs/<project>.jar
+```
