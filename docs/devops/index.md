@@ -91,3 +91,21 @@ Elastic IPs
 - ssh3 -> keycloak auth server -> subnet public (igw)
 - ssh4 -> database -> subnet private (nat)
 
+### Chaincue resources
+
+| Database Name                       | Size   |
+|-------------------------------------|--------|
+| postgres                            | 46 MB  |
+| chainue_real_estate                 | 60 MB  |
+| chaincue-real-estate-go-prod        | 14 MB  |
+| chaincue-real-estate-redis          | 6 MB   |
+| kc                                  | 576 MB |
+| vault                               | 248 MB |
+| consul                              | 34 MB  |
+| chainbot                            | 55 MB  |
+| pgadmin_03_25_23                    | 140 MB |
+
+**sum:** 46 MB + 60 MB + 14 MB + 6 MB + 576 MB + 248 MB + 34 MB + 55 MB + 140 MB = 1189 MB
+**server:** = 1338 MB - 1189 MB = **149 MB is used for Linux OS**
+
+
