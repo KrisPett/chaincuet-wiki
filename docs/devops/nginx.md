@@ -7,6 +7,7 @@
 ##### Setup ssl/tls
 
 **template**
+
 ```
 server {
   server_name chain.se;
@@ -21,6 +22,7 @@ server {
 - sudo certbot --nginx --redirect -d auth.example.com
 - sudo nginx -t
 - sudo systemctl restart nginx
+- sudo systemctl status nginx
 
 ```
 sudo ln -s /path/to/auth.example.com.conf /path/to/symlink
