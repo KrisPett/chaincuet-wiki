@@ -48,6 +48,14 @@ git reset --soft HEAD^
 git reset --soft HEAD~1
 ```
 
+#### Rollback to a specif commit
+
+```
+git reset b7f7513c57bf416bd674040680480584d054530b
+git reset --hard <commit_hash>
+```
+
+
 #### Clone a folder from github using svn
 
 **Example**
