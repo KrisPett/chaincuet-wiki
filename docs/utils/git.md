@@ -51,8 +51,9 @@ git reset --soft HEAD~1
 #### Rollback to a specif commit
 
 ```
-git reset b7f7513c57bf416bd674040680480584d054530b
-git reset --hard <commit_hash>
+git checkout -b reintegrate-deny-approve origin/main
+git cherry-pick b7f7513c57bf416bd674040680480584d054530b
+Handle merge conflicts manually
 ```
 
 
