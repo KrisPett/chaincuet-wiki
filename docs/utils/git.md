@@ -56,7 +56,6 @@ git cherry-pick b7f7513c57bf416bd674040680480584d054530b
 Handle merge conflicts manually
 ```
 
-
 #### Clone a folder from github using svn
 
 **Example**
