@@ -1,11 +1,13 @@
 # Node
 
-#### Install latest version of nodejs 
+#### Install latest version of nodejs
+
+**Specify setup_20**
 
 ```
-
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
 ```
-
 
 # Npm
 
