@@ -68,6 +68,7 @@ nav:
       - Reactive IO: backend/reactiveio.md
   - Frontend:
       - Overview: frontend/index.md
+      - Npm: frontend/npm.md
       - HTML: frontend/html.md
       - CSS Styling: frontend/css-styling.md
       - Javascript & Typescript: frontend/javascript-typescript.md
