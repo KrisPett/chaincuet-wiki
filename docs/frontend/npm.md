@@ -49,3 +49,8 @@ publish-npm:
 @example:registry=https://gitlab.com/api/v4/projects/<project_id>/packages/npm/
 //gitlab.com/api/v4/projects/<project_id>/packages/npm/:_authToken=<gitlab_user_token>
 ```
+
+```
+npm config set @example:registry https://gitlab.com/api/v4/projects/<project_id>/packages/npm/
+npm config set //gitlab.com/api/v4/projects/<project_id>/packages/npm/:_authToken "gitlab_user_token"
+```
