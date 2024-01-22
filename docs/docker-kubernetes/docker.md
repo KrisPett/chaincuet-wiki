@@ -53,13 +53,13 @@ docker run -it --rm -p 1000:1000 --name maven-11 -v ${PWD}:/app maven:3.8.6-open
 docker run -it --rm -p 3000:3000 --name node --cpuset-cpus 7 --network host -v ${PWD}:/workdir -w /workdir node:14 bash
 ```
 
-#### On windows may run powershell on administrator
+#### Windows
 
 ```
-docker run --rm -it -p 3000:3000 -v %cd%:/app node sh
-docker run --rm -it -p 3000:3000 -v /$(pwd):/app node sh
-pwd
-docker run --rm -it -p 3000:3000 -v C:drive:/app node sh
+CMD
+docker run --rm -it -p 3000:3000 -v %cd%:/app node:18 sh
+Powershell
+docker run --rm -it -p 3000:3000 -v ${PWD}:/workdir node:18 bash
 ```
 
 #### Kill a running npm process in docker
