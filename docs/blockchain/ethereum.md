@@ -125,8 +125,8 @@ Infura is a service that provides access to Ethereum and IPFS networks. It allow
 
 #### Faucet (Sepolia)
 
+- https://www.infura.io/faucet/sepolia
 - https://sepoliafaucet.com/
-- https://www.infura.io/faucet/sepolia?ef=infura.ghost.io
 
 ##### Curl Requests
 
