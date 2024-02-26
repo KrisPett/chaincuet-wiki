@@ -158,3 +158,30 @@ deploy:
     - shared-runner
 ```
 
+# Self host
+
+```
+version: '3.6'
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:16.7.6-ce.0
+    container_name: gitlab
+    hostname: 'gitlab.chaincuet.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.chaincuet.com'
+    ports:
+      - '8082:80'
+      - '4443:443'
+      - '222:22'
+    volumes:
+      - '$GITLAB_HOME/config:/etc/gitlab'
+      - '$GITLAB_HOME/logs:/var/log/gitlab'
+      - '$GITLAB_HOME/data:/var/opt/gitlab'
+    shm_size: '256m'
+```
+
+- http://localhost:8082/admin
+- docker exec -it gitlab bash
+- username = root, password = cat /etc/gitlab/initial_root_password
+- Users -> Pending approval
