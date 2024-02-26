@@ -160,6 +160,8 @@ deploy:
 
 # Self host
 
+## docker
+
 ```
 version: '3.6'
 services:
@@ -185,3 +187,14 @@ services:
 - docker exec -it gitlab bash
 - username = root, password = cat /etc/gitlab/initial_root_password
 - Users -> Pending approval
+
+## Kubernetes
+
+```
+helm install gitlab gitlab/gitlab  \
+  --set global.hosts.domain=gitlab.chaincuet.com \
+  --set certmanager-issuer.email=...
+```
+
+- kubectl port-forward svc/gitlab-nginx-ingress-controller 8080:80
+- helm delete gitlab
