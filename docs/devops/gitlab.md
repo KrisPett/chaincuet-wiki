@@ -163,6 +163,10 @@ deploy:
 ## docker
 
 ```
+# docker compose up
+# docker exec -it gitlab bash
+# cat /etc/gitlab/initial_root_password
+
 version: '3.6'
 services:
   gitlab:
