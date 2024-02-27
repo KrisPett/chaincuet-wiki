@@ -166,6 +166,7 @@ deploy:
 # docker compose up
 # docker exec -it gitlab bash
 # cat /etc/gitlab/initial_root_password
+# http://localhost:8082/dashboard/projects
 
 version: '3.6'
 services:
