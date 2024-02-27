@@ -163,9 +163,13 @@ deploy:
 ## docker
 
 ```
+# sudo mkdir -p /srv/gitlab
+# export GITLAB_HOME=/srv/gitlab
+# export | grep GITLAB_HOME
+
 # docker compose up
-# docker exec -it gitlab bash
-# cat /etc/gitlab/initial_root_password
+
+# docker exec -it gitlab bash -c "cat /etc/gitlab/initial_root_password"
 # http://localhost:8082/dashboard/projects
 
 version: '3.6'
