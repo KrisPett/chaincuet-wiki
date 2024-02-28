@@ -197,6 +197,10 @@ services:
 - username = root, password = cat /etc/gitlab/initial_root_password
 - Users -> Pending approval
 
+### Create new root password 
+
+- docker exec -it gitlab gitlab-rake "gitlab:password:reset[root]"
+
 ## Kubernetes
 
 ```

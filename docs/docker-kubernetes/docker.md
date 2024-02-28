@@ -88,6 +88,12 @@ docker image prune --filter="dangling=true"
 docker build -f wireguard.Dockerfile -t wire .
 ```
 
+#### Copy file from docker
+
+```
+docker cp <container_id>:/var/opt/file.tar /path/to/local/destination
+```
+
 ### Docker Configs
 
 #### Backup volume data
