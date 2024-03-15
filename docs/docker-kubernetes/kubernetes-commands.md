@@ -166,4 +166,9 @@ echo "$(minikube ip) backend.minikube" | sudo tee -a /etc/hosts
 minikube addons enable metrics-server
 ```
 
+#### Remove minikube
 
+```
+minikube delete
+rm -rf ~/.minikube
+```
