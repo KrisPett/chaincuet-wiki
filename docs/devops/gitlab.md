@@ -160,7 +160,7 @@ deploy:
 
 # Self host
 
-## docker
+## Docker
 
 ```
 # sudo mkdir -p /srv/gitlab
@@ -204,10 +204,117 @@ services:
 ## Kubernetes
 
 ```
-helm install gitlab gitlab/gitlab  \
-  --set global.hosts.domain=gitlab.chaincuet.com \
-  --set certmanager-issuer.email=...
-```
+# kubectl -f gitlab.yml apply
+# kubectl exec -it deployment.apps/gitlab -n gitlab -- cat /etc/gitlab/initial_root_password
 
-- kubectl port-forward svc/gitlab-nginx-ingress-controller 8080:80
-- helm delete gitlab
+# kubectl delete namespace gitlab -n gitlab
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gitlab
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitlab-config
+  namespace: gitlab
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitlab-logs
+  namespace: gitlab
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitlab-data
+  namespace: gitlab
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  replicas: 1 # this deploy only works with 1 replicas
+  selector:
+    matchLabels:
+      app: gitlab
+  template:
+    metadata:
+      labels:
+        app: gitlab
+    spec:
+      containers:
+        - name: gitlab
+          image: gitlab/gitlab-ce:16.7.6-ce.0
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+            - containerPort: 22
+          volumeMounts:
+            - name: gitlab-config
+              mountPath: /etc/gitlab
+            - name: gitlab-logs
+              mountPath: /var/log/gitlab
+            - name: gitlab-data
+              mountPath: /var/opt/gitlab
+          env:
+            - name: GITLAB_OMNIBUS_CONFIG
+              value: |
+                external_url 'http://gitlab.chaincue.com'
+      volumes:
+        - name: gitlab-config
+          persistentVolumeClaim:
+            claimName: gitlab-config
+        - name: gitlab-logs
+          persistentVolumeClaim:
+            claimName: gitlab-logs
+        - name: gitlab-data
+          persistentVolumeClaim:
+            claimName: gitlab-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      nodePort: 30080
+    - name: https
+      port: 443
+      targetPort: 443
+      nodePort: 30443
+    - name: ssh
+      port: 22
+      targetPort: 22
+      nodePort: 30222
+  selector:
+    app: gitlab
+```
