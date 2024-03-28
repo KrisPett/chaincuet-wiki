@@ -197,7 +197,7 @@ services:
 - username = root, password = cat /etc/gitlab/initial_root_password
 - Users -> Pending approval
 
-### Create new root password 
+### Create new root password
 
 - docker exec -it gitlab gitlab-rake "gitlab:password:reset[root]"
 
@@ -317,4 +317,27 @@ spec:
       nodePort: 30222
   selector:
     app: gitlab
+```
+
+- minikube addons enable ingress
+- minikube ip -> sudo nano /etc/hosts -> "minikube_ip" gitlab.chaincue.com
+
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gitlab-ingress
+  namespace: gitlab
+spec:
+  rules:
+    - host: gitlab.chaincue.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: gitlab
+                port:
+                  number: 80
 ```
