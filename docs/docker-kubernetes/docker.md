@@ -44,7 +44,7 @@ npm run build'
 #### Run maven with a specific version
 
 ```
-docker run -it --rm --privileged -p 1000:1000 --name maven-17 -v ${PWD}:/workdir -w /workdir maven:3.9.6-eclipse-temurin-17-alpine bash
+docker run -it --rm --privileged -p 1000:1000 --name maven -v ${PWD}:/workdir -w /workdir maven:3.9.6-eclipse-temurin-17-alpine bash
 ```
 
 #### Run with a specific cpuset-cpus
