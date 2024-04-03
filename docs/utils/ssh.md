@@ -35,3 +35,8 @@ echo "BASE64_ENCODED_STRING" | base64 --decode > your_private_key_file
 chmod 400 your_private_key_file
 ```
 
+### debug ssh
+
+```
+ssh -i your_private_key_file -p 22222 -vvv ubuntu@192.168.000.000
+```
