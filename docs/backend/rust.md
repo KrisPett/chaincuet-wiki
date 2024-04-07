@@ -1,6 +1,7 @@
 ### Open-sourced libraries
 
-- Actix
+- Actix-web
+- sea-orm
 
 ### Useful commands
 
