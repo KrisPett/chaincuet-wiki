@@ -63,6 +63,7 @@ nav:
       - Java: backend/java.md
       - Kotlin: backend/kotlin.md
       - Go: backend/go.md
+      - Rust: backend/rust.md
       - Python: backend/python.md
       - Spring Cloud: backend/spring-cloud.md
       - Reactive IO: backend/reactiveio.md
