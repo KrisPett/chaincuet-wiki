@@ -1,7 +1,7 @@
 ### Open-sourced libraries
 
 - Actix-web
-- sea-orm
+- sea-orm (sqlx, tokio)
 
 ### Useful commands
 
