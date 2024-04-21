@@ -10,7 +10,7 @@ docker exec -it chaincue-real-estate-redis bash
 redis-cli
 
 using password
-edis-cli -a redis 
+redis-cli -a redis 
 ```
 
 ### List all keys
