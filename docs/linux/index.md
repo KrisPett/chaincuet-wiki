@@ -83,3 +83,9 @@ sudo chown -R bitwarden:bitwarden /opt/bitwarden
 
 ```telnet <private_ip> 5433```
 
+### port already in use troubleshooting
+
+```
+sudo lsof -i :8080
+kill <pid_number>
+```
