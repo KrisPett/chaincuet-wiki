@@ -89,3 +89,9 @@ sudo chown -R bitwarden:bitwarden /opt/bitwarden
 sudo lsof -i :8080
 kill <pid_number>
 ```
+
+### Watch gpu
+
+```
+watch -n 1 nvidia-smi
+```
