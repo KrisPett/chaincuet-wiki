@@ -19,3 +19,4 @@
 - SYN – Synth Pads
 - TEX – Atmospheric Textures
 - HOV - Hoover Sound (https://en.wikipedia.org/wiki/Hoover_sound)
+- ORG - Organs
