@@ -1,3 +1,10 @@
+#### Gitlab login 
+
+```
+docker login registry.gitlab.com
+docker login registry.gitlab.com -u <gitlab_user> -p <gitlab_token>
+```
+
 #### Search Repo
 
 ```
