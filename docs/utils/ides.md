@@ -1,8 +1,10 @@
 ### IntelliJ
 
-```
+#### Maven fix
 
-```
+- ctrl + shift + a
+- Maven Projects 
+- Add Maven Projects -> select folder 
 
 ### VSCode
 
