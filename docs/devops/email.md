@@ -36,4 +36,7 @@ https://www.smtper.net/
 - Login to google cloud
 - Search for Gmail API and enable it
 - create a new service account
-  -_  
+
+#### Mailtrap
+
+- https://www.baeldung.com/java-email
