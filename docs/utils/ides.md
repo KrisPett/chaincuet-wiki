@@ -3,8 +3,13 @@
 #### Maven fix
 
 - ctrl + shift + a
-- Maven Projects 
-- Add Maven Projects -> select folder 
+- Maven Projects
+- Add Maven Projects -> select folder
+
+#### Remove Scroll Paste
+
+- Settings -> Keymap -> Editor Actions
+- Remove -> Paste from X clipboard
 
 ### VSCode
 
