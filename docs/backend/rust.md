@@ -6,6 +6,10 @@
 ### Useful commands
 
 ```
+cargo new <name>
+```
+
+```
 cargo run
 ```
 
@@ -13,7 +17,7 @@ cargo run
 cargo build --release
 ```
 
-####  Disable warning and only show errors
+#### Disable warning and only show errors
 
 ```
 export RUSTFLAGS=-Awarnings cargo check
