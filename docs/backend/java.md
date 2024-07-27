@@ -1,3 +1,21 @@
+### Install Java Ubuntu
+
+#### Option 1
+
+- ```sudo apt remove *jdk*```
+- sudo apt update
+- sudo add-apt-repository ppa:linuxuprising/java
+- java --version
+- sudo apt install openjdk-21-jre
+
+#### Option 2
+
+- https://www.oracle.com/java/technologies/downloads/
+- Download deb
+- chmod +x jdk-22_linux-x64_bin.deb
+- sudo dpkg -i jdk-22_linux-x64_bin.deb
+- sudo apt install maven
+
 ### Setup Concurrent Testing
 
 ```
