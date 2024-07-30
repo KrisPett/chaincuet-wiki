@@ -74,6 +74,8 @@ kill $(lsof -t -i:3000)
 docker kill $(docker ps -q)
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
+
+docker system prune -a
 ```
 
 #### remove all 'none' tag images
