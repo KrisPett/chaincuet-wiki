@@ -51,6 +51,7 @@ nav:
       - Email: devops/email.md
       - Gitlab: devops/gitlab.md
       - Github: devops/github.md
+      - Slack: devops/slack.md
   - Docker & Kubernetes:
       - Overview: docker-kubernetes/index.md
       - Docker: docker-kubernetes/docker.md
