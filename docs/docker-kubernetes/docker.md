@@ -94,6 +94,12 @@ docker build -f wireguard.Dockerfile -t wire .
 docker cp <container_id>:/var/opt/file.tar /path/to/local/destination
 ```
 
+### Check storage
+
+```
+docker system df
+```
+
 ### Docker Configs
 
 #### Backup volume data
