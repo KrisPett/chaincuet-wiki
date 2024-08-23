@@ -79,6 +79,7 @@ nav:
   - AI / ML:
       - Overview: ai/index.md
       - OpenAI: ai/openAI.md
+      - Ollama: ai/ollama.md
       - TensorFlow: ai/tensorflow.md
       - PyTorch: ai/pytorch.md
   - Databases:
