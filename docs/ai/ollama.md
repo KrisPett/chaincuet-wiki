@@ -1,3 +1,32 @@
+### docker compose
+
+```
+version: '3.9'
+
+services:
+  ollama:
+    container_name: ollama
+    image: ollama/ollama
+    ports:
+      - "11435:11434"
+    volumes:
+      - ./Modelfile:/Modelfile
+    networks:
+      - lambda_net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+networks:
+  lambda_net:
+    name: lambda_net
+    driver: bridge
+```
+
 ### Ollama & open-webui
 
 - Username: admin.gmail.com
