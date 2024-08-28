@@ -76,6 +76,7 @@ nav:
       - Javascript & Typescript: frontend/javascript-typescript.md
       - NextJS: frontend/nextjs.md
       - Gists: frontend/gists.md
+      - Flutter: frontend/flutter.md
   - AI / ML:
       - Overview: ai/index.md
       - OpenAI: ai/openAI.md
