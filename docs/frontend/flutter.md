@@ -14,13 +14,16 @@
 #### Android
 
     flutter build apk --release
+    build/app/outputs/flutter-apk/app-release.apk
 
 #### Ios
 
-    flutter build ios --release
+    WIP
 
 #### Web
 
     flutter build web --release
+    cd build/web
+    python3 -m http.server 8080
 
 
