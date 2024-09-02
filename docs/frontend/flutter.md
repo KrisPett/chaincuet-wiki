@@ -13,14 +13,14 @@
 
 #### Android
 
-flutter build apk --release
+    flutter build apk --release
 
 #### Ios
 
-flutter build ios --release
+    flutter build ios --release
 
 #### Web
 
-flutter build web --release
+    flutter build web --release
 
 
