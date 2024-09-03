@@ -18,7 +18,16 @@
 ##### Build app bundle
 
 ```
+https://docs.flutter.dev/deployment/android
+
 keytool -genkey -v -keystore pwd/insider_oink_flutter/android/app/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+
+key.properties
+storePassword=
+keyPassword=
+keyAlias=upload
+storeFile=../app/upload-keystore.jks
+
 flutter build appbundle
 build/app/outputs/bundle/release/app-release.aab
 ```
