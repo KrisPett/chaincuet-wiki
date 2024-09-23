@@ -95,3 +95,11 @@ kill <pid_number>
 ```
 watch -n 1 nvidia-smi
 ```
+
+### Watch cpu
+
+- sudo apt install lm-sensors
+
+```
+watch -n 2 sensors
+```
