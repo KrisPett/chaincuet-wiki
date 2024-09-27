@@ -96,10 +96,16 @@ kill <pid_number>
 watch -n 1 nvidia-smi
 ```
 
-### Watch cpu
+### Watch cpu temp
 
 - sudo apt install lm-sensors
 
 ```
 watch -n 2 sensors
+```
+
+### Watch cpu MHz
+
+```
+watch -n 1 "cat /proc/cpuinfo | grep 'MHz'"
 ```
