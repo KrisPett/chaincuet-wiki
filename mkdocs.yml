@@ -96,7 +96,10 @@ nav:
       - Hyperledger: blockchain/hyperledger.md
   - Linux:
       - Overview: linux/index.md
-      - Alias: linux/alias.md
+      - Aliases: linux/alias.md
+  - Windows:
+      - Overview: windows/index.md
+      - Aliases: windows/alias.md
   - Utils:
       - Overview: utils/index.md
       - Emoji: utils/emoji.md
