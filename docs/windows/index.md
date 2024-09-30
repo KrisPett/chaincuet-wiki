@@ -1,4 +1,4 @@
-#### Create file in powershell
+#### Create file in PowerShell
 
 ```
 New-Item test.txt
