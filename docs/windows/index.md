@@ -1,3 +1,9 @@
+#### Create file in powershell
+
+```
+New-Item test.txt
+```
+
 #### Fins specific port
 
 ```netstat -ano | findstr :5173```
