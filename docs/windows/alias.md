@@ -1,3 +1,11 @@
+##### Alias For PowerShell
+
+- Need to enable script execution in PowerShell (less secure)
+- C:\Users\Kris\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+
+```
+Set-Alias mouse 'python "C:\Users\user\scripts\move_mouse_circle.py"'
+```
 
 ##### Alias For CMD
 - Create file aliases.cmd
