@@ -107,3 +107,4 @@ nav:
       - IDEs: utils/ides.md
       - SSH: utils/ssh.md
       - Music: utils/music.md
+      - ffmpeg: utils/ffmpeg.md
