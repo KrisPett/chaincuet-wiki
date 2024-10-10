@@ -12,6 +12,11 @@ New-Item test.txt
 
 ```taskkill /PID 552 /F```
 
+
+#### Check For Ram problems
+
+- Press Windows + S or click on the Start Menu and type Windows Memory Diagnostic.
+
 #### Windows Logs
 
 - Press Windows + X and select Event Viewer.
