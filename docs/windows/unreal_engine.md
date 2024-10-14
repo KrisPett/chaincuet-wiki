@@ -70,3 +70,4 @@ C++ allows developers to write more complex and performance-optimized game logic
 ## Plugins
 
 - Modeling Tools
+- Common Maps
