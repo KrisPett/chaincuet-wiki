@@ -6,9 +6,18 @@ https://github.com/BtbN/FFmpeg-Builds/releases
 - copy ffmpeg.exe ffplay.exe ffprobe.exe --> C:\ffmpeg
 - Edit env --> Add Path C:\ffmpeg
 
-
 ### Convert mkv to mp4
 
 ```
 ffmpeg -i "1 Introduktion till Versionshantering.mkv" -c:v copy -c:a copy "1 Introduktion till Versionshantering.mp4"
+```
+
+#### Powershell
+
+```
+Get-ChildItem *.mkv | ForEach-Object {
+$inputFile = $_.FullName
+$outputFile = [System.IO.Path]::ChangeExtension($inputFile, ".mp4")
+ffmpeg -i "$inputFile" -c:v copy -c:a copy "$outputFile"
+}
 ```
