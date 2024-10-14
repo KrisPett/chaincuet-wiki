@@ -109,3 +109,4 @@ nav:
       - SSH: utils/ssh.md
       - Music: utils/music.md
       - ffmpeg: utils/ffmpeg.md
+      - imagemagick: utils/imagemagick.md
