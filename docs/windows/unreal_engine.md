@@ -89,6 +89,7 @@ Blueprints.
 
 - Modeling Tools
 - Common Maps
+- Quixel Bridge
 
 ## Folder Structure
 
