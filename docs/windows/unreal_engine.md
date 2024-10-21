@@ -108,3 +108,7 @@ Blueprints.
 ### Focus object
 
 ```F```
+
+### Change camera speed
+
+```Right Mouse Button (RMB) + Mouse wheel```
