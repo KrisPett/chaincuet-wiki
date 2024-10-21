@@ -93,8 +93,18 @@ Blueprints.
 
 ## Folder Structure
 
-1. C++ Classes Folder
-2. Engine Content Folder
-3. Plugins Folder
-4. Localized Content Folder
-5. Developer Content Folder
+- C++ Classes Folder
+- Engine Content Folder
+- Plugins Folder
+- Localized Content Folder
+- Developer Content Folder
+
+## Usefully shortcuts
+
+### Change sun direction
+
+```CTRL + L --> mouse rotation```
+
+### Focus object
+
+```F```
