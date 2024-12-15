@@ -4,6 +4,12 @@
 New-Item test.txt
 ```
 
+#### tree
+
+```
+tree /f
+```
+
 #### Fins specific port
 
 ```netstat -ano | findstr :5173```

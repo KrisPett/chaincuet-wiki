@@ -63,6 +63,7 @@ nav:
       - Overview: backend/index.md
       - Java: backend/java.md
       - Kotlin: backend/kotlin.md
+      - C#: backend/c#.md
       - Go: backend/go.md
       - Rust: backend/rust.md
       - Python: backend/python.md
