@@ -203,3 +203,15 @@ allows for easy scaling and testing.
 - **For a simple Spring Boot-like application (API)**: Choose **ASP.NET Core Web API**.
 - **For Clean Architecture**: Choose **ASP.NET Core Empty**, and structure the project with clear separation of concerns
   and layers.
+
+#### Useful Commands
+
+```
+add-migration
+update-database
+```
+
+```
+Install-Package Npgsql.EntityFrameworkCore.PostgreSQL
+Install-Package Microsoft.EntityFrameworkCore.Design
+```
