@@ -73,3 +73,9 @@ ollama list
 ```
 ollama run llama3.1
 ```
+
+### Best models
+
+- llama3.2:latest - general purpose chat
+- llama2-uncensored:latest - uncensored general purpose chat
+- llama3.2-vision:latest - can describe an image
