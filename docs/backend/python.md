@@ -61,3 +61,8 @@ Is a package manager, environment manager, and Python distribution that was crea
 - **imageio** -> imageio is a Python library for reading and writing various image formats, allowing image I/O
   operations and manipulation. It provides a simple interface to handle tasks like reading images into numpy arrays,
   writing numpy arrays to image files, and extracting metadata.
+
+#### Django
+
+- python manage.py runserver
+- python manage.py migrate

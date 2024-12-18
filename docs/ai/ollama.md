@@ -32,8 +32,16 @@ networks:
 - Username: admin.gmail.com
 - Password: admin
 
+#### Ubuntu
+
 ```
 docker run --rm --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui ghcr.io/open-webui/open-webui:main
+```
+
+#### Windows
+
+```
+docker run --rm -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:main
 ```
 
 ### Create a model
