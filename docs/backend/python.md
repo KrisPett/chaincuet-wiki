@@ -20,6 +20,12 @@ Is a package manager, environment manager, and Python distribution that was crea
 - conda env list (list environments)
 - conda remove --name myenv --all (remove environment)
 
+#### Django
+
+- python manage.py runserver
+- python manage.py migrate
+- python manage.py makemigrations
+
 #### Libraries
 
 - **os** -> The os library in Python is a built-in module that provides a way to interact with the operating system. It
@@ -61,8 +67,3 @@ Is a package manager, environment manager, and Python distribution that was crea
 - **imageio** -> imageio is a Python library for reading and writing various image formats, allowing image I/O
   operations and manipulation. It provides a simple interface to handle tasks like reading images into numpy arrays,
   writing numpy arrays to image files, and extracting metadata.
-
-#### Django
-
-- python manage.py runserver
-- python manage.py migrate
