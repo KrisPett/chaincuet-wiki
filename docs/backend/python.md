@@ -22,9 +22,14 @@ Is a package manager, environment manager, and Python distribution that was crea
 
 #### Django
 
-- python manage.py runserver
+In Django the controllers are called views.py. 
+
+- django-admin startproject django_test
+- django-admin startapp quickstart
+- pip install djangorestframework
 - python manage.py migrate
-- python manage.py makemigrations
+- python manage.py runserver
+- python manage.py createsuperuser --username admin --email admin@example.com
 
 #### Libraries
 
