@@ -67,6 +67,7 @@ nav:
       - Go: backend/go.md
       - Rust: backend/rust.md
       - Python: backend/python.md
+      - Express: backend/express.md
       - Spring Cloud: backend/spring-cloud.md
       - Reactive IO: backend/reactiveio.md
   - Frontend:
