@@ -15,10 +15,5 @@ npm install prisma --save-dev
 
 ```
 npx prisma migrate dev --name init
-```
-
-### Update database
-
-```
 npx prisma generate
 ```
