@@ -110,6 +110,9 @@ nav:
       - Git: utils/git.md
       - IDEs: utils/ides.md
       - SSH: utils/ssh.md
-      - Music: utils/music.md
       - ffmpeg: utils/ffmpeg.md
       - imagemagick: utils/imagemagick.md
+  - Randoms:
+      - Overview:  randoms/index.md
+      - Music: randoms/music.md
+      - Universe Sandbox: randoms/universe-sandbox.md
