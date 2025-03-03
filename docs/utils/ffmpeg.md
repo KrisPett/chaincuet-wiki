@@ -12,6 +12,12 @@ https://github.com/BtbN/FFmpeg-Builds/releases
 ffmpeg -i "1 Introduktion till Versionshantering.mkv" -c:v copy -c:a copy "1 Introduktion till Versionshantering.mp4"
 ```
 
+### Convert mkv to mp3
+
+```
+ffmpeg -i input.mkv -q:a 0 -map a output.mp3
+```
+
 #### Powershell
 
 ```
